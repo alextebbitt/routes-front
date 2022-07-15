@@ -6,6 +6,7 @@ import Register from './Components/Register/Register';
 import Login from './Components/Login/Login';
 import Profile from './Components/Profile/Profile';
 import PrivateZone from './guards/PrivateZone';
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               </PrivateZone>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
