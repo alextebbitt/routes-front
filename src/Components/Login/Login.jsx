@@ -1,14 +1,15 @@
 import React from 'react'
 import { Button, Form, Input } from "antd";
+import { useDispatch } from 'react-redux';
+import { login } from '../../features/auth/authSlice';
 
 const Login = () => {
 
-const onFinish = (values) => {
-//   dispatch(login(values));
-};
+  const dispatch = useDispatch();
 
-const onFinishFailed = (errorInfo) => {};
-
+  const onFinish = (values) => {
+    dispatch(login(values));
+  };
 
   return (
     <Form
@@ -18,7 +19,6 @@ const onFinishFailed = (errorInfo) => {};
       wrapperCol={{ span: 16 }}
       initialValues={{ remember: true }}
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
     >
       <Form.Item
         label="Email"
