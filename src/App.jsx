@@ -5,6 +5,7 @@ import Home from './Components/Home/Home';
 import Register from './Components/Register/Register';
 import Login from './Components/Login/Login';
 import Profile from './Components/Profile/Profile';
+import PrivateZone from './guards/PrivateZone';
 
 function App() {
   return (
@@ -14,8 +15,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
-
+          <Route
+            path="/profile"
+            element={
+              <PrivateZone>
+                <Profile />
+              </PrivateZone>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>

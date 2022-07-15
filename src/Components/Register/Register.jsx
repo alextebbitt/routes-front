@@ -1,9 +1,5 @@
 import React from 'react'
-import {
-  Button,
-  Checkbox,
-  Form,
-  Input,
+import { Button, Checkbox, Form, Input,
 } from "antd";
 
 const Register = () => {
@@ -11,8 +7,7 @@ const Register = () => {
     const formItemLayout = {
   labelCol: {
     xs: {
-      span: 24,
-    },
+      span: 24,},
     sm: {
       span: 8,
     },
