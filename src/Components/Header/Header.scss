@@ -1,0 +1,24 @@
+.topnav {
+  overflow: hidden;
+  padding-right: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 17px;
+}
+
+.topnav a {
+  
+  
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 24px;
+  align-items: flex-end;
+}
+
+.topnav a:hover {
+  color: black;
+  border-radius: 1rem;
+}
