@@ -1,13 +1,13 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Components/Home/Home';
-import Register from './Components/Register/Register';
-import Login from './Components/Login/Login';
-import Profile from './Components/Profile/Profile';
+import Home from './components/Home/Home';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+import Profile from './components/Profile/Profile';
 import PrivateZone from './guards/PrivateZone';
-import NotFound from './Components/NotFound/NotFound';
-import Header from './Components/Header/Header';
+import NotFound from './components/NotFound/NotFound';
+import Header from './components/Header/Header';
 
 function App() {
   return (
