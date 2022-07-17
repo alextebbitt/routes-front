@@ -10,6 +10,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import Admin from "./components/Admin/Admin";
 import AdminZone from "./guards/AdminZone";
+import RoutesView from './components/RoutesView/RoutesView';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               </AdminZone>
             }
           />
+          <Route path="/routes" element={<PrivateZone><RoutesView /></PrivateZone>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
