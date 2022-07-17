@@ -1,14 +1,15 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Register from './components/Register/Register';
-import Login from './components/Login/Login';
-import Profile from './components/Profile/Profile';
-import PrivateZone from './guards/PrivateZone';
-import NotFound from './components/NotFound/NotFound';
-import Header from './components/Header/Header';
-import Admin from './components/Admin/Admin';
+import "./App.css";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
+import PrivateZone from "./guards/PrivateZone";
+import NotFound from "./components/NotFound/NotFound";
+import Header from "./components/Header/Header";
+import Admin from "./components/Admin/Admin";
+import AdminZone from "./guards/AdminZone";
 
 function App() {
   return (
@@ -27,7 +28,14 @@ function App() {
               </PrivateZone>
             }
           />
-          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={
+              <AdminZone>
+                <Admin />
+              </AdminZone>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
