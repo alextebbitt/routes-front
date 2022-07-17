@@ -6,8 +6,14 @@ const getRoutes = async (page = 1) => {
   return res.data;
 };
 
+const getRouteById = async (id) => {
+  const res = await axios.get(`${API_URL}/routes/id/${id}`);
+  return res.data;
+}
+
 const routesService = {
   getRoutes,
+  getRouteById,
 };
 
 export default routesService;

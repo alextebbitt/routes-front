@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 import Admin from "./components/Admin/Admin";
 import AdminZone from "./guards/AdminZone";
 import RoutesView from './components/RoutesView/RoutesView';
+import RouteDetail from './components/RouteDetail/RouteDetail';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             }
           />
           <Route path="/routes" element={<PrivateZone><RoutesView /></PrivateZone>} />
+          <Route path="/route/:id" element={<PrivateZone><RouteDetail /></PrivateZone>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

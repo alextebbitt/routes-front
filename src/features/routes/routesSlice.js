@@ -19,6 +19,18 @@ export const getRoutes = createAsyncThunk(
   }
 );
 
+export const getRouteById = createAsyncThunk(
+  "routes/getRouteById",
+  async (id, thunkAPI) => {
+    try {
+      return await routesService.getRouteById(id);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const routesSlice = createSlice({
   name: "routes",
   initialState,
@@ -34,6 +46,14 @@ export const routesSlice = createSlice({
       })
       .addCase(getRoutes.rejected, (state, action) => {
         state.routes = [];
+        state.route = {};
+        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
+      .addCase(getRouteById.fulfilled, (state, action) => {
+        state.route = action.payload.route;
+      })
+      .addCase(getRouteById.rejected, (state, action) => {
         state.route = {};
         console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
