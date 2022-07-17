@@ -8,12 +8,13 @@ import Profile from './components/Profile/Profile';
 import PrivateZone from './guards/PrivateZone';
 import NotFound from './components/NotFound/NotFound';
 import Header from './components/Header/Header';
+import RoutesView from './components/RoutesView/RoutesView';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header/>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
@@ -26,6 +27,7 @@ function App() {
               </PrivateZone>
             }
           />
+          <Route path="/routes" element={<PrivateZone><RoutesView /></PrivateZone>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

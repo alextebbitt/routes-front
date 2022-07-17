@@ -2,7 +2,7 @@ import React from "react";
 import { notification, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../features/auth/authSlice";
-import {LogoutOutlined, HomeOutlined,} from "@ant-design/icons";
+import { LogoutOutlined, HomeOutlined, } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
 
@@ -32,6 +32,9 @@ const Header = () => {
           </span>
           {user ? (
             <>
+              <span>
+                <Link to="/routes">Routes</Link>
+              </span>
               <span>
                 <Link to="/" onClick={onLogout}>
                   {<LogoutOutlined />}

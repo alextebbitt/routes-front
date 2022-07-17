@@ -35,6 +35,7 @@ export const routesSlice = createSlice({
       .addCase(getRoutes.rejected, (state, action) => {
         state.routes = [];
         state.route = {};
+        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
   }
