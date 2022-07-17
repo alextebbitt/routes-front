@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getRouteById } from '../../features/routes/routesSlice';
 import axios from 'axios';
 import PoiDetail from './PoiDetail/PoiDetail';
@@ -39,6 +39,10 @@ const RouteDetail = () => {
     <PoiDetail key={poi._id} poi={poi} />
   );
 
+  const tag = route.tags?.map((tag, i) =>
+    <><Link key={tag + i} to={`/tag/${tag}`}>{tag}</Link>&nbsp;&nbsp;</>
+  );
+
   return (
     <div>
       <div style={{ float: "right" }}><img src={map} alt="map" /></div>
@@ -53,7 +57,7 @@ const RouteDetail = () => {
           <div>DURATION: {route.duration}</div>
           <div>STARTING POINT: {route.startingPoint}</div>
           <div>ENDING POINT: {route.endingPoint}</div>
-          <div>TAGS: {route.tags.join(", ")}</div>
+          <div>TAGS: {tag}</div>
           <div>DESCRIPTION: {route.description}</div>
           <div>{poi}</div>
         </div>
