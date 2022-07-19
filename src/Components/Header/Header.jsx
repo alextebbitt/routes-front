@@ -15,7 +15,6 @@ const Header = () => {
     e.preventDefault();
     dispatch(logout());
     notification.success({ message: "logged out successfully" });
-
     navigate("/login");
   };
 
