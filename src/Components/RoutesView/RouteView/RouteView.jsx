@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
+import "./../RoutesView.scss"
 
 const RouteView = () => {
 
@@ -12,7 +13,7 @@ const RouteView = () => {
     );
 
     return (
-      <div key={route.id}>
+      <div className="route" key={route.id}>
         <h2>{route.name}</h2>
         <Link to={"/route/" + route._id}>View Route</Link>
         <div>DIFFICULTY: {route.difficulty}</div>
@@ -23,7 +24,7 @@ const RouteView = () => {
         <div>POIS: <ul>{route.pois.map(poi => <li key={poi._id}>{poi.orderNum}. {poi.name}</li>)}</ul></div>
         <div>DESCRIPTION: {route.description}</div>
         <img src={route.image} alt={route.name} />
-        <hr />
+       
       </div>
     )
   })
