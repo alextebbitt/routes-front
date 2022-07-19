@@ -16,21 +16,31 @@ const login = async (userData) => {
 
 const logout = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const res = await axios.delete(API_URL + "/users/logout", {
-    headers: {
-      authorization: user?.token,
-    },
-  });
+  const res = await axios.delete(
+    API_URL + "/users/logout",
+    { headers: { authorization: user?.token, }, }
+  );
   if (res.data) {
     localStorage.removeItem("user");
   }
   return res.data;
 };
 
+const updateUser = async (userData) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/users/update",
+    userData,
+    { headers: { authorization: user?.token, }, }
+  );
+  return res.data;
+}
+
 const authService = {
   register,
   login,
   logout,
+  updateUser,
 };
 
 export default authService;
