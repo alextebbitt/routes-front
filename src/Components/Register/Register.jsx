@@ -32,15 +32,15 @@ const Register = () => {
       </Form.Item>
       <Form.Item
         name="email"
-        label="E-mail"
+        label="Email"
         rules={[
           {
             type: "email",
-            message: "The input is not valid E-mail!",
+            message: "The input is not valid Email!",
           },
           {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Please input your Email!",
           },
         ]}
       >
@@ -100,7 +100,7 @@ const Register = () => {
         ]}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          I have read the <a href="">terms & conditions</a> agreement
         </Checkbox>
       </Form.Item>
       <Form.Item>
