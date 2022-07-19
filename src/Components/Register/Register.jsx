@@ -1,73 +1,35 @@
-import React from 'react'
-import { Button, Checkbox, Form, Input,
-} from "antd";
+import React from "react";
+import { Button, Checkbox, Form, Input } from "antd";
+import "./Register.scss";
 
 const Register = () => {
-
-    const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,},
-    sm: {
-      span: 8,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
-  },
-}
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
-
-
   const [form] = Form.useForm();
-
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    console.log("Received values of form: ", values);
   };
-
 
   return (
     <Form
-      {...formItemLayout}
+    className="form"
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ["zhejiang", "hangzhou", "xihu"],
-        prefix: "86",
-      }}
       scrollToFirstError
     >
-            <Form.Item
-              name="name"
-              label="Name"
-              tooltip="What do you want others to call you?"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your name!",
-                  whitespace: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+      <Form.Item
+        name="name"
+        label="Name"
+        tooltip="What do you want others to call you?"
+        rules={[
+          {
+            required: true,
+            message: "Please input your name!",
+            whitespace: true,
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
       <Form.Item
         name="email"
         label="E-mail"
@@ -125,8 +87,6 @@ const tailFormItemLayout = {
         <Input.Password />
       </Form.Item>
 
-
-      
       <Form.Item
         name="agreement"
         valuePropName="checked"
@@ -138,19 +98,18 @@ const tailFormItemLayout = {
                 : Promise.reject(new Error("Should accept agreement")),
           },
         ]}
-        {...tailFormItemLayout}
       >
         <Checkbox>
           I have read the <a href="">agreement</a>
         </Checkbox>
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item>
         <Button type="primary" htmlType="submit">
           Register
         </Button>
       </Form.Item>
     </Form>
   );
-}
+};
 
 export default Register;
