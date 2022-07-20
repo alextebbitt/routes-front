@@ -2,7 +2,7 @@ import axios from "axios"
 const API_URL = process.env.REACT_APP_API_URL;
 
 const register = async (userData) => {
-  const res = await axios.post(API_URL + "/users", userData);
+  const res = await axios.post(API_URL + "/users/add", userData);
   return res.data;
 };
 
@@ -16,21 +16,35 @@ const login = async (userData) => {
 
 const logout = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const res = await axios.delete(API_URL + "/users/logout", {
-    headers: {
-      authorization: user?.token,
-    },
-  });
+  const res = await axios.delete(
+    API_URL + "/users/logout",
+    { headers: { authorization: user?.token, }, }
+  );
   if (res.data) {
     localStorage.removeItem("user");
   }
   return res.data;
 };
 
+const updateUser = async (userData) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/users/update",
+    userData,
+    { headers: { authorization: user?.token, }, }
+  );
+  if (res.data) {
+    user.user = res.data.user;
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+  return res.data;
+}
+
 const authService = {
   register,
   login,
   logout,
+  updateUser,
 };
 
 export default authService;

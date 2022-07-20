@@ -1,12 +1,33 @@
-import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-import { Link} from "react-router-dom";
-import "./Register.scss";
+import {
+  Button, Checkbox, Form, Input,
+} from "antd";
+import { useState } from "react";
+
+import { useDispatch } from "react-redux/es/exports";
+import { updateUser } from "../../features/auth/authSlice";
 
 const Register = () => {
+
+  const [sending, setSending] = useState(false);
+  const dispatch = useDispatch();
+
+
+  const formItemLayout = {
+    labelCol: { xs: { span: 24, }, sm: { span: 8, }, },
+    wrapperCol: { xs: { span: 24, }, sm: { span: 16, }, },
+  }
+  const tailFormItemLayout = {
+    wrapperCol: {
+      xs: { span: 24, offset: 0, }, sm: { span: 16, offset: 8, },
+    },
+  };
+
   const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+
+  const onFinish = async (values) => {
+    setSending(true);
+    await dispatch(updateUser(values));
+    setSending(false);
   };
 
   return (
@@ -21,12 +42,12 @@ const Register = () => {
     >
       <Form.Item
         name="name"
-        label="Name"
-        tooltip="What do you want others to call you?"
+        label="Nombre"
+        tooltip="Este nombre o alias será visible"
         rules={[
           {
             required: true,
-            message: "Please input your name!",
+            message: "Por favor, introduce tu nombre",
             whitespace: true,
           },
         ]}
@@ -39,11 +60,11 @@ const Register = () => {
         rules={[
           {
             type: "email",
-            message: "The input is not valid Email!",
+            message: "No es un email válido",
           },
           {
             required: true,
-            message: "Please input your Email!",
+            message: "Por favor, introduce tu email",
           },
         ]}
       >
@@ -52,11 +73,11 @@ const Register = () => {
 
       <Form.Item
         name="password"
-        label="Password"
+        label="Contraseña"
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: "Por favor, introduce tu contraseña",
           },
         ]}
         hasFeedback
@@ -66,13 +87,13 @@ const Register = () => {
 
       <Form.Item
         name="confirm"
-        label="Confirm Password"
+        label="Confirma contraseña"
         dependencies={["password"]}
         hasFeedback
         rules={[
           {
             required: true,
-            message: "Please confirm your password!",
+            message: "Por favor, confirma tu contraseña",
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
@@ -81,7 +102,7 @@ const Register = () => {
               }
 
               return Promise.reject(
-                new Error("The two passwords that you entered do not match!")
+                new Error("Las contraseñas no coinciden")
               );
             },
           }),
@@ -98,17 +119,17 @@ const Register = () => {
             validator: (_, value) =>
               value
                 ? Promise.resolve()
-                : Promise.reject(new Error("Should accept agreement")),
+                : Promise.reject(new Error("Es necesario aceptar los términos")),
           },
         ]}
       >
         <Checkbox>
-          I have read the <a href="">terms & conditions</a> agreement
+          He leído los <a href="">Términos y condiciones</a>
         </Checkbox>
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit">
-          Register
+          Resgistrarme
         </Button>
       </Form.Item>
     </Form>
