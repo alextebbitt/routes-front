@@ -1,46 +1,34 @@
-import React from 'react'
-import { Button, Checkbox, Form, Input,
+import {
+  Button, Checkbox, Form, Input,
 } from "antd";
+import { useState } from "react";
+
+import { useDispatch } from "react-redux/es/exports";
+import { updateUser } from "../../features/auth/authSlice";
 
 const Register = () => {
 
-    const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,},
-    sm: {
-      span: 8,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
-  },
-}
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
+  const [sending, setSending] = useState(false);
+  const dispatch = useDispatch();
 
+
+  const formItemLayout = {
+    labelCol: { xs: { span: 24, }, sm: { span: 8, }, },
+    wrapperCol: { xs: { span: 24, }, sm: { span: 16, }, },
+  }
+  const tailFormItemLayout = {
+    wrapperCol: {
+      xs: { span: 24, offset: 0, }, sm: { span: 16, offset: 8, },
+    },
+  };
 
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+  const onFinish = async (values) => {
+    setSending(true);
+    await dispatch(updateUser(values));
+    setSending(false);
   };
-
 
   return (
     <Form
@@ -48,37 +36,33 @@ const tailFormItemLayout = {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ["zhejiang", "hangzhou", "xihu"],
-        prefix: "86",
-      }}
       scrollToFirstError
     >
-            <Form.Item
-              name="name"
-              label="Name"
-              tooltip="What do you want others to call you?"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your name!",
-                  whitespace: true,
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
+      <Form.Item
+        name="name"
+        label="Nombre"
+        tooltip="Este nombre o alias será visible"
+        rules={[
+          {
+            required: true,
+            message: "Por favor, introduce tu nombre",
+            whitespace: true,
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
       <Form.Item
         name="email"
         label="E-mail"
         rules={[
           {
             type: "email",
-            message: "The input is not valid E-mail!",
+            message: "No es un email válido",
           },
           {
             required: true,
-            message: "Please input your E-mail!",
+            message: "Por favor, introduce tu email",
           },
         ]}
       >
@@ -87,11 +71,11 @@ const tailFormItemLayout = {
 
       <Form.Item
         name="password"
-        label="Password"
+        label="Contraseña"
         rules={[
           {
             required: true,
-            message: "Please input your password!",
+            message: "Por favor, introduce tu contraseña",
           },
         ]}
         hasFeedback
@@ -101,13 +85,13 @@ const tailFormItemLayout = {
 
       <Form.Item
         name="confirm"
-        label="Confirm Password"
+        label="Confirma contraseña"
         dependencies={["password"]}
         hasFeedback
         rules={[
           {
             required: true,
-            message: "Please confirm your password!",
+            message: "Por favor, confirma tu contraseña",
           },
           ({ getFieldValue }) => ({
             validator(_, value) {
@@ -116,7 +100,7 @@ const tailFormItemLayout = {
               }
 
               return Promise.reject(
-                new Error("The two passwords that you entered do not match!")
+                new Error("Las contraseñas no coinciden")
               );
             },
           }),
@@ -125,8 +109,6 @@ const tailFormItemLayout = {
         <Input.Password />
       </Form.Item>
 
-
-      
       <Form.Item
         name="agreement"
         valuePropName="checked"
@@ -135,18 +117,18 @@ const tailFormItemLayout = {
             validator: (_, value) =>
               value
                 ? Promise.resolve()
-                : Promise.reject(new Error("Should accept agreement")),
+                : Promise.reject(new Error("Es necesario aceptar los términos")),
           },
         ]}
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          He leído los <a href="">Términos y condiciones</a>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Register
+          Resgistrarme
         </Button>
       </Form.Item>
     </Form>

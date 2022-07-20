@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRoutes } from "../../features/routes/routesSlice";
 import RouteView from "./RouteView/RouteView";
-
+import "./RoutesView.scss"
 const RoutesView = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
