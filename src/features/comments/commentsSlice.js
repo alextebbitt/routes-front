@@ -2,8 +2,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import commentsService from "./commentsService";
 
 const initialState = {
+    comments: [],
     comment: "",
     message: "",
+    isSuccess: false,
+    isError: false
 };
 
 export const getComments = createAsyncThunk("comments/getComments", async (page = 1, thunkAPI) => {
@@ -68,5 +71,29 @@ export const commentsSlice = createSlice({
             state.isSuccess = false;
             state.message = action.payload.message;
         })
+            .addCase(deleteComment.fulfilled, (state, action) => {
+                state.comments = state.comments.filter(
+                    (comment) => comment._id !== action.payload.comment._id);
+                state.isSuccess = true;
+                state.isError = false;
+                state.message = action.payload.message
+            })
+            .addCase(updateComment.fulfilled, (state, action) => {
+                const comments = state.comments.map((comment) => {
+                    if (comment._id === action.payload.comment._id) {
+                        comment = action.payload.post;
+                    }
+                    return post;
+                });
+                state.comments = comments
+                state.isSuccess = true
+                state.isError = false;
+                state.message = action.payload.message
+            })
+            .addCase(createComment.fulfilled, (state, action) => {
+                state.comments = [action.payload, ...state.comments];
+            })
     }
-})
+});
+
+export default commentsSlice.reducer;
