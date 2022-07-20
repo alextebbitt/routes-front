@@ -30,8 +30,10 @@ const RouteView = () => {
   })
 
   return (
-    <div>{route}</div>
-  )
+    <div>
+      {route}      
+    </div>
+  );
 }
 
 export default RouteView
