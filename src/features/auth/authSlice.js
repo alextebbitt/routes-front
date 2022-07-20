@@ -60,12 +60,7 @@ export const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(register.rejected, (state, action) => {
-        state.message = action.payload.message;
-      })
+
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload;
       })
@@ -79,11 +74,12 @@ export const authSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, action) => {
         state.isSuccess = true;
+        state.user = action.payload;
         state.message = action.payload.message;
       })
       .addCase(register.rejected, (state, action) => {
         state.isError = true;
-        state.message = action.payload;
+        state.message = action.payload.message;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user.user = action.payload.user;
