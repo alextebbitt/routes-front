@@ -1,25 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import {
-  HeartOutlined,
-  HeartFilled,
-  DeleteOutlined,
-  EditOutlined,
-  MessageOutlined,
-} from "@ant-design/icons";
+import { useDispatch } from 'react-redux'
 
 const Comments = () => {
+    const dispatch = useDispatch();
 
-const { comments } = useSelector(state => state.routes);
-
-const comment = comments.map((comment) => {
-return (
-    <div className='commentbody'>{comment}</div>
-)
-})
-
+    const getAllComments = async () => {
+        await dispatch(getComments());
+    }
   return (
-    <div>{comments}</div>
+    <div>Comments</div>
   )
 }
 
