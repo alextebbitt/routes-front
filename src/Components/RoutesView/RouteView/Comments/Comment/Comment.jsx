@@ -10,11 +10,11 @@ import {
 const Comment = () => {
   const { comments } = useSelector((state) => state.comments);
 
-  const Comment = comments.map((comment) => {
+  const comment = comments?.map((comment) => {
     return <div className="commentbody">{comment.body}</div>;
   });
 
-  return <div>{Comment}</div>;
+  return <div>{comment}</div>;
 };
 
 export default Comment;

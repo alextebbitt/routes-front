@@ -3,6 +3,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const getComments = async (data) => {
     const res = await axios.get(`${API_URL}/comments/${data.routeId}?page=${data.page}`);
+    console.log(res.data)
     return res.data;
 };
 

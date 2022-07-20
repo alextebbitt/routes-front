@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
 import { getRoutes } from "../../features/routes/routesSlice";
-import Comments from "./RouteView/Comments/Comments";
 import RouteView from "./RouteView/RouteView";
 
 const RoutesView = () => {
-
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   const getAllRoutes = async () => {
     await dispatch(getRoutes());
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
     getAllRoutes();
@@ -27,11 +25,10 @@ const RoutesView = () => {
       ) : (
         <>
           <RouteView />
-          <Comments />
         </>
       )}
     </div>
   );
-}
+};
 
-export default RoutesView
+export default RoutesView;

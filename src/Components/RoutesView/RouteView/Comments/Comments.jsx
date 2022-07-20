@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Comment from "../Comments/Comment/Comment";
 import { getComments } from "../../../../features/comments/commentsSlice";
 
-const Comments = () => {
+const Comments = ({routeId}) => {
       const { isLoading } = useSelector((state) => state.comments);
+      
   const dispatch = useDispatch();
 
   const getAllComments = async () => {
-    await dispatch(getComments());
+    await dispatch(getComments({routeId, page: 1}));
   };
 
   useEffect(() => {

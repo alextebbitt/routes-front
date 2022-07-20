@@ -3,6 +3,7 @@ import commentsService from "./commentsService";
 
 const initialState = {
     comments: [],
+    pagination:{},
     comment: {},
     message: "",
     isLoading: false
@@ -60,6 +61,8 @@ export const commentsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getComments.fulfilled, (state, action) => {
+            console.log(action.payload)
+            console.log(state.comments)
             state.comments = action.payload.comments;
             state.pagination = {
                 total: action.payload.total,
