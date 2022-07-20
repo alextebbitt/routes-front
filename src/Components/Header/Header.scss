@@ -1,13 +1,17 @@
-.bottomNav {
+Nav {
   overflow: hidden;
-  padding-right: 50px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   font-size: 17px;
 
-  border:2px solid purple;
+  border:2px solid blue;
+  background-color: rgb(5, 93, 181);
+  position:fixed;
+  bottom:0;
+  height:48px;
+  width:100%;
 }
 
 .topnav a {

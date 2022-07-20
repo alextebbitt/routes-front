@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
+import { Link} from "react-router-dom";
 import "./Register.scss";
 
 const Register = () => {
@@ -9,6 +10,7 @@ const Register = () => {
   };
 
   return (
+    <>
     <Form
     className="form"
       form={form}
@@ -109,6 +111,10 @@ const Register = () => {
         </Button>
       </Form.Item>
     </Form>
+    <span>
+                ¿Ya tienes cuenta?<Link to="/login">Conéctate</Link>
+              </span>
+    </>
   );
 };
 

@@ -13,6 +13,7 @@ import AdminZone from "./guards/AdminZone";
 import RoutesView from './components/RoutesView/RoutesView';
 import RouteDetail from './components/RouteDetail/RouteDetail';
 import RoutesByTag from "./components/RoutesByTag/RoutesByTag";
+import Landing from "./components/Landing/Landing";
 
 function App() {
   return (
@@ -20,12 +21,16 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<PrivateZone><Home /></PrivateZone>} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route
             path="/profile"
             element={<PrivateZone><Profile /></PrivateZone>}
+          />
+          <Route
+            path="/"
+            element={<Landing />}
           />
           <Route
             path="/admin"

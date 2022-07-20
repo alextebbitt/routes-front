@@ -1,17 +1,24 @@
 import React from 'react'
 import { Button, Form, Input } from "antd";
 import { useDispatch } from 'react-redux';
+import {  useNavigate,Link } from "react-router-dom";
 import { login } from '../../features/auth/authSlice';
 
 const Login = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     dispatch(login(values));
+    setTimeout(() => {
+      navigate("/home");
+    }, 1000);
+    
   };
 
   return (
+    <>
     <Form
       className="form"
       name="basic"
@@ -42,6 +49,11 @@ const Login = () => {
         </Button>
       </Form.Item>
     </Form>
+
+    <span>
+                ¿Todavía no  tienes cuenta?<Link to="/register">Regístrate</Link>
+              </span>
+    </>
   );
 }
 

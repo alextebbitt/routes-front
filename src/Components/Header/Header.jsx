@@ -23,13 +23,14 @@ const Header = () => {
       <div className="bottomNav">
         {/* <img src="" height="80px" alt="logo"></img> */}
         <div className="headerstuff">
+        {user ? (
+              <>
           <span>
             <Link to="/">
               <HomeOutlined />
             </Link>
           </span>
-          {user ? (
-            <>
+      
               <span>
                 <Link to="/routes">Routes</Link>
               </span>
@@ -63,12 +64,13 @@ const Header = () => {
             </>
           ) : (
             <>
-              <span>
+              {/* <span>
                 <Link to="/login">Login</Link>
               </span>
               <span>
                 <Link to="/register">Register</Link>
-              </span>
+              </span> */}
+              {null}
             </>
           )}
         </div>
