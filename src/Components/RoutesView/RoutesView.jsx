@@ -25,6 +25,7 @@ const RoutesView = () => {
         <h2>Loading...</h2>
         :
         <RouteView />
+        
       }
     </div>
   )
