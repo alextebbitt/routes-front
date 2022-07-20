@@ -15,6 +15,9 @@ import RouteDetail from './components/RouteDetail/RouteDetail';
 import RoutesByTag from "./components/RoutesByTag/RoutesByTag";
 import Landing from "./components/Landing/Landing";
 
+import LikedRoutes from "./components/LikedRoutes/LikedRoutes";
+import RoutesNearBy from "./components/RoutesNearBy/RoutesNearBy";
+
 function App() {
   return (
     <div className="App">
@@ -32,6 +35,8 @@ function App() {
             path="/"
             element={<Landing />}
           />
+        
+
           <Route
             path="/admin"
             element={<AdminZone><Admin /></AdminZone>}
@@ -47,6 +52,14 @@ function App() {
           <Route
             path="/tag/:tag"
             element={<PrivateZone><RoutesByTag /></PrivateZone>}
+          />
+          <Route
+            path="/liked"
+            element={<PrivateZone><LikedRoutes /></PrivateZone>}
+          />
+          <Route
+            path="/nearby"
+            element={<PrivateZone><RoutesNearBy /></PrivateZone>}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

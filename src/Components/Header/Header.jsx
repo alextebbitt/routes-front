@@ -1,7 +1,7 @@
 import React from "react";
-import { notification, Avatar } from "antd";
+// import { notification, Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../features/auth/authSlice";
+// import { logout } from "../../features/auth/authSlice";
 import { LogoutOutlined, HomeOutlined,CompassOutlined,HeartOutlined,UserOutlined } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.scss";
@@ -11,12 +11,12 @@ const Header = () => {
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
-  const onLogout = (e) => {
-    e.preventDefault();
-    dispatch(logout());
-    notification.success({ message: "logged out successfully" });
-    navigate("/login");
-  };
+  // const onLogout = (e) => {
+  //   e.preventDefault();
+  //   dispatch(logout());
+  //   notification.success({ message: "logged out successfully" });
+  //   navigate("/login");
+  // };
 
   return (
     <nav>
@@ -26,7 +26,7 @@ const Header = () => {
         {user ? (
               <>
           <span>
-            <Link to="/">
+            <Link to="/home">
               <HomeOutlined />
             </Link>
           </span>
@@ -34,18 +34,18 @@ const Header = () => {
               <span>
                 <Link to="/routes">Routes</Link>
               </span>
-              <span>
+              {/* <span>
                 <Link to="/" onClick={onLogout}>
                   {<LogoutOutlined />}
                 </Link>
-              </span>
+              </span> */}
               <span>
-              <Link to="/routes">Favs
+              <Link to="/liked">Favs
               <HeartOutlined />
               </Link>
               </span>
               <span>
-              <Link to="/routes">Nearby
+              <Link to="/nearby">Nearby
               <CompassOutlined />
               </Link>
               </span>
@@ -54,13 +54,13 @@ const Header = () => {
                 <UserOutlined />
                 </Link>
               </span>
-              {user.user.role === "admin" ? (
+              {/* {user.user.role === "admin" ? (
                 <span>
                   <Link to="/admin">Admin</Link>
                 </span>
               ) : (
                 ""
-              )}
+              )} */}
             </>
           ) : (
             <>
