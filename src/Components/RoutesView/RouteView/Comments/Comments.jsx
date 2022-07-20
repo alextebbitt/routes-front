@@ -1,28 +1,26 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
-import Comments from "../Comments/Comment/Comment";
-import {getComments,} from "../../../../../features/comments/commentsSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Comment from "../Comments/Comment/Comment";
+import { getComments } from "../../../../features/comments/commentsSlice";
 
 const Comments = () => {
-    const dispatch = useDispatch();
+      const { isLoading } = useSelector((state) => state.comments);
+  const dispatch = useDispatch();
 
-    const getAllComments = async () => {
-        await dispatch(getComments());
-    }
+  const getAllComments = async () => {
+    await dispatch(getComments());
+  };
 
-    useEffect(() => {
+  useEffect(() => {
     getAllComments();
-    }, [])
-    
+  }, []);
+
   return (
     <div>
       <h1>Comments</h1>
-      {isLoading ?
-      <h2>Cargando...</h2> :
-     <Comments/>
-      }
+      {isLoading ? <h2>Cargando...</h2> : <Comment />}
     </div>
   );
-}
+};
 
-export default Comments
+export default Comments;

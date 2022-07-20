@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
 import { getRoutes } from "../../features/routes/routesSlice";
+import Comments from "./RouteView/Comments/Comments";
 import RouteView from "./RouteView/RouteView";
 
 const RoutesView = () => {
@@ -21,14 +22,16 @@ const RoutesView = () => {
   return (
     <div>
       <h1>Routes View</h1>
-      {isLoading ?
+      {isLoading ? (
         <h2>Loading...</h2>
-        :
-        <RouteView />
-        
-      }
+      ) : (
+        <>
+          <RouteView />
+          <Comments />
+        </>
+      )}
     </div>
-  )
+  );
 }
 
 export default RoutesView

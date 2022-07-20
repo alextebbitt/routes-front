@@ -8,10 +8,10 @@ import {
 } from "../../../../../features/comments/commentsSlice";
 
 const Comment = () => {
-  const { comments } = useSelector((state) => state.routes);
+  const { comments } = useSelector((state) => state.comments);
 
   const Comment = comments.map((comment) => {
-    return <div className="commentbody">{comment.commentBody}</div>;
+    return <div className="commentbody">{comment.body}</div>;
   });
 
   return <div>{Comment}</div>;

@@ -1,17 +1,16 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import commentsService from "./commentsService";
 
 const initialState = {
     comments: [],
-    comment: "",
+    comment: {},
     message: "",
-    isSuccess: false,
-    isError: false
+    isLoading: false
 };
 
-export const getComments = createAsyncThunk("comments/getComments", async (page = 1, thunkAPI) => {
+export const getComments = createAsyncThunk("comments/getComments", async (data, thunkAPI) => {
     try {
-        return await commentsService.getComments(page);
+        return await commentsService.getComments(data);
     } catch (error) {
         console.log(error)
     }
@@ -55,11 +54,13 @@ export const commentsSlice = createSlice({
     reducers: {
         resetMessage: (state) => {
             state.message = "";
+            state.isSuccess = false;
+            state.isError = false;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(getComments.fulfilled, (state, action) => {
-            state.routes = action.payload.routes;
+            state.comments = action.payload.comments;
             state.pagination = {
                 total: action.payload.total,
                 page: action.payload.page,
@@ -83,7 +84,7 @@ export const commentsSlice = createSlice({
                     if (comment._id === action.payload.comment._id) {
                         comment = action.payload.post;
                     }
-                    return post;
+                    return comment;
                 });
                 state.comments = comments
                 state.isSuccess = true

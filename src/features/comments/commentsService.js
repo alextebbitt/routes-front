@@ -1,18 +1,18 @@
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
-const getComments = async (page = 1) => {
-    const res = await axios.get(`${API_URL}/comments/?page=${page}`);
+const getComments = async (data) => {
+    const res = await axios.get(`${API_URL}/comments/${data.routeId}?page=${data.page}`);
     return res.data;
 };
 
 const createComment = async (commentData) => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.post(API_URL + "/comments/create", commentData, {
-        headers: {
-            authorization: user?.token
-        }
-    });
+    const res = await axios.post(
+        API_URL + "/comments/create",
+        commentData,
+        { headers: { authorization: user?.token } }
+    );
 
     return res.data
 };
