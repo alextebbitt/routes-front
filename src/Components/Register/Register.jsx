@@ -11,6 +11,7 @@ const Register = () => {
 
   return (
     <>
+         <img src="" height="80px" alt="logo"></img>
     <Form
     className="form"
       form={form}

@@ -19,6 +19,7 @@ const Login = () => {
 
   return (
     <>
+     <img src="" height="80px" alt="logo"></img>
     <Form
       className="form"
       name="basic"

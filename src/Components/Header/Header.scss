@@ -3,7 +3,7 @@ Nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-size: 17px;
 
   border:2px solid blue;
@@ -12,17 +12,18 @@ Nav {
   bottom:0;
   height:48px;
   width:100%;
+
+  a {
+    // color: #f2f2f2;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    align-items: flex-end;
+  }
 }
 
-.topnav a {
-  // color: #f2f2f2;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 24px;
-  align-items: flex-end;
-}
 
-.topnav a:hover {
-  color: black;
-  border-radius: 1rem;
+.buttons{
+
+  border:2px solid white;
 }
