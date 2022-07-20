@@ -26,9 +26,9 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>Profile</h1>
+      <h1>Perfil</h1>
       <div>
-        <h3>Name</h3>
+        <h3>Nombre</h3>
         <Paragraph editable={{ onChange: setName }}>
           {name}
         </Paragraph>
@@ -51,9 +51,9 @@ const Profile = () => {
         <Input id="password" type="password" placeholder="New password" onChange={handlePassword} />
       </div>
       <Button type="primary" onClick={handleEdit} loading={isLoading}>
-        Edit
+        Editar
       </Button>
-      <Questionnaire/>
+      <Questionnaire quest={user.user?.questionnaire} />
     </div>
   )
 }

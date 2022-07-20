@@ -33,6 +33,10 @@ const updateUser = async (userData) => {
     userData,
     { headers: { authorization: user?.token, }, }
   );
+  if (res.data) {
+    user.user = res.data.user;
+    localStorage.setItem("user", JSON.stringify(user));
+  }
   return res.data;
 }
 
