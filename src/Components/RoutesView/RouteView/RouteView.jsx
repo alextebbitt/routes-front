@@ -31,7 +31,7 @@ const RouteView = () => {
 
   return (
     <div>
-        <div className="container">{route}</div>
+        {route}
     </div>
   );
  

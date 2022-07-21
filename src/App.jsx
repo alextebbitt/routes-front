@@ -17,6 +17,7 @@ import Landing from "./components/Landing/Landing";
 
 import LikedRoutes from "./components/LikedRoutes/LikedRoutes";
 import RoutesNearBy from "./components/RoutesNearBy/RoutesNearBy";
+import LandingZone from "./guards/LandingZone";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           />
           <Route
             path="/"
-            element={<Landing />}
+            element={<LandingZone><Landing/></LandingZone>}
           />
         
 
