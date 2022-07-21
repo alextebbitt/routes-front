@@ -17,6 +17,7 @@ const getRoutesByTag = async ({tag, page = 1}) => {
 };
 
 const searchByName = async (name) => {
+  // TODO: create the queryURL with optional categories
   const res = await axios.get(`${API_URL}/routes/search/${name}`);
   return res.data;
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRoutes } from "../../features/routes/routesSlice";
+import Search from "../Search/Search";
 import "./Home.scss";
 import Poi from "./Poi/Poi";
 import Route from "./Route/Route";
@@ -18,12 +19,15 @@ const Home = () => {
   useEffect(() => {
     getAllRoutes();
   }, []);
-  
+
   return (
     <div className="home">
       Home
+      <div>
+        <Search/>
+      </div>
       <div>Explora Valencia</div>
-      <div className="show-routes">  
+      <div className="show-routes">
       {isLoading ? (
         <h2>Loading...</h2>
       ) : (
@@ -45,7 +49,7 @@ const Home = () => {
       </div>
     </div>
   );
-  
+
 }
 
 export default Home;
