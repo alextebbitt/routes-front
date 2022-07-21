@@ -1,12 +1,58 @@
 @import "../../../App.scss";
-.container{
-    display:flex;
-    .card{
-        border:2px solid pink;
-        margin-bottom:1rem;
-
-        
-
+.container {
+  display: flex;
+  .card {
+    border: 2px solid pink;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: $white;
+    border-radius: 8px;
+    .routePicture {
+      border: 2px solid white;
+      img {
+        width: 180px;
+        height: 180px;
+        border-radius: 4px;
+        object-fit: cover; /* Do not scale the image */
+        object-position: center; /* Center the image within the element */
+      }
     }
-    
+    .routeTitle {
+      margin: 8px 0 0;
+      font-weight: 700;
+      font-size: 14px;
+    }
+  }
+  .routeDescription {
+    .routeDetails {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+
+      .icon {
+        color: $blue;
+        margin-right: 2px;
+      }
+      .value {
+        color: $green;
+        font-weight: 300;
+      }
+      .routeTag {
+        font-size: 12px;
+        color: $blue;
+      }
+      .routeInfo {
+        display: flex;
+        gap: 10px;
+        font-size: 10px;
+        .routeRating {
+          font-size: 10px;
+        }
+        .routeTime {
+          font-size: 10px;
+        }
+      }
+    }
+  }
 }

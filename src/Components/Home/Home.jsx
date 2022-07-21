@@ -6,6 +6,7 @@ import "./Home.scss";
 import Poi from "./Poi/Poi";
 import Route from "./Route/Route";
 
+
 const Home = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
