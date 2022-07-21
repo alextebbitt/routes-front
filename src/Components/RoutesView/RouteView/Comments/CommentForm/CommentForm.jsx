@@ -2,8 +2,10 @@ import React from 'react'
 
 const CommentForm = () => {
   return (
-    <div>CommentForm</div>
-  )
+    <textarea id="elementId" name="inputName" rows="3" cols="40">
+      Default placeholder or any dummy text.
+    </textarea>
+  );
 }
 
 export default CommentForm
