@@ -33,7 +33,7 @@ const Route = () => {
         <div className="routeDescription">
           <div className="routeDetails">
             <div className="routeTag">
-                {route.tags[0]}
+                {route.kind}
                 </div>
             <div className="routeInfo">
               <div className="routeRating">

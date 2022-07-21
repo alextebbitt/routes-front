@@ -6,12 +6,12 @@
     height:100%;
     position:fixed;
     overflow-y:scroll;
-    padding:1em;
 
-    .show-routes,.show-pois{
+
+    .show-routes,
+    .show-pois{
     overflow-y:hidden;
     overflow-x:scroll;
-    border: 2px solid green;
     width: 100vw;
     }
 

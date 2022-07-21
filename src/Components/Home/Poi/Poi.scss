@@ -5,22 +5,29 @@
 }
 
 .poi{
-    display:flex;
+    border-radius: 10px;
+    border:2px solid white;
+    padding:12px;
+    background-color: $white;
+
     .poiPicture{
-        border:2px solid red;
         img{
-            width:120px;
-            height:auto;
+            width:280px;
+            height:160px;
+            object-fit:cover; 
+            object-position:center ;
+            border-radius: 4px; 
         }
     }
     .poiInfo{
-        border:2px solid blue;
-
+        background-color: $white;
     .poiTitle{
-        border:2px solid green;
+        margin:8px 0;
+        font-weight:700;
     }
     .poiDescription{
         border: 2px solid white;
+        font-size:12px;
     }
     }
 
