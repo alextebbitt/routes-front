@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
-import { StarOutlined, ClockCircleOutlined } from "@ant-design/icons";
+import { StarOutlined, ClockCircleOutlined, HeartOutlined } from "@ant-design/icons";
 
 const Route = () => {
   const { routes } = useSelector((state) => state.routes);
@@ -28,6 +28,7 @@ const Route = () => {
             src={route.image} 
             alt={route.name} />
           </Link>
+          <div className="like"> <HeartOutlined className="icon"/></div>
         </div>
         <div className="routeDescription">
           <div className="routeDetails">
