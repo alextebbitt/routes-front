@@ -36,8 +36,6 @@ function App() {
             path="/"
             element={<LandingZone><Landing/></LandingZone>}
           />
-        
-
           <Route
             path="/admin"
             element={<AdminZone><Admin /></AdminZone>}

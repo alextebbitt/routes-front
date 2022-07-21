@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input } from "antd";
 import { useState } from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { updateUser } from "../../features/auth/authSlice";
+import { register } from "../../features/auth/authSlice";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -10,7 +10,7 @@ const Register = () => {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
     setSending(true);
-    await dispatch(updateUser(values));
+    await dispatch(register(values));
     setSending(false);
   };
 
@@ -27,7 +27,6 @@ const Register = () => {
         <Form.Item
           name="name"
           label="Nombre"
-          tooltip="Este nombre o alias será visible"
           rules={[
             {
               required: true,
@@ -115,7 +114,7 @@ const Register = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Resgistrarme
+            Registrarme
           </Button>
         </Form.Item>
       </Form>
