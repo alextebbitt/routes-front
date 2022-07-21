@@ -21,11 +21,15 @@ const CommentForm = ({routeId}) => {
     <>
       <h1 className="write-a-comment">Escribe un comentario</h1>
       <div className="comment-box">
-        <form onSubmit={handleComment}>
-          <textarea id="commentValue" name="inputName" rows="2" cols="40">
-            Escribe un comentario aqui
-          </textarea>
-          <input type="submit" value="Enviar" />
+        <form className="form" onSubmit={handleComment}>
+          <textarea
+            id="commentValue"
+            name="inputName"
+            rows="2"
+            cols="40"
+            placeholder="Escribe un comentario aqui"
+          ></textarea>
+          <input className="button" type="submit" value="Enviar" />
         </form>
       </div>
     </>

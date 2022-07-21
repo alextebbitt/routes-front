@@ -11,14 +11,14 @@ import "./Comment.scss";
 
 const Commenta = () => {
   const { comments } = useSelector((state) => state.comments);
+  const { user } = useSelector((state) => state.auth);
 
   const comment = comments?.map((comment) => {
-   console.log(comment)
+    console.log(comment.userId);
     return (
       <div className="commentbody">
-        
         <Comment
-          author={<a>Han Solo</a>}
+          author={<a>{comment.userId.name}</a>}
           avatar={
             <Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
           }
