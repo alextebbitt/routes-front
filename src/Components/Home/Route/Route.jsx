@@ -22,7 +22,7 @@ const Route = () => {
             <img src={route.image} alt={route.name} />
           </Link>
         </div>
-        <div clasName="routeTitle">
+        <div className="routeTitle">
           <h2>{route.name}</h2>
         </div>
         <div className="routeField">

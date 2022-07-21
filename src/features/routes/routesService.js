@@ -16,10 +16,16 @@ const getRoutesByTag = async ({tag, page = 1}) => {
   return res.data;
 };
 
+const searchByName = async (name) => {
+  const res = await axios.get(`${API_URL}/routes/search/${name}`);
+  return res.data;
+};
+
 const routesService = {
   getRoutes,
   getRouteById,
   getRoutesByTag,
+  searchByName,
 };
 
 export default routesService;
