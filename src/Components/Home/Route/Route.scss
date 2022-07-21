@@ -1,0 +1,85 @@
+@import "../../../App.scss";
+.container {
+  display: flex;
+  gap:1rem;
+ 
+  .card {
+    border: 2px solid pink;
+    padding: 12px;
+    
+    background-color: $white;
+    border-radius: 8px;
+    .routePicture {
+      border: 2px solid white;
+      position:relative;
+
+      .like{
+        position:absolute;
+        top:0;
+        right:0;
+        width:32px;
+        height:32px;
+        margin:8px;
+        background-color: white;
+        box-shadow: 0px 0px 10px 4px rgba(56, 56, 56, 0.75);
+        border-radius: 100%;
+        text-align: center;
+        .icon{
+            color:$green;
+            padding:3px 3px 2px;
+            font-size: 18px;
+          
+        border-radius: 100%;
+        position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);}
+      }
+      img {
+        width: 180px;
+        height: 180px;
+        border-radius: 4px;
+        object-fit: cover; /* Do not scale the image */
+        object-position: center; /* Center the image within the element */
+      }
+    }
+    .routeTitle {
+      margin: 8px 0 0;
+      font-weight: 700;
+      font-size: 14px;
+    }
+  }
+  .routeDescription {
+    .routeDetails {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0;
+
+      .icon {
+        color: $blue;
+        margin-right: 2px;
+      }
+      .value {
+        color: $green;
+        font-weight: 300;
+      }
+      .routeTag {
+        font-size: 12px;
+        color: $blue;
+      }
+      .routeInfo {
+        display: flex;
+        gap: 10px;
+        font-size: 10px;
+        .routeRating {
+          font-size: 10px;
+        }
+        .routeTime {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}

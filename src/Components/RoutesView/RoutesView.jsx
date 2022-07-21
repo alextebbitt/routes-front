@@ -14,7 +14,6 @@ const RoutesView = () => {
 
   useEffect(() => {
     getAllRoutes();
-    // eslint-disable-next-line
   }, []);
 
   return (
