@@ -2,17 +2,17 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Avatar, Comment, Tooltip } from "antd";
 import moment from "moment";
-import {
-  deleteComment,
-  updateComment,
-  getComments,
-} from "../../../../../features/comments/commentsSlice";
+// import {
+//   deleteComment,
+//   updateComment,
+//   getComments,
+// } from "../../../../../features/comments/commentsSlice";
 
 const Commenta = () => {
   const { comments } = useSelector((state) => state.comments);
 
   const comment = comments?.map((comment) => {
-   
+   console.log(comment)
     return (
       <div className="commentbody">
         <Comment
