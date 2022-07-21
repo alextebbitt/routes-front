@@ -24,16 +24,12 @@ const Route = () => {
       <div className="card" key={route.id}>
         <div className="routePicture">
           <Link to={"/route/" + route._id}>
-            <img 
-            src={route.image} 
+            <img
+            src={route.image}
             alt={route.name} />
           </Link>
           <div className="like"> <HeartOutlined className="icon"/></div>
         </div>
-<<<<<<< HEAD
-        <div className="routeTitle">
-          <h2>{route.name}</h2>
-=======
         <div className="routeDescription">
           <div className="routeDetails">
             <div className="routeTag">
@@ -51,7 +47,6 @@ const Route = () => {
           </div>
           <div className="routeTitle">
           {truncateAfterWord(route.name,55)}</div>
->>>>>>> develop
         </div>
       </div>
     );
