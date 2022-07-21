@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { getRoutes } from "../../features/routes/routesSlice";
 import RouteView from "./RouteView/RouteView";
 import "./RoutesView.scss"
+import Search from "../Search/Search";
 const RoutesView = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +24,10 @@ const RoutesView = () => {
         <h2>Loading...</h2>
       ) : (
         <>
-          <RouteView />
+          {/* 
+           */}
+
+           <Search/>
         </>
       )}
     </div>

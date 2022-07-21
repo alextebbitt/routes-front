@@ -24,7 +24,6 @@ const Home = () => {
   return (
     <div className="home">
       Home(logo))
-      <Search/>
       <div>Explora Valencia</div>
       <div> Ver todas</div>
       <div className="show-routes">  
@@ -44,9 +43,7 @@ const Home = () => {
       {isLoading ? (
         <h2>Loading...</h2>
       ) : (
-        
         <>
-        
           <Poi />
         </>
       )}
