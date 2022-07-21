@@ -6,6 +6,7 @@ const initialState = {
   paginationData: {},
   route: {},
   message: "",
+  pois: [],
 };
 
 export const getRoutes = createAsyncThunk(
@@ -43,6 +44,19 @@ export const getRoutesByTag = createAsyncThunk(
     }
   }
 );
+
+export const searchByName = createAsyncThunk(
+  "routes/searchByName",
+  async (name, thunkAPI) => {
+    try {
+      return await routesService.searchByName(name);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 
 export const routesSlice = createSlice({
   name: "routes",
@@ -85,6 +99,21 @@ export const routesSlice = createSlice({
       })
       .addCase(getRoutesByTag.rejected, (state, action) => {
         state.routes = [];
+        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
+      .addCase(searchByName.fulfilled, (state, action) => {
+        state.routes = action.payload.routes;
+        state.paginationData = {
+          total: action.payload.routesCount,
+          page: 1,
+          maxPages: 1
+        };
+        state.pois = action.payload.pois;
+      })
+      .addCase(searchByName.rejected, (state, action) => {
+        state.routes = [];
+        state.pois = [];
         console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })

@@ -24,8 +24,8 @@ const Route = () => {
       <div className="route" key={route.id}>
         <div className="routePicture">
           <Link to={"/route/" + route._id}>
-            <img 
-            src={route.image} 
+            <img
+            src={route.image}
             alt={route.name} />
           </Link>
           <div className="like"> <HeartOutlined className="icon"/></div>
