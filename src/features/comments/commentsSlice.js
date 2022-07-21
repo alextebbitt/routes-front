@@ -18,8 +18,10 @@ export const getComments = createAsyncThunk("comments/getComments", async (data,
 });
 
 export const createComment = createAsyncThunk("comment/", async (commentData) => {
+    
     try {
-        return await commentsService.createPost(commentData);
+        
+        return await commentsService.createComment(commentData);
     } catch (error) {
         console.error(error)
     }
@@ -28,7 +30,7 @@ export const createComment = createAsyncThunk("comment/", async (commentData) =>
 export const updateComment = createAsyncThunk("comment/update", async (data, thunkAPI) => {
     try {
 
-        return await commentsService.updatePost(data);
+        return await commentsService.updateComment(data);
     } catch (error) {
 
         const message = error.response.data.message;

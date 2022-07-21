@@ -11,9 +11,10 @@ const CommentForm = ({routeId}) => {
     console.log(ev.target.commentValue.value);
     const newComment = {
       routeId: routeId,
-      comment: ev.target.commentValue.value
+      body: ev.target.commentValue.value
     };
     dispatch(createComment(newComment));
+    
   };
 
   return (

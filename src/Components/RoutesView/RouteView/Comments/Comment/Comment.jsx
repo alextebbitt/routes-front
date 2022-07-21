@@ -20,7 +20,7 @@ const Commenta = () => {
           avatar={
             <Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
           }
-          content={<p>{comment.body}</p>}
+          content={<p>{comment?.body}</p>}
           datetime={
             <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
               <span>{moment().fromNow()}</span>

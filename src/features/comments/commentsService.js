@@ -14,8 +14,10 @@ const createComment = async (commentData) => {
         commentData,
         { headers: { authorization: user?.token } }
     );
+    console.log("hello", commentData);
 
     return res.data
+
 };
 
 const deleteComment = async (id) => {
