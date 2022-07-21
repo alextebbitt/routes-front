@@ -22,7 +22,7 @@ const Comments = ({routeId}) => {
     <div>
       
       <CommentForm routeId= {routeId} />
-      <h1>Comments</h1>
+      
       {isLoading ? <h2>Cargando...</h2> : <Comment />}
     </div>
   );

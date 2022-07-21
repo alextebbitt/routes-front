@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Avatar, Comment, Tooltip } from "antd";
 import moment from "moment";
+import "./Comment.scss";
 // import {
 //   deleteComment,
 //   updateComment,
@@ -15,6 +16,7 @@ const Commenta = () => {
    console.log(comment)
     return (
       <div className="commentbody">
+        
         <Comment
           author={<a>Han Solo</a>}
           avatar={
@@ -27,12 +29,16 @@ const Commenta = () => {
             </Tooltip>
           }
         />
-        
       </div>
     );
   });
 
-  return <div>{comment}</div>;
+  return (
+    <div>
+      <h3 className="h3title">Comentarios:</h3>
+      {comment}
+    </div>
+  );
 };
 
 export default Commenta;
