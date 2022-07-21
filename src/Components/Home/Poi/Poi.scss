@@ -1,9 +1,27 @@
-@import "../../App.scss";
+@import "../../../App.scss";
 .container{
     display:flex;
     gap:1rem;
 }
 
 .poi{
-    margin-right:32px;
+    display:flex;
+    .poiPicture{
+        border:2px solid red;
+        img{
+            width:120px;
+            height:auto;
+        }
+    }
+    .poiInfo{
+        border:2px solid blue;
+
+    .poiTitle{
+        border:2px solid green;
+    }
+    .poiDescription{
+        border: 2px solid white;
+    }
+    }
+
 }

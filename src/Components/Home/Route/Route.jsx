@@ -21,7 +21,7 @@ const Route = () => {
     ));
 
     return (
-      <div className="card" key={route.id}>
+      <div className="route" key={route.id}>
         <div className="routePicture">
           <Link to={"/route/" + route._id}>
             <img 
