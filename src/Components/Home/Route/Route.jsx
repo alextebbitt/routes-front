@@ -7,8 +7,6 @@ const Route = () => {
   const { routes } = useSelector((state) => state.routes);
 
   const truncateAfterWord = (str, chars, placeholder = '...') =>  str.length < chars ? str : `${str.substr( 0, str.substr(0, chars - placeholder.length).lastIndexOf(" "))}${placeholder}`;
-
-
   const route = routes.map((route) => {
     const tag = route.tags?.map((tag, i) => (
       <>
@@ -27,7 +25,8 @@ const Route = () => {
             src={route.image}
             alt={route.name} />
           </Link>
-          <div className="like"> <HeartOutlined className="icon"/></div>
+
+          <div className="btn"> <HeartOutlined className="icon"/></div>
         </div>
         <div className="routeDescription">
           <div className="routeDetails">
