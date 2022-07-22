@@ -16,16 +16,14 @@ const Search = () => {
   const dispatch = useDispatch();
 
   const handleSearchChange = async (ev) => {
-    if (ev.target.value.length > 0) {
-      await dispatch(searchByName(ev.target.value));
-    }
+    setSearchValue(ev.target.value);
   }
 
   const handleKindChange = async (kind, checked) => {
     const nextSelectedKinds = checked ?
       [...selectedKinds, kind] :
       selectedKinds.filter(i => i !== kind);
-    await setSelectedKinds(nextSelectedKinds);
+    setSelectedKinds(nextSelectedKinds);
   }
 
   const handleTopicChange = async (topic, checked) => {
@@ -42,7 +40,7 @@ const Search = () => {
       topics: selectedTopics,
       search: searchValue,
     }
-    console.log("searchData", searchData);
+    await dispatch(searchByName(searchData));
     setSearching(false);
   }
 
@@ -50,14 +48,13 @@ const Search = () => {
     throwSearch();
   }, [selectedKinds, selectedTopics, searchValue]);
 
-
   return (
     <div>
       <h1>Search</h1>
       <div>
         <Input placeholder="Buscar" onChange={handleSearchChange} />
       </div>
-      <div>
+      <div style={{ border: "1px solid darkred" }}>
         HERE THE CLICKABLE CATEGORIES
         <div>
           Tipo:
@@ -87,11 +84,11 @@ const Search = () => {
         </div>
       </div>
       <div>
+        {routes.length > 0 && <div>RUTAS</div>}
+        {routes.map(route => <div key={route.id}>{route.name}</div>)}
+        {pois.length > 0 && <div>PUNTOS DE INTERÉS</div>}
+        {pois.map(poi => <div key={poi.id}>{poi.name} (ruta: {poi.routeId.name})</div>)}
         {searching && <div>Buscando...</div>}
-        {routes.length > 0 && <div>Rutas</div>}
-        {routes.map(route => <div>{route.name}</div>)}
-        {pois.length > 0 && <div>Puntos de Interés</div>}
-        {pois.map(poi => <div>{poi.name}</div>)}
       </div>
     </div>
   )
