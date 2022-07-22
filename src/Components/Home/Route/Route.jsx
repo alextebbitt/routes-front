@@ -10,7 +10,6 @@ const Route = () => {
 
 
   const route = routes.map((route) => {
-    console.log("ruta", route);
     const tag = route.tags?.map((tag, i) => (
       <>
         <Link key={tag + i + route._id} to={`/tag/${tag}`}>
@@ -21,7 +20,7 @@ const Route = () => {
     ));
 
     return (
-      <div className="card" key={route.id}>
+      <div className="route" key={route.id}>
         <div className="routePicture">
           <Link to={"/route/" + route._id}>
             <img
@@ -33,7 +32,7 @@ const Route = () => {
         <div className="routeDescription">
           <div className="routeDetails">
             <div className="routeTag">
-                {route.tags[0]}
+                {route.kind}
                 </div>
             <div className="routeInfo">
               <div className="routeRating">
