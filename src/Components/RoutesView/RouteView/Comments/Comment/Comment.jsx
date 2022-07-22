@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Avatar, Comment, Tooltip } from "antd";
+import { Avatar, Comment, Rate, Tooltip } from "antd";
 import moment from "moment";
 import "./Comment.scss";
 // import {
@@ -11,16 +11,16 @@ import "./Comment.scss";
 
 const Commenta = () => {
   const { comments } = useSelector((state) => state.comments);
-  const { user } = useSelector((state) => state.auth);
 
   const comment = comments?.map((comment) => {
-    console.log(comment.userId);
+    console.log("hey hey", comment.userId);
+    console.log("hey hey", comment.valoration);
     return (
       <div className="commentbody">
         <Comment
           author={<a>{comment.userId.name}</a>}
           avatar={
-            <Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+            <Avatar src={comment.userId.avatar} alt="Han Solo" />
           }
           content={<p>{comment?.body}</p>}
           datetime={
@@ -29,6 +29,7 @@ const Commenta = () => {
             </Tooltip>
           }
         />
+        <Rate disabled defaultValue={comment.valoration} />
       </div>
     );
   });
