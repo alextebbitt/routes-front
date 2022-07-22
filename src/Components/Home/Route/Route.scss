@@ -3,8 +3,8 @@
   display: flex;
   gap:1rem;
  
-  .card {
-    border: 2px solid pink;
+  .route {
+    border: 2px solid $darkgreen;
     padding: 12px;
     
     background-color: $white;
@@ -40,7 +40,7 @@
         width: 180px;
         height: 180px;
         border-radius: 4px;
-        object-fit: cover; /* Do not scale the image */
+        object-fit:cover; /* Do not scale the image */
         object-position: center; /* Center the image within the element */
       }
     }

@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CommentForm.scss";
+import { Rate } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { createComment } from "../../../../../features/comments/commentsSlice";
-const CommentForm = ({routeId}) => {
+const CommentForm = ({ routeId }) => {
   // const { comments } = useSelector((state) => state.comments);
   const dispatch = useDispatch();
+  const [valoration, setValoration] = useState(1);
 
   const handleComment = (ev) => {
     ev.preventDefault();
-    console.log(ev.target.commentValue.value);
     const newComment = {
-      routeId: routeId,
-      body: ev.target.commentValue.value
+      routeId,
+      body: ev.target.commentValue.value,
+      valoration,
     };
     dispatch(createComment(newComment));
-    
+  };
+
+  const handleChange = (value) => {
+    setValoration(value);
   };
 
   return (
@@ -30,6 +35,7 @@ const CommentForm = ({routeId}) => {
             placeholder="Escribe un comentario aqui"
           ></textarea>
           <input className="button" type="submit" value="Enviar" />
+          <Rate onChange={handleChange} defaultValue={valoration} />
         </form>
       </div>
     </>

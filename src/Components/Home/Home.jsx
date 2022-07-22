@@ -23,12 +23,10 @@ const Home = () => {
 
   return (
     <div className="home">
-      Home
-      <div>
-        <Search/>
-      </div>
+      Home(logo))
       <div>Explora Valencia</div>
-      <div className="show-routes">
+      <div> Ver todas</div>
+      <div className="show-routes">  
       {isLoading ? (
         <h2>Loading...</h2>
       ) : (
@@ -39,6 +37,8 @@ const Home = () => {
       </div>
       <div>Categorías</div>
       <button>ejemplo1</button>  <button>ejemplo2</button>
+      <div>Lugares que visitar</div>
+      <div> Ver todos</div>
       <div className="show-pois">
       {isLoading ? (
         <h2>Loading...</h2>
