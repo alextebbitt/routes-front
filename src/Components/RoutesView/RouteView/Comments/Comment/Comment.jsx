@@ -20,7 +20,7 @@ const Commenta = () => {
         <Comment
           author={<a>{comment.userId.name}</a>}
           avatar={
-            <Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />
+            <Avatar src={comment.userId.avatar} alt="Han Solo" />
           }
           content={<p>{comment?.body}</p>}
           datetime={
