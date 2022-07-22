@@ -27,7 +27,6 @@ const Questionnaire = ({ quest }) => {
 
   const handleFinish = async (values) => {
     setIsSending(true);
-    console.log(values)
     await dispatch(updateUser({ questionnaire: values }));
     setIsSending(false);
   }
@@ -41,7 +40,6 @@ const Questionnaire = ({ quest }) => {
         wrapperCol={{ span: 14, }}
         initialValues={quest}
         onFinish={handleFinish}>
-        {/* <DatePicker onChange={handleYearChange} picker="year" /> */}
         <Form.Item label="Año de nacimiento" name="age">
           <InputNumber />
         </Form.Item>
