@@ -5,6 +5,7 @@ import { getRouteById } from "../../features/routes/routesSlice";
 import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
+import "./RouteDetail.scss"
 const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {

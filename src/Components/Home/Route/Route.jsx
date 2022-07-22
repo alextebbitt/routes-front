@@ -10,7 +10,6 @@ const Route = () => {
 
 
   const route = routes.map((route) => {
-    console.log("ruta", route);
     const tag = route.tags?.map((tag, i) => (
       <>
         <Link key={tag + i + route._id} to={`/tag/${tag}`}>
