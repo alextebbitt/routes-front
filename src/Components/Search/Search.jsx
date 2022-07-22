@@ -1,6 +1,7 @@
 import { Input, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import { searchByName } from '../../features/routes/routesSlice';
 const { CheckableTag } = Tag;
 
@@ -46,7 +47,24 @@ const Search = () => {
 
   useEffect(() => {
     throwSearch();
+  // eslint-disable-next-line
   }, [selectedKinds, selectedTopics, searchValue]);
+
+  const route = routes.map(route => (
+    <div key={route.id}>
+      <Link to={`/route/${route._id}`}>
+        {route.name}
+      </Link>
+    </div>
+  ))
+
+  const poi = pois.map(poi => (
+    <div key={poi.id}>
+      {poi.name} (ruta: <Link to={`/route/${poi.routeId._id}`}>
+        {poi.routeId.name}
+      </Link>)
+    </div>
+  ))
 
   return (
     <div>
@@ -84,11 +102,11 @@ const Search = () => {
         </div>
       </div>
       <div>
-        {routes.length > 0 && <div>RUTAS</div>}
-        {routes.map(route => <div key={route.id}>{route.name}</div>)}
-        {pois.length > 0 && <div>PUNTOS DE INTERÉS</div>}
-        {pois.map(poi => <div key={poi.id}>{poi.name} (ruta: {poi.routeId.name})</div>)}
         {searching && <div>Buscando...</div>}
+        {routes.length > 0 && <div>RUTAS</div>}
+        {route}
+        {pois.length > 0 && <div>PUNTOS DE INTERÉS</div>}
+        {poi}
       </div>
     </div>
   )
