@@ -43,7 +43,7 @@ const Home = () => {
         <h2>Loading...</h2>
       ) : (
         <>
-          <Poi />
+          <div className="pois"><Poi /></div>
         </>
       )}
       </div>
