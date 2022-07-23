@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 // import L from 'leaflet';
 
-const RouteMap = ( { route }) => {
+const RouteMap = ({ route }) => {
 
   const [content, setContent] = useState('');
 
@@ -35,10 +35,10 @@ const RouteMap = ( { route }) => {
 
   return (<>
     <MapContainer
-      center={[39.469795, -0.3766718]}
-      zoom={16.2}
+      center={[route.latitude, route.longitude]}
+      zoom={15}
       scrollWheelZoom={false}
-      style={{ height: "80vh" }}>
+      style={{ height: "800px" }}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -50,6 +50,7 @@ const RouteMap = ( { route }) => {
       <h3>{content.name}</h3>
       <p>{content.description}</p>
     </div>
+    <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
   </>)
 }
 

@@ -57,8 +57,10 @@ const RouteDetail = () => {
     <div className="header">
       <div className="btn"><Link to="/home"><LeftOutlined className="icon" /></Link></div>
       <div className="picture">
-        {/* <img src={map} alt="map" /> */}
-        <img src={route.image} alt={route.name} />
+        <div className="gradient"></div>
+        <img src={map} alt="map" />
+
+        {/* <img src={route.image} alt={route.name} /> */}
       </div>
     </div>
     {loadingData || !route._id ? (
@@ -73,7 +75,7 @@ const RouteDetail = () => {
             {route.name}</div>
           <div className="rating">
             <StarOutlined className="icon" /> <span className="value">4.5</span>
-            <div className="reviews"> 124 valoraciones</div>
+            <div className="reviews"> 12 reviews</div>
           </div>
         </div>
         <div className="routeInfo">
@@ -84,8 +86,15 @@ const RouteDetail = () => {
               <span className="value">{route.duration}'</span></div>
           </div>
           <div className="startAndFinish">
-            <div className="start"> <HomeOutlined className="icon" />Inicio<div className="location">{route.startingPoint} </div></div>
-            <div className="finish"><FlagOutlined className="icon" />Final <div className="location">{route.endingPoint}</div></div>
+            <div className="left">
+
+              <img src={route.image} alt={route.name} />
+            </div>
+
+
+            <div className="right">
+              <div className="start"> <HomeOutlined className="icon" />Inicio<div className="location">{route.startingPoint} </div></div>
+              <div className="finish"><FlagOutlined className="icon" />Final <div className="location">{route.endingPoint}</div></div></div>
           </div>
 
         </div>
@@ -96,7 +105,6 @@ const RouteDetail = () => {
             <div className="routeDescription"> {route.description}</div>
           </TabPane>
           <TabPane tab="Lugares que visitar" key="2">
-            {route.pois && <RouteMap route={route} />}
             <div className="routePois">{poi}</div>
           </TabPane>
           <TabPane tab="Valoraciones" key="3">
@@ -104,15 +112,14 @@ const RouteDetail = () => {
               <Comments routeId={id} />
             </div>
           </TabPane>
-
+          <TabPane tab="Mapa" key="4">
+            <div>
+              <RouteMap route={route} />
+            </div>
+          </TabPane>
         </Tabs>
-
-
-
-
       </div>
     )}
-
   </div>
   );
 };
