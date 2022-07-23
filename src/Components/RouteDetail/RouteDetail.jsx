@@ -16,7 +16,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
   const { route } = useSelector((state) => state.routes);
-  console.log(route)
+  // console.log(route)
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(false);
   const [map, setMap] = useState("/loadingmap.gif");

@@ -57,6 +57,18 @@ export const searchByName = createAsyncThunk(
   }
 );
 
+export const getRandomPois = createAsyncThunk(
+  "routes/getRandomPois",
+  async (thunkAPI) => {
+    try {
+      return await routesService.getRandomPois();
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 
 export const routesSlice = createSlice({
   name: "routes",
@@ -69,11 +81,15 @@ export const routesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getRoutes.fulfilled, (state, action) => {
-        state.routes = action.payload.routes;
         state.paginationData = {
           total: action.payload.total,
           page: action.payload.page,
           maxPages: action.payload.maxPages
+        }
+        if (action.payload.page === 1) {
+          state.routes = action.payload.routes;
+        } else {
+          state.routes = [...state.routes, ...action.payload.routes];
         }
       })
       .addCase(getRoutes.rejected, (state, action) => {
@@ -115,6 +131,14 @@ export const routesSlice = createSlice({
         state.routes = [];
         state.pois = [];
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
+      .addCase(getRandomPois.fulfilled, (state, action) => {
+        state.pois = action.payload.pois;
+      })
+      .addCase(getRandomPois.rejected, (state, action) => {
+        state.pois = [];
+        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
   }

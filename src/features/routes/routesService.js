@@ -25,11 +25,17 @@ const searchByName = async (data) => {
   return res.data;
 };
 
+const getRandomPois = async () => {
+  const res = await axios.get(`${API_URL}/pois/random`);
+  return res.data;
+}
+
 const routesService = {
   getRoutes,
   getRouteById,
   getRoutesByTag,
   searchByName,
+  getRandomPois,
 };
 
 export default routesService;
