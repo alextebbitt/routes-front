@@ -47,9 +47,9 @@ export const getRoutesByTag = createAsyncThunk(
 
 export const searchByName = createAsyncThunk(
   "routes/searchByName",
-  async (name, thunkAPI) => {
+  async (searchData, thunkAPI) => {
     try {
-      return await routesService.searchByName(name);
+      return await routesService.searchByName(searchData);
     } catch (error) {
       const message = error.response.data;
       return thunkAPI.rejectWithValue(message);
@@ -114,7 +114,7 @@ export const routesSlice = createSlice({
       .addCase(searchByName.rejected, (state, action) => {
         state.routes = [];
         state.pois = [];
-        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
+        console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
   }
