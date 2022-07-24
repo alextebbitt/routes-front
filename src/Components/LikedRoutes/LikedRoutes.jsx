@@ -14,6 +14,12 @@ const LikedRoutes = () => {
   const [loading, setLoading] = useState(false);
   const { routes } = useSelector((state) => state.routes);
 
+  const truncateAfterWord = (str, chars) =>
+    str.length < chars ?
+      str
+      :
+      `${str.substr(0, str.substr(0, chars - 3).lastIndexOf(" "))}...`;
+
   const getRoutesInWishlist = async () => {
     setLoading(true);
     await dispatch(getWishlist(page));
@@ -32,8 +38,7 @@ const LikedRoutes = () => {
           {r.name}
         </Link>
       </h3>
-      {/* Corto la línea como un apaño rápido, a la espera de la maquetación buena:  */}
-      <p>{r.description.substring(0, 100)}...</p>
+      <p>{truncateAfterWord(r.description, 100)}</p>
     </div>
   ));
 
