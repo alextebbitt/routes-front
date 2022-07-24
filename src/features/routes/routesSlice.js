@@ -82,6 +82,8 @@ export const getWishlist = createAsyncThunk(
 );
 
 
+
+
 export const routesSlice = createSlice({
   name: "routes",
   initialState,
@@ -166,6 +168,7 @@ export const routesSlice = createSlice({
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
+      
   }
 });
 
