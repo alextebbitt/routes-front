@@ -1,15 +1,23 @@
+import "./Profile.scss"
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Typography, notification, Input, Upload, Space, Button } from 'antd';
+import { Typography, notification, Input, Upload, Space, Button,Drawer } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { updateUser } from '../../features/auth/authSlice';
 import Questionnaire from './Questionnaire/Questionnaire';
 const { Paragraph } = Typography;
 
 const Profile = () => {
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
+  };
 
+  const onClose = () => {
+    setVisible(false);
+  };
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -82,12 +90,15 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div className="profile">
       <h1>Perfil</h1>
-      <div>
-        <img src={userAvatar} alt="" />
-        <Space>
-          <Upload
+      <Button type="primary" onClick={showDrawer}>
+       Preferencias
+      </Button>
+      <div className="profilePicture">
+       
+      <Space>
+          <Upload className="avatarBtn"
             name="avatar"
             showUploadList={false}
             beforeUpload={() => false}
@@ -95,9 +106,9 @@ const Profile = () => {
             onChange={handleAvatarChange}
             customRequest={(a) => console.log(a)}
             fileList={fileList}>
-            <Button className="action-button" icon={<UploadOutlined />} loading={isSending}>
-              Change
-            </Button>
+            <div className="action-button" icon={<UploadOutlined />} loading={isSending}>
+            <img src={userAvatar}/>
+            </div>
           </Upload>
           <Button
             hidden={!readyToSend}
@@ -112,21 +123,18 @@ const Profile = () => {
             Clear image
           </Button>
         </Space>
+        
       </div>
-      <div>
-        <h3>Nombre</h3>
-        <Paragraph editable={{ onChange: setName }}>
+      <div className="profileName">
+      <Paragraph className="editName" editable={{ onChange: setName }}>
           {name}
         </Paragraph>
+       
       </div>
-      <div>Email: {user.user.email}</div>
-      <div>
-        <Link to="/" onClick={onLogout}>
-          Cerrar Sesión
-        </Link>
-      </div>
+      <div className="profileEmail">Email: {user.user.email}</div>
+      
       {user.user.role === "admin" ? (
-        <div>
+        <div className="admin">
           <Link to="/admin">Admin</Link>
         </div>
       ) : (
@@ -134,11 +142,15 @@ const Profile = () => {
       )}
 
 
+
       {/* WE ARE NOT USING ROLES
       <div>Role: {user.user.role}</div> */}
-      <div>
-        <h3>Bio</h3>
+      <div className="profileBio">
+        
+        
+       
         <Paragraph
+        className="editBio"
           editable={{
             onChange: setBio,
             maxLength: 300,
@@ -146,14 +158,32 @@ const Profile = () => {
           }}>
           {bio}
         </Paragraph>
-      </div>
-      <div>
+
+        <div className="editPassword">
         <Input id="password" type="password" placeholder="New password" onChange={handlePassword} />
       </div>
-      <Button type="primary" onClick={handleEdit} loading={isLoading}>
+      <Button className="passwordBtn" type="primary" onClick={handleEdit} loading={isLoading}>
         Editar
       </Button>
+      </div>
+        <div className="logout">
+        <Link to="/" onClick={onLogout}>
+          Cerrar Sesión
+        </Link>
+
+       
+      </div>
+
+      
+      <Drawer title="Basic Drawer" placement="right" onClose={onClose} visible={visible}>
+      
+
+        <p>Some contents...</p>
+      </Drawer>
       <Questionnaire quest={user.user?.questionnaire} />
+     
+
+      
     </div>
   )
 }
