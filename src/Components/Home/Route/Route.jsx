@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Route.scss";
 import { StarOutlined, ClockCircleOutlined, HeartOutlined,HeartFilled } from "@ant-design/icons";
-import { addToWishlist, removeFromWishlist } from "../../../features/routes/routesSlice";
+import { addToWishlist, removeFromWishlist } from "../../../features/auth/authSlice";
 
 const Route = () => {
   const { routes } = useSelector((state) => state.routes);
