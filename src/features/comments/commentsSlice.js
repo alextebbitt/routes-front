@@ -18,9 +18,9 @@ export const getComments = createAsyncThunk("comments/getComments", async (data,
 });
 
 export const createComment = createAsyncThunk("comment/", async (commentData) => {
-    
+
     try {
-        
+
         return await commentsService.createComment(commentData);
     } catch (error) {
         console.error(error)
@@ -63,8 +63,8 @@ export const commentsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getComments.fulfilled, (state, action) => {
-            console.log(action.payload)
-            console.log(state.comments)
+            // console.log(action.payload)
+            // console.log(state.comments)
             state.comments = action.payload.comments;
             state.pagination = {
                 total: action.payload.total,

@@ -13,12 +13,12 @@ const Commenta = () => {
   const { comments } = useSelector((state) => state.comments);
 
   const comment = comments?.map((comment) => {
-    console.log("hey hey", comment.userId);
-    console.log("hey hey", comment.valoration);
+    // console.log("hey hey", comment.userId);
+    // console.log("hey hey", comment.valoration);
     return (
       <div className="commentbody">
         <Comment
-          author={<a>{comment.userId.name}</a>}
+          author={<span>{comment.userId.name}</span>}
           avatar={
             <Avatar src={comment.userId.avatar} alt="Han Solo" />
           }

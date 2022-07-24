@@ -47,9 +47,33 @@ export const getRoutesByTag = createAsyncThunk(
 
 export const searchByName = createAsyncThunk(
   "routes/searchByName",
-  async (name, thunkAPI) => {
+  async (searchData, thunkAPI) => {
     try {
-      return await routesService.searchByName(name);
+      return await routesService.searchByName(searchData);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getRandomPois = createAsyncThunk(
+  "routes/getRandomPois",
+  async (thunkAPI) => {
+    try {
+      return await routesService.getRandomPois();
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getWishlist = createAsyncThunk(
+  "routes/getWishlist",
+  async (page = 1, thunkAPI) => {
+    try {
+      return await routesService.getWishlist(page);
     } catch (error) {
       const message = error.response.data;
       return thunkAPI.rejectWithValue(message);
@@ -71,11 +95,15 @@ export const routesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getRoutes.fulfilled, (state, action) => {
-        state.routes = action.payload.routes;
         state.paginationData = {
           total: action.payload.total,
           page: action.payload.page,
           maxPages: action.payload.maxPages
+        }
+        if (action.payload.page === 1) {
+          state.routes = action.payload.routes;
+        } else {
+          state.routes = [...state.routes, ...action.payload.routes];
         }
       })
       .addCase(getRoutes.rejected, (state, action) => {
@@ -116,7 +144,28 @@ export const routesSlice = createSlice({
       .addCase(searchByName.rejected, (state, action) => {
         state.routes = [];
         state.pois = [];
-        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
+        console.info(action.payload); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
+      .addCase(getRandomPois.fulfilled, (state, action) => {
+        state.pois = action.payload.pois;
+      })
+      .addCase(getRandomPois.rejected, (state, action) => {
+        state.pois = [];
+        console.info(action.payload); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
+      .addCase(getWishlist.fulfilled, (state, action) => {
+        state.routes = action.payload.routes;
+        state.paginationData = {
+          total: action.payload.total,
+          page: action.payload.page,
+          maxPages: action.payload.maxPages
+        };
+      })
+      .addCase(getWishlist.rejected, (state, action) => {
+        state.routes = [];
+        console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
       

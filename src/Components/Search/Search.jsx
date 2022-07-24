@@ -1,6 +1,7 @@
 import { Input, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import { searchByName } from '../../features/routes/routesSlice';
 const { CheckableTag } = Tag;
 
@@ -16,16 +17,14 @@ const Search = () => {
   const dispatch = useDispatch();
 
   const handleSearchChange = async (ev) => {
-    if (ev.target.value.length > 0) {
-      await dispatch(searchByName(ev.target.value));
-    }
+    setSearchValue(ev.target.value);
   }
 
   const handleKindChange = async (kind, checked) => {
     const nextSelectedKinds = checked ?
       [...selectedKinds, kind] :
       selectedKinds.filter(i => i !== kind);
-    await setSelectedKinds(nextSelectedKinds);
+    setSelectedKinds(nextSelectedKinds);
   }
 
   const handleTopicChange = async (topic, checked) => {
@@ -42,14 +41,30 @@ const Search = () => {
       topics: selectedTopics,
       search: searchValue,
     }
-    console.log("searchData", searchData);
+    await dispatch(searchByName(searchData));
     setSearching(false);
   }
 
   useEffect(() => {
     throwSearch();
+  // eslint-disable-next-line
   }, [selectedKinds, selectedTopics, searchValue]);
 
+  const route = routes.map(route => (
+    <div key={route.id}>
+      <Link to={`/route/${route._id}`}>
+        {route.name}
+      </Link>
+    </div>
+  ))
+
+  const poi = pois.map(poi => (
+    <div key={poi.id}>
+      {poi.name} (ruta: <Link to={`/route/${poi.routeId._id}`}>
+        {poi.routeId.name}
+      </Link>)
+    </div>
+  ))
 
   return (
     <div>
@@ -57,7 +72,7 @@ const Search = () => {
       <div>
         <Input placeholder="Buscar" onChange={handleSearchChange} />
       </div>
-      <div>
+      <div style={{ border: "1px solid darkred" }}>
         HERE THE CLICKABLE CATEGORIES
         <div>
           Tipo:
@@ -88,10 +103,10 @@ const Search = () => {
       </div>
       <div>
         {searching && <div>Buscando...</div>}
-        {routes.length > 0 && <div>Rutas</div>}
-        {routes.map(route => <div>{route.name}</div>)}
-        {pois.length > 0 && <div>Puntos de Interés</div>}
-        {pois.map(poi => <div>{poi.name}</div>)}
+        {routes.length > 0 && <div>RUTAS</div>}
+        {route}
+        {pois.length > 0 && <div>PUNTOS DE INTERÉS</div>}
+        {poi}
       </div>
     </div>
   )
