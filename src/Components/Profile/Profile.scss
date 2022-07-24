@@ -1,33 +1,61 @@
 @import "./../../App.scss";
 
-.profile{
-    text-align: center;
-    border:2px solid purple;
-    margin:16px;
+.profile {
+  background-color: $green;
+  text-align: left;
+
+  padding: 16px;
+
+  .userProfile {
+    padding: 16px;
     border-radius: 16px;
+    border: 2px solid $darkgreen;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
-    .profilePicture{
-
-        .action-button{
-            width:140px;
-            height:140px;
-         }
-        border:2px solid red;
-        padding:16px;
-        img{ 
-            border-radius:100%;
-            width:140px;
-            height:140px;
+    .profilePicture {
+        
+        .ant-space{
+            display: flex;
+        flex-direction: column;
+        .ant-space-item:nth-child(2){
+            display:inline;
         }
-
-    }
-    .profileName{
-
-        .editName{
-            font-size:16px;
-            font-weight: 700;
         }
-    }
+      .action-button {
+        width: 140px;
+        height: 140px;
+      }
+      border: 2px solid red;
 
-    
+      img {
+        border-radius: 100%;
+        border: 2px solid $darkgreen;
+        width: 140px;
+        height: 140px;
+      }
+    }
+    .profileName {
+      border: 2px solid red;
+      .editName {
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+    .profileEmail {
+      border: 2px solid blue;
+      color: $darkgray;
+    }
+    .profileBio{
+        border:2px solid turquoise;
+        padding:0 8px;
+    }
+  }
+}
+
+// Ant-design
+div.ant-typography {
+  margin: 0;
 }
