@@ -69,14 +69,17 @@ const Profile = () => {
   const sendNewAvatar = async () => {
     setIsSending(true);
     if (fileList.length > 0) {
-      const reader = new FileReader();
-      reader.readAsDataURL(fileList[0]);
-      reader.onload = async (e) => {
-        const base64 = e.target.result;
-        await dispatch(updateUser({ avatar: base64 }));
-        setFileList([]);
-        setReadyToSend(false);
-      }
+      const formData = new FormData();
+      formData.append('avatar', fileList[0]);
+
+      // const reader = new FileReader();
+      // reader.readAsDataURL(fileList[0]);
+      // reader.onload = async (e) => {
+      //   const base64 = e.target.result;
+      //   await dispatch(updateUser({ avatar: base64 }));
+      //   setFileList([]);
+      //   setReadyToSend(false);
+      // }
     }
     setIsSending(false);
   }
@@ -96,7 +99,7 @@ const Profile = () => {
             customRequest={(a) => console.log(a)}
             fileList={fileList}>
             <Button className="action-button" icon={<UploadOutlined />} loading={isSending}>
-              Change
+              Cambiar
             </Button>
           </Upload>
           <Button
@@ -104,12 +107,12 @@ const Profile = () => {
             type="primary"
             onClick={sendNewAvatar}
             loading={isSending}>
-            Click to send image
+            Enviar imagen
           </Button>
           <Button
             hidden={!readyToSend}
             onClick={clearImage}>
-            Clear image
+            Limpiar
           </Button>
         </Space>
       </div>

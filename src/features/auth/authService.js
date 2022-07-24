@@ -39,6 +39,19 @@ const updateUser = async (userData) => {
   }
   return res.data;
 }
+const updateAvatar = async (data) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.put(
+    API_URL + "/users/update-avatar",
+    data,
+    { headers: { authorization: user?.token, }, }
+  );
+  if (res.data) {
+    user.user = res.data.user;
+    localStorage.setItem("user", JSON.stringify(user));
+  }
+  return res.data;
+}
 
 const addToWishlist = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"))
@@ -65,6 +78,7 @@ const authService = {
   login,
   logout,
   updateUser,
+  updateAvatar,
   addToWishlist,
   removeFromWishlist
 };
