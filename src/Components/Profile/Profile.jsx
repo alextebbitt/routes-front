@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../features/auth/authSlice";
+import { logout, updateAvatar } from "../../features/auth/authSlice";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, notification, Input, Upload, Space, Button } from 'antd';
@@ -71,15 +71,9 @@ const Profile = () => {
     if (fileList.length > 0) {
       const formData = new FormData();
       formData.append('avatar', fileList[0]);
-
-      // const reader = new FileReader();
-      // reader.readAsDataURL(fileList[0]);
-      // reader.onload = async (e) => {
-      //   const base64 = e.target.result;
-      //   await dispatch(updateUser({ avatar: base64 }));
-      //   setFileList([]);
-      //   setReadyToSend(false);
-      // }
+      await dispatch(updateAvatar(formData));
+      setFileList([]);
+      setReadyToSend(false);
     }
     setIsSending(false);
   }
