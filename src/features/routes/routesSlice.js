@@ -58,22 +58,22 @@ export const searchByName = createAsyncThunk(
 );
 
 export const addToWishlist = createAsyncThunk("routes/addToWishlist",
-async (_id) => {
-  try {
-    return await routesService.addToWishlist(_id);
-  } catch (error) {
-    console.error(error);
-  }
-});
+  async (_id) => {
+    try {
+      return await routesService.addToWishlist(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
 export const removeFromWishlist = createAsyncThunk("routes/removeFromWishlist",
-async (_id) => {
-  try {
-    return await routesService.removeFromWishlist(_id);
-  } catch (error) {
-    console.error(error);
-  }
-});
+  async (_id) => {
+    try {
+      return await routesService.removeFromWishlist(_id);
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
 
 
@@ -137,23 +137,15 @@ export const routesSlice = createSlice({
         state.message = action.payload.message;
       })
       .addCase(addToWishlist.fulfilled, (state, action) => {
-        const routes = state.routes.map((route) => {
-          if (route._id === action.payload._id) {
-            route = action.payload;
-          }
-          return route
-        })
-        state.routes = routes
-      
+        console.log("hey", action.payload)
+        state.user.user.wishlist = [...state.user.user.wishlist, action.payload.routeId]
+
       })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
-        const routes = state.routes.map((route) => {
-          if (route._id === action.payload._id) {
-            route = action.payload;
-          }
-          return route
-        })
-        state.routes = routes
+        const wishlist = state.user.user.wishlist.filter((id) =>
+        id !== action.payload.routeId 
+        )
+        state.user.user.wishlist = wishlist
       })
   }
 });

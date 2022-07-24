@@ -24,7 +24,7 @@ const searchByName = async (name) => {
 
 const addToWishlist = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"))
-  const res = await axios.put(API_URL + "/routes/wishlist" + _id, {}, {
+  const res = await axios.put(API_URL + "/routes/wishlist/" + _id, {}, {
     headers: {
       authorization: user?.token,
     },
@@ -34,7 +34,7 @@ const addToWishlist = async (_id) => {
 
 const removeFromWishlist = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"))
-  const res = await axios.delete(API_URL + "/routes/wishlist" + _id, {}, {
+  const res = await axios.delete(API_URL + "/routes/wishlist/" + _id, {}, {
     headers: {
       authorization: user?.token, 
     },
