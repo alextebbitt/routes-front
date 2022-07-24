@@ -1,6 +1,6 @@
 import "./Profile.scss"
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../features/auth/authSlice";
+import { logout, updateAvatar } from "../../features/auth/authSlice";
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, notification, Input, Upload, Space, Button,Drawer } from 'antd';
@@ -77,14 +77,11 @@ const Profile = () => {
   const sendNewAvatar = async () => {
     setIsSending(true);
     if (fileList.length > 0) {
-      const reader = new FileReader();
-      reader.readAsDataURL(fileList[0]);
-      reader.onload = async (e) => {
-        const base64 = e.target.result;
-        await dispatch(updateUser({ avatar: base64 }));
-        setFileList([]);
-        setReadyToSend(false);
-      }
+      const formData = new FormData();
+      formData.append('avatar', fileList[0]);
+      await dispatch(updateAvatar(formData));
+      setFileList([]);
+      setReadyToSend(false);
     }
     setIsSending(false);
   }
@@ -115,12 +112,12 @@ const Profile = () => {
             type="primary"
             onClick={sendNewAvatar}
             loading={isSending}>
-            Click to send image
+            Enviar imagen
           </Button>
           <Button
             hidden={!readyToSend}
             onClick={clearImage}>
-            Clear image
+            Limpiar
           </Button>
         </Space>
         

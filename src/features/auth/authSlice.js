@@ -54,6 +54,18 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const updateAvatar = createAsyncThunk(
+  "auth/updateAvatar",
+  async (data, thunkAPI) => {
+    try {
+      return await authService.updateAvatar(data);
+    } catch (error) {
+      const message = error.response.data.message;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const addToWishlist = createAsyncThunk("routes/addToWishlist",
   async (_id) => {
     try {
@@ -106,10 +118,15 @@ export const authSlice = createSlice({
       .addCase(updateUser.rejected, (state, action) => {
         state.message = action.payload;
       })
+      .addCase(updateAvatar.fulfilled, (state, action) => {
+        state.user.user.avatar = action.payload.user.avatar;
+      })
+      .addCase(updateAvatar.rejected, (state, action) => {
+        state.message = action.payload;
+      })
       .addCase(addToWishlist.fulfilled, (state, action) => {
-        console.log("hey", action.payload)
-        state.user.user.wishlist = [...state.user.user.wishlist, action.payload.routeId]
-
+        // console.log("hey", action.payload)
+        state.user.user.wishlist = [...state.user.user.wishlist, action.payload.routeId];
       })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
         const wishlist = state.user.user.wishlist.filter((routeId) =>
