@@ -32,12 +32,23 @@ const addToWishlist = async (_id) => {
   return res.data;
 };
 
+const removeFromWishlist = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"))
+  const res = await axios.delete(API_URL + "/routes/wishlist" + _id, {}, {
+    headers: {
+      authorization: user?.token, 
+    },
+  });
+  return res.data;
+}
+
 const routesService = {
   getRoutes,
   getRouteById,
   getRoutesByTag,
   searchByName,
-  addToWishlist
+  addToWishlist,
+  removeFromWishlist
 };
 
 export default routesService;
