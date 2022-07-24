@@ -56,6 +56,14 @@ export const searchByName = createAsyncThunk(
     }
   }
 );
+export const addToWishlist = createAsyncThunk("routes/addToWishlist",
+async (_id) => {
+  try {
+    return await routesService.addToWishlist(_id);
+  } catch (error) {
+    console.error(error);
+  }
+})
 
 
 export const routesSlice = createSlice({
@@ -116,6 +124,16 @@ export const routesSlice = createSlice({
         state.pois = [];
         console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
+      })
+      .addCase(addToWishlist.fulfilled, (state, action) => {
+        const routes = state.routes.map((route) => {
+          if (route._id === action.payload._id) {
+            route= action.payload;
+          }
+          return route
+        })
+        state.routes = routes
+      
       })
   }
 });
