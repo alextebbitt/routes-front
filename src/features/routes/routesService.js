@@ -30,12 +30,22 @@ const getRandomPois = async () => {
   return res.data;
 }
 
+const getWishlist = async (page) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.get(
+    `${API_URL}/routes/wishlist?page=${page}`,
+    { headers: { authorization: user?.token, }, }
+  );
+  return res.data;
+}
+
 const routesService = {
   getRoutes,
   getRouteById,
   getRoutesByTag,
   searchByName,
   getRandomPois,
+  getWishlist,
 };
 
 export default routesService;
