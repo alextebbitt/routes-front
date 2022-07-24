@@ -22,11 +22,22 @@ const searchByName = async (name) => {
   return res.data;
 };
 
+const addToWishlist = async (_id) => {
+  const user = JSON.parse(localStorage.getItem("user"))
+  const res = await axios.put(API_URL + "/routes/wishlist" + _id, {}, {
+    headers: {
+      authorization: user?.token,
+    },
+  });
+  return res.data;
+};
+
 const routesService = {
   getRoutes,
   getRouteById,
   getRoutesByTag,
   searchByName,
+  addToWishlist
 };
 
 export default routesService;
