@@ -81,7 +81,17 @@ export const getWishlist = createAsyncThunk(
   }
 );
 
-
+export const getPoisNearBy = createAsyncThunk(
+  "routes/getPoisNearBy",
+  async (mapCenter, thunkAPI) => {
+    try {
+      return await routesService.getPoisNearBy(mapCenter);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 
 export const routesSlice = createSlice({
@@ -170,7 +180,14 @@ export const routesSlice = createSlice({
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
-
+      .addCase(getPoisNearBy.fulfilled, (state, action) => {
+        state.pois = action.payload.pois;
+      })
+      .addCase(getPoisNearBy.rejected, (state, action) => {
+        state.pois = [];
+        console.info(action.payload); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
   }
 });
 

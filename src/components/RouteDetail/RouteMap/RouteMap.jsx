@@ -56,4 +56,4 @@ const RouteMap = ({ route }) => {
   </>)
 }
 
-export default RouteMap
+export default RouteMap;

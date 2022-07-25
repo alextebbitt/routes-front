@@ -40,13 +40,22 @@ const getWishlist = async (page) => {
   return res.data;
 }
 
-const routesService = {
-  getRoutes,
-  getRouteById,
-  getRoutesByTag,
-  searchByName,
-  getRandomPois,
-  getWishlist,
-};
+const getPoisNearBy = async (mapCenter) => {
+  console.log("mapCenter", mapCenter);
+  const res = await axios.get(
+    `${API_URL}/pois/nearby/${mapCenter.lon}/${mapCenter.lat}`
+  );
+  return res.data;
+}
 
-export default routesService;
+  const routesService = {
+    getRoutes,
+    getRouteById,
+    getRoutesByTag,
+    searchByName,
+    getRandomPois,
+    getWishlist,
+    getPoisNearBy,
+  };
+
+  export default routesService;
