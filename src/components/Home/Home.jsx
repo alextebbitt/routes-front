@@ -53,17 +53,17 @@ const Home = () => {
   return (
     <div className="home">
       Home(logo)
-      <div>Explora Valencia</div>
+      <div className="text">Explora Valencia</div>
       <div>
         <Search />
       </div>
-      <h3>Rutas</h3>
+      <h3 className="text">Rutas</h3>
       <div className="show-routes" onScroll={handleRoutesScroll}>
         <Route isLoadingRoutes={isLoadingRoutes} />
       </div>
       {/* <div>Categorías</div>
       <button>ejemplo1</button>  <button>ejemplo2</button> */}
-      <h3>Lugares que visitar</h3>
+      <h3 className="text" >Lugares que visitar</h3>
       {/* <div> Ver todos</div> */}
       <div className="show-pois">
         {isLoadingPois ?
