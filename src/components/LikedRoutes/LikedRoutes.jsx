@@ -36,24 +36,26 @@ const LikedRoutes = () => {
     <div className="route" key={r._id}>
       <div className="routePicture">
         <Link to={`/route/${r._id}`}>
-        <img
-              src={r.image}
-              alt={r.name} />
+          <img
+            src={r.image}
+            alt={r.name} />
+            <br/>
           {r.name}
         </Link>
 
-        </div>
-        <div className="routeTitle">
-      <p>{truncateAfterWord(r.description, 100)}</p>
+      </div>
+      <div className="routeTitle">
+        <p>{truncateAfterWord(r.description, 100)}</p>
       </div>
     </div>
   ));
 
   return (
     <div className="likedRoutes">
-      <h1>Lista personal</h1>
+      <h1>Lista de deseos</h1>
       {loading ? <div>Cargando...</div> : null}
       {route}
+      {route.length === 0 && !loading && <div>No tienes rutas en tu lista de deseos</div>}
     </div>
   )
 }

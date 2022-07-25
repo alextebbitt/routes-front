@@ -47,6 +47,15 @@ const getPoisNearBy = async (mapCenter) => {
   return res.data;
 }
 
+const getRecommendation = async () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const res = await axios.get(
+    `${API_URL}/routes/recommendation`,
+    { headers: { authorization: user?.token, }, }
+  );
+  return res.data;
+}
+
   const routesService = {
     getRoutes,
     getRouteById,
@@ -55,6 +64,7 @@ const getPoisNearBy = async (mapCenter) => {
     getRandomPois,
     getWishlist,
     getPoisNearBy,
+    getRecommendation,
   };
 
   export default routesService;

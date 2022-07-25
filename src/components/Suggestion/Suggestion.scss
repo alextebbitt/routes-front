@@ -1,0 +1,42 @@
+@import "../../App.scss";
+
+.likedRoutes{
+    border:2px solid $darkgreen;
+    display: flex;
+    padding:16px;
+    flex-direction: column;
+    gap:1rem;
+    background-color: $green;
+   padding-bottom:6em;
+    .route{
+
+        border: 2px solid $darkgreen;
+        padding: 12px;
+
+        background-color: $white;
+        border-radius: 8px;
+
+        .routePicture{
+
+            img {
+                width: 320px;
+                height: 180px;
+                margin-bottom:8px;
+                border-radius: 4px;
+                object-fit:cover; /* Do not scale the image */
+                object-position: center; /* Center the image within the element */
+              }
+              a{
+                color:$black;
+            font-weight: 600;
+
+    }
+        }
+        .routeTitle{
+
+            margin-top:8px;
+            color:$darkgray;
+
+        }
+    }
+}

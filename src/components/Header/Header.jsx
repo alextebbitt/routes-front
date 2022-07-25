@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { logout } from "../../features/auth/authSlice";
 import {
   SearchOutlined,
+  BulbOutlined,
   HomeOutlined,
   CompassOutlined,
   HeartOutlined,
@@ -31,6 +32,9 @@ const Header = () => {
               </div>
               <div className="icon">
                 <Link to="/nearby"> <CompassOutlined /><div  className="iconTitle"> Cerca</div> </Link>
+              </div>
+              <div className="icon">
+                <Link to="/suggest"><BulbOutlined /><div  className="iconTitle">Idea</div> </Link>
               </div>
               <div className="icon">
                 <Link to="/profile"> <UserOutlined /><div  className="iconTitle">Perfil</div> </Link>

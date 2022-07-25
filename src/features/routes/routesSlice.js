@@ -7,6 +7,7 @@ const initialState = {
   route: {},
   message: "",
   pois: [],
+  needQuestionnaire: false,
 };
 
 export const getRoutes = createAsyncThunk(
@@ -86,6 +87,18 @@ export const getPoisNearBy = createAsyncThunk(
   async (mapCenter, thunkAPI) => {
     try {
       return await routesService.getPoisNearBy(mapCenter);
+    } catch (error) {
+      const message = error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getRecommendation = createAsyncThunk(
+  "routes/getRecommendation",
+  async (thunkAPI) => {
+    try {
+      return await routesService.getRecommendation();
     } catch (error) {
       const message = error.response.data;
       return thunkAPI.rejectWithValue(message);
@@ -185,6 +198,15 @@ export const routesSlice = createSlice({
       })
       .addCase(getPoisNearBy.rejected, (state, action) => {
         state.pois = [];
+        console.info(action.payload); // TODO: Delete this line when error managment is implemented
+        state.message = action.payload.message;
+      })
+      .addCase(getRecommendation.fulfilled, (state, action) => {
+        state.needQuestionnaire = action.payload.message === "Need questionnaire";
+        state.route = action.payload.route;
+      })
+      .addCase(getRecommendation.rejected, (state, action) => {
+        state.route = {};
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })

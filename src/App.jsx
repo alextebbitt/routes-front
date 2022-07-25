@@ -18,6 +18,7 @@ import Landing from "./components/Landing/Landing";
 import LikedRoutes from "./components/LikedRoutes/LikedRoutes";
 import RoutesNearBy from "./components/RoutesNearBy/RoutesNearBy";
 import LandingZone from "./guards/LandingZone";
+import Suggestion from "./components/Suggestion/Suggestion";
 
 function App() {
   return (
@@ -59,6 +60,10 @@ function App() {
           <Route
             path="/nearby"
             element={<PrivateZone><RoutesNearBy /></PrivateZone>}
+          />
+           <Route
+            path="/suggest"
+            element={<PrivateZone><Suggestion/></PrivateZone>}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
