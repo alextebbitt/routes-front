@@ -16,4 +16,49 @@ border:2px solid green;
         width:140px;
         }
     }
+
+
+body {
+    background-color: $green;
 }
+.h1title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-left: 2rem;
+    margin-right: 2rem; 
+}
+.button {
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.gif{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.gif-image {
+border-radius: 2rem;
+}
+
+.image-route{
+    border-radius: 2rem;
+}
+.image-route-div{
+    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+}
+    
