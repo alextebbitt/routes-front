@@ -24,9 +24,9 @@ const RoutesByTag = () => {
 
   return (
     <div>
-      <h1>Routes by tag: {tag}</h1>
+      <h1>Rutas por etiquetas: {tag}</h1>
       {isLoading ?
-        <h2>Loading...</h2>
+        <h2>Cargando...</h2>
         :
         <RouteView />
       }

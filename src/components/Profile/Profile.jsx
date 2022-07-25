@@ -69,11 +69,11 @@ const Profile = () => {
     // Validations: Type and size
     const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
     if (!isJpgOrPng) {
-      notification.error({ message: "Please, select a jpg or png file" });
+      notification.error({ message: "Seleccciona una imagen JPG o PNG" });
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      notification.error({ message: "Image too large" });
+      notification.error({ message: "La imagen es demasiado grande" });
     }
     if (isJpgOrPng && isLt2M) {
       setFileList([file]);
@@ -100,6 +100,10 @@ const Profile = () => {
       await dispatch(updateAvatar(formData));
       setFileList([]);
       setReadyToSend(false);
+      notification.success({
+        message: "Imagen actualizada",
+        description: "Estará disponible en unos minutos"
+      });
     }
     setIsSending(false);
   };
@@ -130,7 +134,7 @@ const Profile = () => {
               <div
                 className="action-button"
                 icon={<UploadOutlined />}
-                loading={isSending}
+              // loading={isSending}
               >
                 <img src={userAvatar} />
               </div>
@@ -178,15 +182,13 @@ const Profile = () => {
         <button className="btn" onClick={showDrawer}>
           Preferencias de rutas
         </button>
-
-
         {isEditable ? (
-          <Button  className="btn" onClick={handleEdit} loading={isLoading}>
+          <Button className="btn" onClick={handleEdit} loading={isLoading}>
             Guardar Cambios
           </Button>
         ) : null}
         <button className="btn editbtn" onClick={() => setIsEditable(!isEditable)}>
-          <EditOutlined/>
+          <EditOutlined />
         </button>
         <div className="logout">
           <Link to="/" onClick={onLogout}>
@@ -202,7 +204,7 @@ const Profile = () => {
           visible={visible}
           key={placement}
         >
-          <Questionnaire quest={user.user?.questionnaire} />
+          <Questionnaire quest={user.user?.questionnaire} onClose={onClose} />
         </Drawer>
       </div>
     </div>

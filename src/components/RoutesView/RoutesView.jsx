@@ -19,9 +19,9 @@ const RoutesView = () => {
 
   return (
     <div>
-      <h1>Routes View</h1>
+      <h1>Vista de rutas</h1>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <h2>Cargando...</h2>
       ) : (
         <>
           {/*

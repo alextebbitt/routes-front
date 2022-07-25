@@ -1,9 +1,9 @@
-import { Form, Radio, Button, Slider, InputNumber } from 'antd';
+import { Form, Radio, Button, Slider, InputNumber, notification } from 'antd';
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
 import { updateUser } from '../../../features/auth/authSlice';
 
-const Questionnaire = ({ quest }) => {
+const Questionnaire = ({ quest, onClose }) => {
 
   const [form] = Form.useForm();
   const [isSending, setIsSending] = useState(false);
@@ -27,13 +27,16 @@ const Questionnaire = ({ quest }) => {
   const handleFinish = async (values) => {
     setIsSending(true);
     await dispatch(updateUser({ questionnaire: values }));
+    notification.success({ message: 'Cuestionario enviado correctamente' });
+    setVisibleStep(0);
     setIsSending(false);
+    onClose();
   }
 
   return (
     <div>
       <p>Todas las preguntas son opcionales. Con tus respuestas podremos
-      sugerirte las rutas más apropiadas para ti.</p>
+        sugerirte las rutas más apropiadas para ti.</p>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button type={visibleStep === 0 && "primary"}
           shape="circle" onClick={() => setVisibleStep(0)}>1</Button>
@@ -117,8 +120,8 @@ const Questionnaire = ({ quest }) => {
             hidden={visibleStep !== 2}
             name="difficulty">
             <Radio.Group optionType="button" buttonStyle='solid'>
-              <Radio value="alta">Alta</Radio>
-              <Radio value="baja">Baja</Radio>
+              <Radio value="Alta">Alta</Radio>
+              <Radio value="Baja">Baja</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
@@ -126,10 +129,10 @@ const Questionnaire = ({ quest }) => {
             hidden={visibleStep !== 3}
             name="companions">
             <Radio.Group optionType="button" buttonStyle='solid'>
-              <Radio value="solo">Solo</Radio>
-              <Radio value="pareja">Pareja</Radio>
-              <Radio value="familia">Familia</Radio>
-              <Radio value="amigos">Amigos</Radio>
+              <Radio value="Solo">Solo</Radio>
+              <Radio value="Pareja">Pareja</Radio>
+              <Radio value="Familia">Familia</Radio>
+              <Radio value="Amigos">Amigos</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item
@@ -156,13 +159,13 @@ const Questionnaire = ({ quest }) => {
         </div>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Form.Item>
-            <Button type="primary" htmlType="submit" loading={isSending}>
-              Enviar
+            <Button htmlType="button" onClick={handleReset}>
+              Limpiar
             </Button>
           </Form.Item>
           <Form.Item>
-            <Button htmlType="button" onClick={handleReset}>
-              Limpiar
+            <Button type="primary" htmlType="submit" loading={isSending}>
+              Enviar
             </Button>
           </Form.Item>
         </div>

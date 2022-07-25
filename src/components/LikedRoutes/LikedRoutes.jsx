@@ -52,7 +52,7 @@ const LikedRoutes = () => {
   return (
     <div className="likedRoutes">
       <h1>Lista personal</h1>
-      {loading && <div>Cargando...</div>}
+      {loading ? <div>Cargando...</div> : null}
       {route}
     </div>
   )

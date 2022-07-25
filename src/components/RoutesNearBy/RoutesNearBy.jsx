@@ -74,7 +74,7 @@ const RoutesNearBy = () => {
         {marker}
       </MapContainer>
       :
-      <div>Loading...</div>
+      <div>Cargando...</div>
     }
   </>)
 }
