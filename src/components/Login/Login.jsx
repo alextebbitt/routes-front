@@ -19,41 +19,41 @@ const Login = () => {
 
   return (
     <>
-     <img src="" height="80px" alt="logo"></img>
-    <Form
-      className="form"
-      name="basic"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 16 }}
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-    >
-      <Form.Item
-        label="Email"
-        name="email"
-        rules={[{ required: true, message: "Please input your Email!" }]}
+      <img src="" height="80px" alt="logo"></img>
+      <Form
+        className="form"
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
       >
-        <Input />
-      </Form.Item>
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: "Please input your Email!" }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: "Please input your password!" }]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item
+          label="Contraseña"
+          name="Contraseña"
+          rules={[{ required: true, message: "Please input your password!" }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-      <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit">
+            Enviar
+          </Button>
+        </Form.Item>
+      </Form>
 
-    <span>
-                ¿Todavía no  tienes cuenta?<Link to="/register">Regístrate</Link>
-              </span>
+      <span>
+        ¿Todavía no tienes cuenta?<Link to="/register">Regístrate</Link>
+      </span>
     </>
   );
 }
