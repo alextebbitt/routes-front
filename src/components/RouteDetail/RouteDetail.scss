@@ -1,229 +1,260 @@
 @import "../../App.scss";
-.routeDetail{
+
+.routeDetail {
     .icon {
         color: $white;
         margin-right: 8px;
-      }
-      .value {
+    }
+
+    .value {
         color: $white;
         font-weight: 300;
-      }
-     .routeInfo{
-        .icon{color: $blue;}
-        .value{ color:$blue}
-     } 
+    }
 
-.header{
-    background-color: azure;
-    position:relative;
+    .routeInfo {
+        .icon {
+            color: $blue;
+        }
 
-    .btn{
-        position:absolute;
-        top:0;
-        left:0;
-        z-index:99;
-        width:32px;
-        height:32px;
-        margin:16px;
-        background-color: white;
-        box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
-        border-radius: 100%;
-        text-align: center;
-        .icon{
-            color:$green;
-            margin-right:2px;
-            font-size: 18px;
+        .value {
+            color: $blue
+        }
+    }
+
+    .header {
+        background-color: azure;
+        position: relative;
+
+        .btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            width: 32px;
+            height: 32px;
+            margin: 16px;
+            background-color: white;
+            box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
             border-radius: 100%;
-            position: relative;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);}
-      }
+            text-align: center;
 
-      .btn2{
-        position:absolute;
-       
-        right:0;
-        z-index:99;
-        width:32px;
-        height:32px;
-        margin:16px;
-        background-color: white;
-        box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
-        border-radius: 100%;
-        text-align: center;
-        .icon{
-            color:$green;
-            margin:0 auto ;
-            font-size: 20px;
+            .icon {
+                color: $green;
+                margin-right: 2px;
+                font-size: 18px;
+                border-radius: 100%;
+                position: relative;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
+        }
+
+        .btn2 {
+            position: absolute;
+
+            right: 0;
+            z-index: 99;
+            width: 32px;
+            height: 32px;
+            margin: 16px;
+            background-color: white;
+            box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
             border-radius: 100%;
-            position: relative;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-      }
-      }
-    .picture{
-        .gradient{
-            position:absolute;
-            width:100%;
-            height:102%;
-           
-            background: rgb(255,255,255);
-            background: linear-gradient(180deg, $transparent 70%, $darkgreen 97%);
-           
+            text-align: center;
+
+            .icon {
+                color: $green;
+                margin: 0 auto;
+                font-size: 20px;
+                border-radius: 100%;
+                position: relative;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+            }
         }
-        
-        
-        img{
-        width: 100%;
-        height: 320px;
-        object-fit:cover; 
-        object-position: center; 
-       
-}
 
-    }
-}
-.routeDetails{
-    margin-top:-4px;
-    border:2px solid  $darkgreen;
-    background-color: $darkgreen;
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    padding-bottom:20px ;
+        .picture {
+            .gradient {
+                position: absolute;
+                width: 100%;
+                height: 102%;
 
-    .name{
-        
-        font-size: 24px;
-        font-weight: 700;
-        color: $white;
-        margin:16px;
-        width:65%;
- 
-    }
-    .rating{
-        margin:16px 12px;
-        color:$white;
+                background: rgb(255, 255, 255);
+                background: linear-gradient(180deg, $transparent 70%, $darkgreen 97%);
 
-        .stars{ 
-            background-color: aliceblue;
-            
+            }
 
-        }
-        .reviews{
-            // 
-            color:$white;
+
+            img {
+                width: 100%;
+                height: 320px;
+                object-fit: cover;
+                object-position: center;
+
+            }
+
         }
     }
 
-}
-
-.routeInfo{
-    // border:2px solid green;
-    border-radius: 24px 24px 0px 0px;
-    padding:8px 0;
-    background-color: #c3d4d4;
-    margin-top:-24px;
-
-
-    .typeAndTime{
-        // border:2px solid red;
+    .routeDetails {
+        margin-top: -4px;
+        border: 2px solid $darkgreen;
+        background-color: $darkgreen;
         display: flex;
-
-        margin:8px 16px ;
         justify-content: space-between;
-    .routeTopic{
-        font-style: italic;
-        font-weight:700;
-    }
-
-    }
-    .startAndFinish{
-        margin: 0 16px;
-        display:flex;
         align-items: center;
-        gap:16px;
-        .left img{
-            width:160px;
-            height: 110px;
-            border-radius:8px;
-        }
-        .start,.finish{
-            display:block;
-            margin:12px 0;
-            font-weight: 500;
-            color:$darkgreen
-        }
-        .location{
-            font-weight: 300;
-            margin-top:4px;
-            color:$darkgray
+        padding-bottom: 20px;
 
+        .name {
+
+            font-size: 24px;
+            font-weight: 700;
+            color: $white;
+            margin: 16px;
+            width: 65%;
+
+        }
+
+        .rating {
+            margin: 16px 12px;
+            color: $white;
+
+            .stars {
+                background-color: aliceblue;
+
+
+            }
+
+            .reviews {
+                //
+                color: $white;
+            }
+        }
+
+    }
+
+    .routeInfo {
+        // border:2px solid green;
+        border-radius: 24px 24px 0px 0px;
+        padding: 8px 0;
+        background-color: #c3d4d4;
+        margin-top: -24px;
+
+
+        .typeAndTime {
+            // border:2px solid red;
+            display: flex;
+
+            margin: 8px 16px;
+            justify-content: space-between;
+
+            .routeTopic {
+                font-style: italic;
+                font-weight: 700;
+            }
+
+        }
+
+        .startAndFinish {
+            margin: 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            .left img {
+                width: 160px;
+                height: 110px;
+                border-radius: 8px;
+            }
+
+            .start,
+            .finish {
+                display: block;
+                margin: 12px 0;
+                font-weight: 500;
+                color: $darkgreen
+            }
+
+            .location {
+                font-weight: 300;
+                margin-top: 4px;
+                color: $darkgray
+            }
         }
     }
-}
 
-.routeDescription{
-    padding:16px;
-    padding-bottom:5rem;
-    color:$darkgray;
-    background-color: $lightgreen;
-}
-.routePois{
-   padding:16px;
-    padding-bottom:5rem;
-    background-color: $lightgreen;
-}
+    .routeDescription {
+        padding: 16px;
+        padding-bottom: 5rem;
+        color: $darkgray;
+        background-color: $lightgreen;
+    }
 
-
-// Ant-Design Re-Styling
-
-//background of tab
-.ant-tabs-nav-wrap{
-    background-color: $lightgreen;
-}
-// Tabs
-.ant-tabs-tab-btn{
-    color:$darkgray;
-}
-//  Tabs active
-.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
-    color:$darkgreen;
-}
-// tabs bottom
-.ant-tabs-ink-bar {
-    height: 5px;
-    background: $darkgreen;
-}
-
-.ant-tabs-top > .ant-tabs-nav{
-margin:0;
-}
-
-}
+    .routePois {
+        padding: 16px;
+        padding-bottom: 5rem;
+        background-color: $lightgreen;
+    }
 
 
-.ant-modal, .ant-modal-content {
+    // Ant-Design Re-Styling
+
+    //background of tab
+    .ant-tabs-nav-wrap {
+        background-color: $lightgreen;
+    }
+
+    // Tabs
+    .ant-tabs-tab-btn {
+        color: $darkgray;
+    }
+
+    //  Tabs active
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+        color: $darkgreen;
+    }
+
+    // tabs bottom
+    .ant-tabs-ink-bar {
+        height: 5px;
+        background: $darkgreen;
+    }
+
+    .ant-tabs-top>.ant-tabs-nav {
+        margin: 0;
+    }
+
+}
+.ant-modal-wrap {
+    z-index: 1002;
+}
+.ant-modal,
+.ant-modal-content {
     height: 100vh;
     width: 100vw;
     margin: 0;
     top: 0;
     background-color: $lightgreen;
-   }
-   .ant-modal-header{
+}
+
+.ant-modal-header {
     background-color: $lightgreen;
-    .ant-modal-title{
-        color:$darkgreen;
+
+    .ant-modal-title {
+        color: $darkgreen;
     }
-   }
-   .ant-modal-body {
+}
+
+.ant-modal-body {
     height: calc(100vh - 110px);
-    padding:0;
+    padding: 0;
     background-color: $lightgreen;
-   }
-   
-  
+}
+
+.overMap {
+    z-index: 1001;
+}
