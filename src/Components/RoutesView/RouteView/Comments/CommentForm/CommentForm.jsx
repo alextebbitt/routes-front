@@ -4,9 +4,6 @@ import { Rate } from "antd";
 import { useDispatch } from "react-redux";
 import { Form, Input, Button, } from "antd";
 
-import { createComment } from "../../../../../features/comments/commentsSlice";
-import { set } from "immer/dist/internal";
-const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
 const { TextArea } = Input;
 const CommentForm = ({ routeId,visible,setVisible }) => {
