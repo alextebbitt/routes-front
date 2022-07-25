@@ -2,7 +2,7 @@ import {React, useEffect} from 'react'
 import { Button, Form, Input, notification } from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate,Link } from "react-router-dom";
-import { login } from '../../features/auth/authSlice';
+import { login, reset} from '../../features/auth/authSlice';
 
 const Login = () => {
   const { isError, isSuccess, message} = useSelector((state) => state.auth)
@@ -16,7 +16,7 @@ useEffect(() => {
   if (isSuccess) {
     notification.error({ message: "Exitoso", description: message });
   }
-  
+  dispatch(reset());
 }, [isError, isSuccess, message])
 
 
@@ -54,7 +54,7 @@ useEffect(() => {
 
         <Form.Item
           label="Contraseña"
-          name="Contraseña"
+          name="password"
           rules={[
             { required: true, message: "¡Por favor introduce su contraseña!" },
           ]}
