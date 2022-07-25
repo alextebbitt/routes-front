@@ -1,0 +1,102 @@
+@import "./../../App.scss";
+
+.profile {
+  background-color: $green;
+  text-align: center;
+  height:100vh;
+  padding: 16px;
+  color:$darkgray;
+  position: relative;
+
+  .anticon{
+    color:$darkgreen;
+  }
+  .btn{
+    width:fit-content;
+    margin: 0 auto;
+
+  }
+  .editbtn{
+    position:absolute;
+    margin:48px;
+    top:0;
+    right:0;
+    border-radius: 100%;
+    border:none;
+    color:$darkgreen;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px rgba(136, 135, 135, 0.75);
+    .icon{
+      color:$green;
+    }
+  }
+  .userProfile {
+    padding: 16px;
+    border-radius: 16px;
+    border: 2px solid $darkgreen;
+    background-color: $white;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    .admin a{
+      color:$darkgreen;
+    }
+
+    .profilePicture {
+        
+        .ant-space{
+            display: flex;
+        flex-direction: column;
+        .ant-space-item:nth-child(2){
+            display:inline;
+        }
+        }
+      .action-button {
+        width: 140px;
+        height: 140px;
+      }
+      
+
+      img {
+        border-radius: 100%;
+        border: 2px solid $darkgreen;
+        width: 140px;
+        height: 140px;
+      }
+    }
+    .profileName {
+    
+      .editName {
+        font-size: 16px;
+        font-weight: 700;
+        color:$darkgreen;
+      }
+    }
+    .profileEmail {
+  
+      color: $darkgray;
+    }
+    .profileBio{
+        border:2px solid $darkgreen;
+        padding: 16px;
+        width:75%;
+        margin:0 auto;
+        background-color: $lightgreen;
+        border-radius:16px;
+        .editBio{
+          color:$darkgreen;
+        }
+    }
+    .logout{
+      padding-top:6em;
+    }
+  }
+ 
+ 
+}
+
+// Ant-design
+div.ant-typography {
+  margin: 0;
+}
