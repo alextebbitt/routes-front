@@ -66,21 +66,25 @@ export const updateAvatar = createAsyncThunk(
   }
 );
 
-export const addToWishlist = createAsyncThunk("routes/addToWishlist",
-  async (_id) => {
+export const addToWishlist = createAsyncThunk(
+  "routes/addToWishlist",
+  async (_id, thunkAPI) => {
     try {
       return await authService.addToWishlist(_id);
     } catch (error) {
-      console.error(error);
+      const message = error.response.data.message;
+      return thunkAPI.rejectWithValue(message);
     }
   });
 
-export const removeFromWishlist = createAsyncThunk("routes/removeFromWishlist",
-  async (_id) => {
+export const removeFromWishlist = createAsyncThunk(
+  "routes/removeFromWishlist",
+  async (_id, thunkAPI) => {
     try {
       return await authService.removeFromWishlist(_id);
     } catch (error) {
-      console.error(error);
+      const message = error.response.data.message;
+      return thunkAPI.rejectWithValue(message);
     }
   });
 
@@ -135,11 +139,17 @@ export const authSlice = createSlice({
       .addCase(addToWishlist.fulfilled, (state, action) => {
         state.user.user.wishlist = [...state.user.user.wishlist, action.payload.routeId];
       })
+      .addCase(addToWishlist.rejected, (state, action) => {
+        state.message = action.payload;
+      })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
         const wishlist = state.user.user.wishlist.filter((routeId) =>
           routeId !== action.payload.routeId
         )
         state.user.user.wishlist = wishlist
+      })
+      .addCase(removeFromWishlist.rejected, (state, action) => {
+        state.message = action.payload;
       })
   },
 })

@@ -55,21 +55,28 @@ const updateAvatar = async (data) => {
 
 const addToWishlist = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"))
-  const res = await axios.put(API_URL + "/routes/wishlist/" + _id, {}, {
-    headers: {
-      authorization: user?.token,
-    },
-  });
+  const res = await axios.put(
+    API_URL + "/routes/wishlist/" + _id,
+    {},
+    { headers: { authorization: user?.token, }, }
+  );
+  if (res.data) {
+    user.user.wishlist = [...user.user.wishlist, res.data.routeId]
+    localStorage.setItem("user", JSON.stringify(user));
+  }
   return res.data;
 };
 
 const removeFromWishlist = async (_id) => {
   const user = JSON.parse(localStorage.getItem("user"))
-  const res = await axios.delete(API_URL + "/routes/wishlist/" + _id,  {
-    headers: {
-      authorization: user?.token,
-    },
-  });
+  const res = await axios.delete(
+    API_URL + "/routes/wishlist/" + _id,
+    { headers: { authorization: user?.token, }, }
+  );
+  if (res.data) {
+    user.user.wishlist = user.user.wishlist.filter(id => id !== res.data.routeId)
+    localStorage.setItem("user", JSON.stringify(user));
+  }
   return res.data;
 }
 
