@@ -139,11 +139,13 @@ export const routesSlice = createSlice({
           page: 1,
           maxPages: 1
         };
-        state.pois = action.payload.pois;
+        if (action.payload.pois.length) {
+          state.pois = action.payload.pois;
+        }
       })
       .addCase(searchByName.rejected, (state, action) => {
-        state.routes = [];
-        state.pois = [];
+        // state.routes = [];
+        // state.pois = [];
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
@@ -168,7 +170,7 @@ export const routesSlice = createSlice({
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
-      
+
   }
 });
 

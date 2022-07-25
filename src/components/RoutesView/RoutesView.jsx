@@ -24,10 +24,10 @@ const RoutesView = () => {
         <h2>Loading...</h2>
       ) : (
         <>
-          {/* 
+          {/*
            */}
 
-           <Search/>
+          <Search />
         </>
       )}
     </div>
