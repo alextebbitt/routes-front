@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 // import L from 'leaflet';
 
-const RouteMap = ({ route }) => {
+const RouteMap = ({ route, height="580px", zoomControl=true }) => {
 
   const [content, setContent] = useState('');
 
@@ -38,7 +38,8 @@ const RouteMap = ({ route }) => {
       center={[route.latitude, route.longitude]}
       zoom={15}
       scrollWheelZoom={false}
-      style={{ height: "580px" }}>
+      zoomControl={zoomControl}
+      style={{ height: height }}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
