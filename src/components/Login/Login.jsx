@@ -3,7 +3,7 @@ import { Button, Form, Input, notification } from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate,Link } from "react-router-dom";
 import { login, reset} from '../../features/auth/authSlice';
-
+import "./Login.scss"
 const Login = () => {
   const { isError, isSuccess, message} = useSelector((state) => state.auth)
   const dispatch = useDispatch();
@@ -29,9 +29,11 @@ useEffect(() => {
   };
 
   return (
-    <>
-      <img src="" height="80px" alt="logo"></img>
-      <Form
+    < div className="login">
+      <div className="picture">
+     </div>
+      
+     <div className="loginForm"><Form
         className="form"
         name="basic"
         labelCol={{ span: 8 }}
@@ -62,17 +64,18 @@ useEffect(() => {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type="primary" htmlType="submit">
+        <Form.Item>
+          <Button className="submitbtn" htmlType="submit">
             Enviar
           </Button>
         </Form.Item>
       </Form>
 
       <span>
-        ¿Todavía no tienes cuenta?<Link to="/register">Regístrate</Link>
+        ¿Todavía no tienes cuenta? <Link to="/register">Regístrate</Link>
       </span>
-    </>
+    </div>
+    </div> 
   );
 }
 
