@@ -1,13 +1,29 @@
-import { Button, Checkbox, Form, Input } from "antd";
-import { useState } from "react";
-import { useDispatch } from "react-redux/es/exports";
-import { register } from "../../features/auth/authSlice";
-import { Link } from "react-router-dom";
+import { Button, Checkbox, Form, Input, notification } from "antd";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { register, reset } from "../../features/auth/authSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const { isError, isSuccess, message } = useSelector((state) => state.auth);
   const [sending, setSending] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [form] = Form.useForm();
+
+  useEffect(() => {
+    if (isError) {
+      notification.error({ message: "Error", description: message });
+    }
+    if (isSuccess) {
+      notification.success({ message: "Con éxito", description: message });
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    }
+    dispatch(reset());
+  }, [isError, isSuccess, message]);
+
   const onFinish = async (values) => {
     setSending(true);
     await dispatch(register(values));
