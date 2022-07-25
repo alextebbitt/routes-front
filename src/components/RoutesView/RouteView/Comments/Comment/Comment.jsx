@@ -2,44 +2,33 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Avatar, Comment, Rate, Tooltip } from "antd";
 import moment from "moment";
-import "./Comment.scss";
-// import {
-//   deleteComment,
-//   updateComment,
-//   getComments,
-// } from "../../../../../features/comments/commentsSlice";
+import 'moment/locale/es';
 
-const Commenta = () => {
+
+const UserComment = () => {
   const { comments } = useSelector((state) => state.comments);
 
   const comment = comments?.map((comment) => {
-    // console.log("hey hey", comment.userId);
-    // console.log("hey hey", comment.valoration);
     return (
-      <div className="commentbody">
-        <Comment
-          author={<span>{comment.userId.name}</span>}
-          avatar={
-            <Avatar src={comment.userId.avatar} alt="Han Solo" />
-          }
-          content={<p>{comment?.body}</p>}
-          datetime={
-            <Tooltip title={moment().format("YYYY-MM-DD HH:mm:ss")}>
-              <span>{moment().fromNow()}</span>
-            </Tooltip>
-          }
-        />
+      <div className="commentbody" key={comment.id}>
         <Rate disabled defaultValue={comment.valoration} />
+        <Comment
+          author={<><span className="userName">{comment.userId.name}</span> — <span>{ moment(comment.createdAt).fromNow()}</span></>}
+          avatar={
+            <Avatar src={comment.userId.avatar} alt="User Name" />
+          }
+          content={<p className="userComment">{comment?.body}</p>}
+        />
+        
       </div>
     );
   });
 
   return (
-    <div>
-      <h3 className="h3title">Comentarios:</h3>
+    <div className="routeReview">
       {comment}
     </div>
   );
 };
 
-export default Commenta;
+export default UserComment;

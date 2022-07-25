@@ -23,8 +23,8 @@ const RouteMap = ({ route }) => {
         // icon={myIcon}
         eventHandlers={{ click: () => setContent(poi) }}
         position={[poi.latitude, poi.longitude]}>
-        <Popup>
-          <div>
+        <Popup className="pop2">
+          <div className="pop">
             <h3>{poi.name}</h3>
             <p>{poi.description}</p>
           </div>
@@ -38,19 +38,21 @@ const RouteMap = ({ route }) => {
       center={[route.latitude, route.longitude]}
       zoom={15}
       scrollWheelZoom={false}
-      style={{ height: "800px" }}>
+      style={{ height: "580px" }}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {marker}
     </MapContainer>
-    <div>
+    {/* <div>
       THIS DIV COULD BE A MODAL
       <h3>{content.name}</h3>
       <p>{content.description}</p>
+    </div> */}
+    <div>
+      {/* <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> */}
     </div>
-    <div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /></div>
   </>)
 }
 

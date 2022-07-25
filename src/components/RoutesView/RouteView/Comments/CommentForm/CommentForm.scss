@@ -1,20 +1,29 @@
-.comment-box{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-    
-}
+@import "../../../../../App.scss";
 
-.write-a-comment{
-    display: flex;
-    justify-content: center;
-}
+.modalBox{
+
+
+
 .form {
        display: flex; 
+
+       .rating{
+        margin:16px 0 0;
+       }
+       .review-form-button{
+        color:$white;
+        height:48px;
+        font-weight: 700;
+        background-color: $darkgreen;
+        border-radius:16px;
+
+
+       }
     
 }
 .button:hover{
     background-color: green;
+
+}
 
 }

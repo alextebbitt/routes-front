@@ -1,0 +1,26 @@
+@import "../../../../App.scss";
+.comments {
+  padding-bottom: 12rem;
+  background-color: $lightgreen;
+
+  .button {
+    display: flex;
+    justify-content: center;
+    .reviewBtn {
+      margin: 16px;
+      color: $darkgreen;
+    }
+  }
+
+  .commentbody {
+    padding: 16px;
+
+    .userName {
+      color: $darkgray;
+      font-weight: 600;
+    }
+    .userComment {
+      color: $darkgreen;
+    }
+  }
+}

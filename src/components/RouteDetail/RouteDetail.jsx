@@ -6,9 +6,10 @@ import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
 import "./RouteDetail.scss"
-import { Tabs } from 'antd';
-import { LeftOutlined, StarOutlined, ClockCircleOutlined, HomeOutlined, FlagOutlined } from "@ant-design/icons";
+import { Tabs,Button, Modal } from 'antd';
+import { LeftOutlined, StarOutlined, ClockCircleOutlined, HomeOutlined, FlagOutlined, FullscreenOutlined} from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
+
 
 
 const { TabPane } = Tabs;
@@ -16,11 +17,11 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
   const { route } = useSelector((state) => state.routes);
-  // console.log(route)
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(false);
   const [map, setMap] = useState("/loadingmap.gif");
   const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
 
   const getDetail = async () => {
     setLoadingData(true);
@@ -55,7 +56,12 @@ const RouteDetail = () => {
 
   return (<div className="routeDetail">
     <div className="header">
-      <div className="btn"><Link to="/home"><LeftOutlined className="icon" /></Link></div>
+      <div className="btn">
+        <Link to="/home"><LeftOutlined className="icon" /></Link>
+        </div>
+        <div className="btn2">
+        <FullscreenOutlined className="icon" onClick={() => setVisible(true)}/>
+        </div>
       <div className="picture">
         <div className="gradient"></div>
         <img src={map} alt="map" />
@@ -112,12 +118,26 @@ const RouteDetail = () => {
               <Comments routeId={id} />
             </div>
           </TabPane>
-          <TabPane tab="Mapa" key="4">
+          {/* <TabPane tab="Mapa" key="4">
             <div>
               <RouteMap route={route} />
             </div>
-          </TabPane>
+          </TabPane> */}
         </Tabs>
+        <Modal
+        title="Lugares de Interés"
+        // centered
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+       footer={[]}
+       
+       bodyStyle={{height: 500}}
+      >
+       <div>
+              <RouteMap route={route} />
+            </div>
+      </Modal>
       </div>
     )}
   </div>
