@@ -14,7 +14,7 @@ useEffect(() => {
     notification.error({message: "Error", description: message })
   }
   if (isSuccess) {
-    notification.error({ message: "Exitoso", description: message });
+    notification.success({ message: "Exitoso", description: message });
   }
   dispatch(reset());
 }, [isError, isSuccess, message])
