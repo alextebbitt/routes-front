@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getWishlist } from '../../features/routes/routesSlice';
+import "./LikedRoutes.scss"
 
 const LikedRoutes = () => {
 
@@ -32,18 +33,23 @@ const LikedRoutes = () => {
   }, [page]);
 
   const route = routes.map((r) => (
-    <div key={r._id}>
-      <h3>
+    <div className="route" key={r._id}>
+      <div className="routePicture">
         <Link to={`/route/${r._id}`}>
+        <img
+              src={r.image}
+              alt={r.name} />
           {r.name}
         </Link>
-      </h3>
+        </div>
+        <div className="routeTitle">
       <p>{truncateAfterWord(r.description, 100)}</p>
+      </div>
     </div>
   ));
 
   return (
-    <div>
+    <div className="likedRoutes">
       <h1>LikedRoutes</h1>
       {loading && <div>Loading...</div>}
       {route}
