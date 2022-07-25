@@ -1,1 +1,19 @@
 @import "../../App.scss";
+
+.landing{
+position:relative;
+border:2px solid green;
+    .pictureWall{
+        position:absolute;
+        width: 480px;
+        margin:-40px;
+        display:flex;
+        flex-wrap: wrap;
+        gap:8px;
+        img{
+           border:2px solid red;
+        height:200px;
+        width:140px;
+        }
+    }
+}
