@@ -60,7 +60,7 @@ const RoutesNearBy = () => {
   });
 
   return (<>
-    <h1>RoutesNearBy</h1>
+    <h1>Lugares de interés cercanos</h1>
     {mapCenter.lat && !loading ?
       <MapContainer
         center={[mapCenter.lat, mapCenter.lon]}

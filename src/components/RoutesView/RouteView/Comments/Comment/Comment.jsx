@@ -19,7 +19,7 @@ const UserComment = () => {
           }
           content={<p className="userComment">{comment?.body}</p>}
         />
-        
+
       </div>
     );
   });

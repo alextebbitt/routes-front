@@ -27,7 +27,7 @@ const Comments = ({routeId}) => {
   };
 
   const handleCancel = () => {
-    console.log('Clicked cancel button');
+    // console.log('Clicked cancel button');
     setVisible(false);
   };
 
@@ -49,7 +49,7 @@ const Comments = ({routeId}) => {
       Escribir una valoración
      </button></div>
       <Comment />
-       
+
      <Modal
         title="¿Qué te ha parecido la ruta?"
         visible={visible}
@@ -60,9 +60,9 @@ const Comments = ({routeId}) => {
       >
         <CommentForm visible={visible} setVisible={setVisible} routeId= {routeId} />
       </Modal>
-      
+
       </>
-      
+
       }
     </div>
   );
