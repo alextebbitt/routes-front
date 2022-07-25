@@ -114,7 +114,7 @@ const Profile = () => {
         ) : (
           ""
         )}
-       
+
         <div className="profilePicture">
           <Space>
             <Upload
@@ -195,7 +195,7 @@ const Profile = () => {
         </div>
 
         <Drawer
-          title="Basic Drawer"
+          title="Cuestionario"
           placement={placement}
           closable={true}
           onClose={onClose}
