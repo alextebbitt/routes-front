@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { logout } from "../../features/auth/authSlice";
 import {
-  ThunderboltOutlined,
+  SearchOutlined,
   HomeOutlined,
   CompassOutlined,
   HeartOutlined,
@@ -21,19 +21,19 @@ const Header = () => {
         
             <div className="buttons">
               <div className="icon">
-                <Link to="/home"><HomeOutlined /><div className="iconTitle">Home</div> </Link>        
+                <Link to="/home"><HomeOutlined /><div className="iconTitle">Inicio</div> </Link>        
               </div>
               <div className="icon">
-                <Link to="/routes"><ThunderboltOutlined /><div  className="iconTitle"> Routes</div> </Link>        
+                <Link to="/routes"><SearchOutlined /><div  className="iconTitle"> Buscar</div> </Link>        
               </div>
               <div className="icon">
                 <Link to="/liked"> <HeartOutlined /><div  className="iconTitle">Favs</div> </Link>        
               </div>
               <div className="icon">
-                <Link to="/nearby"> <CompassOutlined /><div  className="iconTitle"> Nearby</div> </Link>        
+                <Link to="/nearby"> <CompassOutlined /><div  className="iconTitle"> Cerca</div> </Link>        
               </div>
               <div className="icon">
-                <Link to="/profile"> <UserOutlined /><div  className="iconTitle">Profile</div> </Link>        
+                <Link to="/profile"> <UserOutlined /><div  className="iconTitle">Perfil</div> </Link>        
               </div>
             </div>
          
