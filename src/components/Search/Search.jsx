@@ -1,3 +1,4 @@
+import "./Search.scss"
 import { Input, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
@@ -14,6 +15,7 @@ const Search = () => {
   const [selectedTopics, setSelectedTopics] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [searching, setSearching] = useState(false);
+  const [isfiltering,setIsFiltering] = useState(false)
   // const { routes, pois } = useSelector(state => state.routes);
   const dispatch = useDispatch();
 
@@ -73,16 +75,21 @@ const Search = () => {
   // ))
 
   return (
-    <div>
+    <div className="search">
       <div>
         <Input placeholder="Buscar" onChange={handleSearchChange} />
       </div>
-      <div style={{ border: "1px solid darkred" }}>
-        <div>
-          Tipo:
+      <div >
+        <div className="filter">
+
+          <div className="filterBtn" onClick={() => setIsFiltering(!isfiltering)}>
+            Filtro
+          </div>
+          {isfiltering?< div className="filter-options"><div className="searchyByType">
+          Tipo de desplazamiento: <br/>
           {kindsData.map(kind => (
             <CheckableTag
-              style={{ border: "1px solid magenta" }}
+             
               key={kind}
               checked={selectedKinds.indexOf(kind) > -1}
               onChange={checked => handleKindChange(kind, checked)}
@@ -92,10 +99,10 @@ const Search = () => {
           ))}
         </div>
         <div>
-          Materia:
+          Temática de la ruta:<br/>
           {topicsData.map(topic => (
             <CheckableTag
-              style={{ border: "1px solid blue" }}
+             
               key={topic}
               checked={selectedTopics.indexOf(topic) > -1}
               onChange={checked => handleTopicChange(topic, checked)}
@@ -103,6 +110,8 @@ const Search = () => {
               {topic}
             </CheckableTag>
           ))}
+        </div></div> :null }
+        
         </div>
       </div>
     </div>

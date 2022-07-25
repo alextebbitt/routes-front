@@ -70,7 +70,7 @@
       .editName {
         font-size: 16px;
         font-weight: 700;
-        color:$darkgreen;
+        color:$blue;
       }
     }
     .profileEmail {
@@ -78,18 +78,19 @@
       color: $darkgray;
     }
     .profileBio{
-        border:2px solid $darkgreen;
+        border:2px solid $blue;
         padding: 16px;
         width:75%;
         margin:0 auto;
-        background-color: $lightgreen;
+        background-color: $lightblue;
         border-radius:16px;
         .editBio{
-          color:$darkgreen;
+          color:$darkblue;
         }
     }
     .logout{
       padding-top:6em;
+      a{color:$darkblue;}
     }
   }
  

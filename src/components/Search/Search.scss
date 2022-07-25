@@ -1,0 +1,39 @@
+@import "./../../App.scss";
+
+
+.search{
+   margin: 16px;
+   .ant-input{
+    border-radius:8px;
+   }
+
+    .ant-tag-checkable,.ant-tag-checkable:not(.ant-tag-checkable-checked):hover{
+        color:$darkgray;
+        font-weight: 600;
+        border:1px solid $darkgray;
+        margin:4px;
+    }
+    .ant-tag-checkable-checked,.ant-tag-checkable:active {
+        color:$lightgreen;
+        background-color:$darkblue!important;
+    }
+   
+   
+    .ant-tag-checkable:not(.ant-tag-checkable-checked):hover{
+        color: $darkgreen;
+    }
+    .filter{
+       
+       
+        margin:8px 0;
+    }
+    .filter-options{
+        background-color: $white;
+        border-radius:6px;
+        padding:8px 16px;
+    
+    }
+    .searchByType{
+        display:block;
+    }
+}

@@ -9,7 +9,7 @@
     background-color: $green;
    padding-bottom:6em;
     .route{
-        border:2px solid blue;
+       
         border: 2px solid $darkgreen;
         padding: 12px;
         
@@ -17,7 +17,7 @@
         border-radius: 8px;
 
         .routePicture{
-            border: 2px solid pink;
+           
             img {
                 width: 320px;
                 height: 180px;
@@ -33,7 +33,7 @@
     }
         }
         .routeTitle{
-            border:2px solid purple;
+        
             margin-top:8px;
             color:$darkgray;
             
