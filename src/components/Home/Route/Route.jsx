@@ -63,7 +63,7 @@ const Route = ({ isLoadingRoutes }) => {
   });
 
   return <div className="container">
-    {route}
+    {route.length ? route : <div className="route" >Ninguna ruta satisface los criterios de búsqueda</div>}
     {isLoadingRoutes &&
       <div className="route" style={{ height: "290px" }}>
         <Skeleton.Image style={{ height: "184px", width: "184px" }} active />

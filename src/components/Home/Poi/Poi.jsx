@@ -5,9 +5,6 @@ import "./Poi.scss"
 
 const Poi = () => {
 
-  // const { routes } = useSelector(state => state.routes)
-  // const poi = routes?.at(-1)?.pois.map(poi => {
-
   const { pois } = useSelector(state => state.routes)
 
   const poi = pois.map(poi => {
@@ -26,14 +23,10 @@ const Poi = () => {
           <div className="poiDescription">
             {truncateAfterWord(poi.description, 135)}
           </div>
-          {/* AÑADIDO ENLACE A LA RUTA, A VER OS PARECE: */}
           <Link to={`/route/${poi.routeId._id}`}>
             <Tag color="geekblue">{poi.routeId.name}</Tag>
           </Link>
-
         </div>
-
-
       </div>
     )
   })

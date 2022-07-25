@@ -6,6 +6,7 @@ import { Skeleton } from "antd";
 import "./Home.scss";
 import Poi from "./Poi/Poi";
 import Route from "./Route/Route";
+import Search from "../Search/Search";
 
 const Home = () => {
 
@@ -53,14 +54,17 @@ const Home = () => {
     <div className="home">
       Home(logo)
       <div>Explora Valencia</div>
-      <div> Ver todas</div>
+      <div>
+        <Search />
+      </div>
+      <h3>Rutas</h3>
       <div className="show-routes" onScroll={handleRoutesScroll}>
         <Route isLoadingRoutes={isLoadingRoutes} />
       </div>
-      <div>Categorías</div>
-      <button>ejemplo1</button>  <button>ejemplo2</button>
-      <div>Lugares que visitar</div>
-      <div> Ver todos</div>
+      {/* <div>Categorías</div>
+      <button>ejemplo1</button>  <button>ejemplo2</button> */}
+      <h3>Lugares que visitar</h3>
+      {/* <div> Ver todos</div> */}
       <div className="show-pois">
         {isLoadingPois ?
           <Skeleton.Image style={{ height: "326px", width: "308px" }} />
