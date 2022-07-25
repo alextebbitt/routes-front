@@ -1,13 +1,24 @@
-import React from 'react'
-import { Button, Form, Input } from "antd";
-import { useDispatch } from 'react-redux';
+import {React, useEffect} from 'react'
+import { Button, Form, Input, notification } from "antd";
+import { useDispatch, useSelector } from 'react-redux';
 import {  useNavigate,Link } from "react-router-dom";
 import { login } from '../../features/auth/authSlice';
 
 const Login = () => {
-
+  const { isError, isSuccess, message} = useSelector((state) => state.auth)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+useEffect(() => {
+  if (isError) {
+    notification.error({message: "Error", description: message })
+  }
+  if (isSuccess) {
+    notification.error({ message: "Exitoso", description: message });
+  }
+  
+}, [isError, isSuccess, message])
+
 
   const onFinish = (values) => {
     dispatch(login(values));
@@ -31,7 +42,12 @@ const Login = () => {
         <Form.Item
           label="Email"
           name="email"
-          rules={[{ required: true, message: "Please input your Email!" }]}
+          rules={[
+            {
+              required: true,
+              message: "¡Por favor introduce su correo electrónico!",
+            },
+          ]}
         >
           <Input />
         </Form.Item>
@@ -39,7 +55,9 @@ const Login = () => {
         <Form.Item
           label="Contraseña"
           name="Contraseña"
-          rules={[{ required: true, message: "Please input your password!" }]}
+          rules={[
+            { required: true, message: "¡Por favor introduce su contraseña!" },
+          ]}
         >
           <Input.Password />
         </Form.Item>

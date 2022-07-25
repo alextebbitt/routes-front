@@ -88,7 +88,13 @@ export const removeFromWishlist = createAsyncThunk("routes/removeFromWishlist",
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    reset: (state) => {
+      state.isError = false;
+      state.isSuccess = false;
+      state.message = "";
+    },
+},
   extraReducers: (builder) => {
     builder
 
@@ -127,7 +133,6 @@ export const authSlice = createSlice({
         state.message = action.payload;
       })
       .addCase(addToWishlist.fulfilled, (state, action) => {
-        // console.log("hey", action.payload)
         state.user.user.wishlist = [...state.user.user.wishlist, action.payload.routeId];
       })
       .addCase(removeFromWishlist.fulfilled, (state, action) => {
