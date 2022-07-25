@@ -9,7 +9,6 @@ const UserComment = () => {
   const { comments } = useSelector((state) => state.comments);
 
   const comment = comments?.map((comment) => {
-    console.log(comments)
     return (
       <div className="commentbody" key={comment.id}>
         <Rate disabled defaultValue={comment.valoration} />
