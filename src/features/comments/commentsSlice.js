@@ -103,16 +103,15 @@ export const commentsSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(getComments.fulfilled, (state, action) => {
-      // console.log(action.payload)
-      // console.log(state.comments)
-      state.comments = action.payload.comments;
-      state.pagination = {
-        total: action.payload.total,
-        page: action.payload.page,
-        maxPages: action.payload.maxPages
-      }
-    })
+    builder
+      .addCase(getComments.fulfilled, (state, action) => {
+        state.comments = action.payload.comments;
+        state.pagination = {
+          total: action.payload.total,
+          page: action.payload.page,
+          maxPages: action.payload.maxPages
+        }
+      })
       .addCase(deleteComment.rejected, (state, action) => {
         state.isError = true
         state.isSuccess = false;
@@ -138,7 +137,7 @@ export const commentsSlice = createSlice({
         state.message = action.payload.message
       })
       .addCase(createComment.fulfilled, (state, action) => {
-        state.comments = [action.payload, ...state.comments];
+        state.comments = [action.payload.comment, ...state.comments];
       })
       .addCase(getUnverifiedComments.fulfilled, (state, action) => {
         state.comments = action.payload.comments;

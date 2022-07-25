@@ -3,7 +3,6 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const getComments = async (data) => {
   const res = await axios.get(`${API_URL}/comments/${data.routeId}?page=${data.page}`);
-  // console.log(res.data)
   return res.data;
 };
 
@@ -14,9 +13,7 @@ const createComment = async (commentData) => {
     commentData,
     { headers: { authorization: user?.token } }
   );
-  // console.log("hello", commentData);
-  return res.data
-
+  return res.data;
 };
 
 const deleteComment = async (id) => {
