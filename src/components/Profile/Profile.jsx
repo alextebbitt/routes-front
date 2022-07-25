@@ -37,7 +37,7 @@ const Profile = () => {
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    notification.success({ message: "logged out successfully" });
+    notification.success({ message: "Se desconectó con éxito" });
     navigate("/login");
   };
   const [isEditable, setIsEditable] = useState(false);
