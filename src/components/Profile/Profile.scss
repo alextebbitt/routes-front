@@ -2,10 +2,34 @@
 
 .profile {
   background-color: $green;
-  text-align: left;
-
+  text-align: center;
+  height:100vh;
   padding: 16px;
+  color:$darkgray;
+  position: relative;
 
+  .anticon{
+    color:$darkgreen;
+  }
+  .btn{
+    width:fit-content;
+    margin: 0 auto;
+
+  }
+  .editbtn{
+    position:absolute;
+    margin:48px;
+    top:0;
+    right:0;
+    border-radius: 100%;
+    border:none;
+    color:$darkgreen;
+    background-color: white;
+    box-shadow: 0px 0px 1px 1px rgba(136, 135, 135, 0.75);
+    .icon{
+      color:$green;
+    }
+  }
   .userProfile {
     padding: 16px;
     border-radius: 16px;
@@ -13,7 +37,10 @@
     background-color: $white;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
+    .admin a{
+      color:$darkgreen;
+    }
 
     .profilePicture {
         
@@ -28,7 +55,7 @@
         width: 140px;
         height: 140px;
       }
-      border: 2px solid red;
+      
 
       img {
         border-radius: 100%;
@@ -38,21 +65,31 @@
       }
     }
     .profileName {
-      border: 2px solid red;
+    
       .editName {
         font-size: 16px;
         font-weight: 700;
+        color:$darkgreen;
       }
     }
     .profileEmail {
-      border: 2px solid blue;
+  
       color: $darkgray;
     }
     .profileBio{
-        border:2px solid turquoise;
-        padding:0 8px;
+        border:2px solid $darkgreen;
+        padding: 16px;
+        width:75%;
+        margin:0 auto;
+        background-color: $lightgreen;
+        border-radius:16px;
+        .editBio{
+          color:$darkgreen;
+        }
     }
   }
+ 
+ 
 }
 
 // Ant-design
