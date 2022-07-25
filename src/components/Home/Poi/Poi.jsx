@@ -24,10 +24,12 @@ const Poi = () => {
             {truncateAfterWord(poi.name, 40)}
           </div>
           <div className="poiDescription">
-          {truncateAfterWord(poi.description, 135)}
+            {truncateAfterWord(poi.description, 135)}
           </div>
           {/* AÑADIDO ENLACE A LA RUTA, A VER OS PARECE: */}
-          <Link to={`/route/${poi.route._id}`}><Tag color="geekblue">{poi.route.name}</Tag></Link>
+          <Link to={`/route/${poi.routeId._id}`}>
+            <Tag color="geekblue">{poi.routeId.name}</Tag>
+          </Link>
 
         </div>
 
