@@ -41,7 +41,7 @@ const LikedRoutes = () => {
               alt={r.name} />
           {r.name}
         </Link>
-        
+
         </div>
         <div className="routeTitle">
       <p>{truncateAfterWord(r.description, 100)}</p>
@@ -51,8 +51,8 @@ const LikedRoutes = () => {
 
   return (
     <div className="likedRoutes">
-      <h1>LikedRoutes</h1>
-      {loading && <div>Loading...</div>}
+      <h1>Lista personal</h1>
+      {loading && <div>Cargando...</div>}
       {route}
     </div>
   )

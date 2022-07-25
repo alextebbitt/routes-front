@@ -41,7 +41,6 @@ const getWishlist = async (page) => {
 }
 
 const getPoisNearBy = async (mapCenter) => {
-  console.log("mapCenter", mapCenter);
   const res = await axios.get(
     `${API_URL}/pois/nearby/${mapCenter.lon}/${mapCenter.lat}`
   );

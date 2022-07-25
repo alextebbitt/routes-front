@@ -10,7 +10,7 @@ const UserComment = () => {
 
   const comment = comments?.map((comment) => {
     return (
-      <div className="commentbody" key={comment.id}>
+      <div className="commentbody" key={comment._id}>
         <Rate disabled defaultValue={comment.valoration} />
         <Comment
           author={<><span className="userName">{comment.userId.name}</span> — <span>{ moment(comment.createdAt).fromNow()}</span></>}
@@ -19,7 +19,7 @@ const UserComment = () => {
           }
           content={<p className="userComment">{comment?.body}</p>}
         />
-        
+
       </div>
     );
   });
