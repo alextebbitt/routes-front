@@ -41,6 +41,7 @@ const LikedRoutes = () => {
               alt={r.name} />
           {r.name}
         </Link>
+        
         </div>
         <div className="routeTitle">
       <p>{truncateAfterWord(r.description, 100)}</p>
