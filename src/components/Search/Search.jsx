@@ -3,6 +3,9 @@ import { Input, Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 // import { Link } from "react-router-dom";
+import {
+  CaretDownOutlined,DownOutlined,UpOutlined
+} from "@ant-design/icons";
 import { searchByName } from '../../features/routes/routesSlice';
 const { CheckableTag } = Tag;
 
@@ -83,7 +86,7 @@ const Search = () => {
         <div className="filter">
 
           <div className="filterBtn" onClick={() => setIsFiltering(!isfiltering)}>
-            Filtro
+            Ver filtros {!isfiltering?<DownOutlined />: <UpOutlined /> }
           </div>
           {isfiltering?< div className="filter-options"><div className="searchyByType">
           Tipo de desplazamiento: <br/>

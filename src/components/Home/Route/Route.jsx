@@ -74,8 +74,8 @@ const Route = ({ isLoadingRoutes }) => {
     {route.length ?
       route
       :
-      <div className="route" style={{ width: "212px", height: "290px" }}>
-        Ninguna ruta satisface los criterios de búsqueda
+      <div className="search route ">
+        Ninguna ruta satisface los criterios de búsqueda. ¡Prueba con otra!
       </div>
     }
     {isLoadingRoutes &&
@@ -83,9 +83,9 @@ const Route = ({ isLoadingRoutes }) => {
         <Skeleton.Image style={{ height: "184px", width: "184px" }} active />
       </div>
     }
-    <div>
+    {route.lenght?<div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>
+    </div>: null}
   </div>;
 };
 export default Route;
