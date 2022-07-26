@@ -131,6 +131,6 @@ Queremos agradecer a nuestro mentor [Germán](https://github.com/GeerDev) por en
 
 ## Autores
 
-### [Xavi Matoses](https://github.com/xavi-mat)
+### [Xavier Matoses](https://github.com/xavi-mat)
 ### [Fran Pérez Durán](https://github.com/franpd8)
 ### [Alex Tebbitt](https://github.com/alextebbitt)

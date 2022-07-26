@@ -131,7 +131,7 @@ We would like to thank our mentor [Germán](https://github.com/GeerDev) for teac
 
 ## Authors
 
-### [Xavi Matoses](https://github.com/xavi-mat)
+### [Xavier Matoses](https://github.com/xavi-mat)
 ### [Fran Pérez Durán](https://github.com/franpd8)
 ### [Alex Tebbitt](https://github.com/alextebbitt)
 
