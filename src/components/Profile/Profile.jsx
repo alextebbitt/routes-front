@@ -192,7 +192,7 @@ const Profile = () => {
         </button>
         <div>
           <p>"Nombre" © 2022 by Alex, Fran y Xavi.</p>
-          <p>Mapas interactivos procedentes de:<br /><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps" target="_blank"> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors.</p>
+          <p>Mapas interactivos procedentes de:<br /><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps" target="_blank" rel="noreferrer"> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors.</p>
         </div>
         <div className="logout">
           <Link to="/" onClick={onLogout}>
