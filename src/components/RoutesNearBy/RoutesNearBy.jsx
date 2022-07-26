@@ -37,6 +37,7 @@ const RoutesNearBy = () => {
       setLoading(false);
     }
   }
+
   useEffect(() => {
     launchGetPoisNearby();
   }, []);
@@ -56,7 +57,6 @@ const RoutesNearBy = () => {
 
   const marker = pois?.map((poi) => {
     return (
-
       <Marker
         key={poi._id}
         position={[poi.latitude, poi.longitude]}>
@@ -70,7 +70,6 @@ const RoutesNearBy = () => {
           </div>
         </Popup>
       </Marker>
-
     );
   });
 

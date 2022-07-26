@@ -21,7 +21,6 @@ import RouteMap from "./RouteMap/RouteMap";
 import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
 
 const { TabPane } = Tabs;
-// const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
 
@@ -29,11 +28,11 @@ const RouteDetail = () => {
   const { route, message, messageType } = useSelector((state) => state.routes);
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(true);
-  // const [staticMap, setStaticMap] = useState("/loadingmap.gif");
-  const dispatch = useDispatch();
-  const [visible, setVisible] = useState(false);
+  const [userPos, setUserPos] = useState({});
   const [wishlisting, setWishlisting] = useState(false);
+  const [visible, setVisible] = useState(false);
   const isAlreadyInWishlist = user.user?.wishlist?.includes(route._id);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleWishlist = async () => {
@@ -51,17 +50,20 @@ const RouteDetail = () => {
     setLoadingData(false);
   };
 
-  // const getStaticMap = async () => {
-  //   const response = await axios(`${API_URL}/routes/map/id/${id}`, {
-  //     responseType: "blob",
-  //   });
-  //   const image = URL.createObjectURL(response.data);
-  //   setStaticMap(image);
-  // };
+  const launchGetPoisNearby = async () => {
+    if (navigator.geolocation) {
+      await navigator.geolocation.getCurrentPosition((pos) => {
+        setUserPos({
+          lat: pos.coords.latitude,
+          lon: pos.coords.longitude,
+        });
+      })
+    }
+  };
 
   useEffect(() => {
     getDetail();
-    // getStaticMap();
+    launchGetPoisNearby();
     // eslint-disable-next-line
   }, [id]);
 
@@ -199,7 +201,7 @@ const RouteDetail = () => {
                   onClick={() => setVisible(false)}
                 />
               </div>
-              <RouteMap route={route} />
+              <RouteMap route={route} userPos={userPos} />
 
           </Modal>
         </div>
