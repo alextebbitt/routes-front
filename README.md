@@ -1,6 +1,6 @@
-#  <center>App de Rutas React Redux</center> 
+#  <center> Routes App React Redux</center> 
 
- ## :bookmark: Index 
+ ## :Bookmark: Index 
 
  - [About the project](#)
 
@@ -12,7 +12,7 @@
 
     - [Source](#)
 
-    - [Objectives](#)
+    - [Organization](#)
 
 - [Challenges presented](#)
 
