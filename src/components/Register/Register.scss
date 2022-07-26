@@ -1,4 +1,59 @@
-.form{
-    border: 2px solid blue;
-    padding: 2rem;
-}
+@import "./../../App.scss";
+
+.register{
+    background-color: $blue;
+    height:100vh;
+    .container{
+        position:relative;
+        width:100%;
+        height: calc(100vh - 400px);
+    
+        .picture{
+           width:100%;
+           height: calc(100vh - 400px);
+       z-index:9999;
+        }
+       
+    }
+       
+    
+    
+        
+        .registerForm{
+            text-align: center;
+            border-radius:32px 32px 0 0 ;
+            padding:32px;
+            background-color: $green;
+            position:absolute;
+            bottom:0;
+            width:100%;
+            color:$white;
+            a{
+                color:$white;
+            }
+            label{
+                font-weight: 700;
+            }
+            .ant-input {
+                padding: 12px 0 12px 16px;
+                border-radius:12px;
+            }
+            .ant-input-affix-wrapper{
+                padding:0;
+                border-radius:12px;
+            }
+            .ant-input-suffix{
+                margin:8px;
+            }
+            .submitbtn{
+                width:100%;
+                background-color: $darkgreen;
+                border:none;
+                height:48px;
+                margin: 12px 0;
+                border-radius:12px;
+                color:$white;
+               
+            }
+        }
+    }

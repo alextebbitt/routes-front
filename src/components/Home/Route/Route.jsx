@@ -85,18 +85,7 @@ const Route = ({ isLoadingRoutes }) => {
         <Skeleton.Image style={{ height: "184px", width: "184px" }} active />
       </div>
     }
-<<<<<<< HEAD
-    {route.lenght?
-     <> 
-     {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
-     <div className="spacer"></div>
-
-    </>: null}
-=======
-    {route.lenght ? <div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div> : null}
->>>>>>> 0b2a5490c5d518087f6d6b4454264652f20305a5
+  
   </div>;
 };
 export default Route;
