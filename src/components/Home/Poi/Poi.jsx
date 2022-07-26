@@ -15,7 +15,7 @@ const Poi = () => {
 
     return (
       <div className="poi" key={poi.id}>
-        <div className="poiPicture"> <img src={picture ? picture : "https://i.imgur.com/KHbcjKa.jpg"} alt={poi.name} /></div>
+        <div className="poiPicture"> <Link to={`/route/${poi.routeId._id}`}> <img src={picture ? picture : "https://i.imgur.com/KHbcjKa.jpg"} alt={poi.name} /> </Link></div>
         <div className="poiInfo">
           <div className="poiTitle">
             {truncateAfterWord(poi.name, 40)}
