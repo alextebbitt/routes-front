@@ -1,13 +1,16 @@
-import { React, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Input, notification } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import "./Login.scss";
+
 const Login = () => {
+
   const { isError, isSuccess, message } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (isError) {
@@ -15,15 +18,15 @@ const Login = () => {
     }
     if (isSuccess) {
       notification.success({ message: message });
+      navigate("/home");
     }
     dispatch(reset());
   }, [isError, isSuccess, message]);
 
-  const onFinish = (values) => {
-    dispatch(login(values));
-    setTimeout(() => {
-      navigate("/home");
-    }, 1000);
+  const onFinish = async (values) => {
+    setLoading(true);
+    await dispatch(login(values));
+    setLoading(false);
   };
 
   return (
@@ -49,7 +52,7 @@ const Login = () => {
             rules={[
               {
                 required: true,
-                message: "¡Por favor introduce su correo electrónico!",
+                message: "Por favor, introduce su correo electrónico",
               },
             ]}
           >
@@ -62,14 +65,14 @@ const Login = () => {
             rules={[
               {
                 required: true,
-                message: "¡Por favor introduce su contraseña!",
+                message: "Por favor, introduce su contraseña",
               },
             ]}
           >
             <Input.Password />
           </Form.Item>
           <Form.Item>
-            <Button className="submitbtn" htmlType="submit">
+            <Button className="submitbtn" htmlType="submit" loading={loading}>
               Enviar
             </Button>
           </Form.Item>

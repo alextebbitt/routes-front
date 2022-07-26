@@ -32,7 +32,6 @@ const Admin = () => {
     await dispatch(adminDelete(id));
   }
 
-
   const comment = comments.map(comment => {
     return (
       <div key={comment._id}>
