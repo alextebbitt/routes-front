@@ -14,21 +14,35 @@ import {
   HomeOutlined,
   FlagOutlined,
   FullscreenOutlined,
-  FullscreenExitOutlined
+  FullscreenExitOutlined,
+  HeartOutlined, HeartFilled 
 } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
+import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
 
 const { TabPane } = Tabs;
 const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
   const { route } = useSelector((state) => state.routes);
+  const { user } = useSelector((state) => state.auth);
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(false);
   const [map, setMap] = useState("/loadingmap.gif");
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+  const [wishlisting, setWishlisting] = useState(false);
+  const isAlreadyInWishlist = user.user?.wishlist?.includes(route._id);
 
+  const handleWishlist = async () => {
+    setWishlisting(true);
+    if (isAlreadyInWishlist) {
+      await dispatch(removeFromWishlist(route._id));
+    } else {
+      await dispatch(addToWishlist(route._id));
+    }
+    setWishlisting(false);
+  }
   const getDetail = async () => {
     setLoadingData(true);
     await dispatch(getRouteById(id));
@@ -51,14 +65,14 @@ const RouteDetail = () => {
 
   const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
 
-  const tag = route.tags?.map((tag, i) => (
-    <>
-      <Link key={tag + i} to={`/tag/${tag}`}>
-        {tag}
-      </Link>
-      &nbsp;&nbsp;
-    </>
-  ));
+  // const tag = route.tags?.map((tag, i) => (
+  //   <>
+  //     <Link key={tag + i} to={`/tag/${tag}`}>
+  //       {tag}
+  //     </Link>
+  //     &nbsp;&nbsp;
+  //   </>
+  // ));
 
   return (
     <div className="routeDetail">
@@ -76,6 +90,15 @@ const RouteDetail = () => {
                 onClick={() => setVisible(true)}
               />
             </div>
+            <Button className="btn3"
+          icon={
+            isAlreadyInWishlist ?
+             <HeartFilled className="icon" /> 
+             : 
+             <HeartOutlined className="icon" />}
+          onClick={handleWishlist}
+          loading={wishlisting}
+        />
           </div>
           {/* <img src={map} alt="map" /> */}
           {route.pois && (

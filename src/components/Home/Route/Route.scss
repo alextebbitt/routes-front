@@ -10,6 +10,11 @@
 
     background-color: $white;
     border-radius: 8px;
+    .ant-btn:hover, .ant-btn:focus {
+      color: $green;
+      border-color: $green;
+      background: #fff;
+  }
 
     .routePicture {
       border: 2px solid white;

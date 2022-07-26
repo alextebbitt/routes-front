@@ -80,7 +80,7 @@
       }
     }
 
-    .btn2 {
+    .btn2,.btn3 {
       position: absolute;
       right: 0;
       z-index: 99;
@@ -104,6 +104,27 @@
         transform: translateY(-50%);
       }
     }
+    .btn3{
+        bottom:0;
+        margin: 32px 16px;
+        .icon {
+            color: $green;
+            margin: -4px auto 0;
+            font-size: 18px;
+            border-radius: 100%;
+            position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+          }
+    }
+    .ant-btn:hover, .ant-btn:focus {
+        color: $green;
+        border-color: $green;
+        background: #fff;
+    }
+
     .picture {
       .gradient {
         position: absolute;
