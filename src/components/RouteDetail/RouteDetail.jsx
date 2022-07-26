@@ -5,13 +5,8 @@ import { getRouteById, resetRoutesMessage } from "../../features/routes/routesSl
 // import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
-<<<<<<< HEAD
-import "./RouteDetail.scss"
-import { Tabs, Button, Modal, notification } from 'antd';
-import { LeftOutlined, StarOutlined, ClockCircleOutlined, HomeOutlined, FlagOutlined, FullscreenOutlined } from "@ant-design/icons";
-=======
 import "./RouteDetail.scss";
-import { Tabs, Button, Modal } from "antd";
+import { Tabs, Button, Modal, notification } from "antd";
 import {
   LeftOutlined,
   StarOutlined,
@@ -21,7 +16,6 @@ import {
   FullscreenOutlined,
   FullscreenExitOutlined
 } from "@ant-design/icons";
->>>>>>> develop
 import RouteMap from "./RouteMap/RouteMap";
 
 const { TabPane } = Tabs;
@@ -69,14 +63,14 @@ const RouteDetail = () => {
 
   const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
 
-  const tag = route.tags?.map((tag, i) => (
-    <>
-      <Link key={tag + i} to={`/tag/${tag}`}>
-        {tag}
-      </Link>
-      &nbsp;&nbsp;
-    </>
-  ));
+  // const tag = route.tags?.map((tag, i) => (
+  //   <>
+  //     <Link key={tag + i} to={`/tag/${tag}`}>
+  //       {tag}
+  //     </Link>
+  //     &nbsp;&nbsp;
+  //   </>
+  // ));
 
   return (
     <div className="routeDetail">
@@ -102,13 +96,10 @@ const RouteDetail = () => {
 
           {/* <img src={route.image} alt={route.name} /> */}
         </div>
-<<<<<<< HEAD
         {/* <img src={staticMap} alt="staticMap" /> */}
-        {route.pois && <RouteMap route={route} height="320px" zoomControl={false} />}
+        {/* {route.pois && <RouteMap route={route} height="320px" zoomControl={false} />} */}
 
         {/* <img src={route.image} alt={route.name} /> */}
-=======
->>>>>>> develop
       </div>
       {loadingData || !route._id ? (
         <h1>LoadingData...</h1>
@@ -178,7 +169,7 @@ const RouteDetail = () => {
             footer={[]}
             bodyStyle={{ height: 500 }}
           >
-          
+
               <div className="btn">
                 <FullscreenExitOutlined
                   className="icon"
@@ -186,7 +177,7 @@ const RouteDetail = () => {
                 />
               </div>
               <RouteMap route={route} />
-            
+
           </Modal>
         </div>
       )}
