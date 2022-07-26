@@ -113,14 +113,14 @@ To organize the tasks we have used the application [Trello](https://trello.com/)
 
 ## Challenges presented
 
-This was an incredibly difficult project, given that we did not know about React a few weeks ago. It has been a steep learning curve, but I am still motivated to continue learning and gettting better.  
+This was an incredibly difficult project, given that we did not know about React a few weeks ago. It has been a steep learning curve. In little more than a week we have created a backend and frontend mobile first app. There has been many challenges along the way, but I am still motivated to continue learning and gettting better.  
 
 
 ## Things we would have liked to have added
 
-- 
+- Back: Testing (jest) 
 
-- 
+- Front: Testing (cypres?) (extra)
 
 - 
 
