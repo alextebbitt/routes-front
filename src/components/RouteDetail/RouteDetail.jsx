@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { getRouteById } from "../../features/routes/routesSlice";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { getRouteById, resetRoutesMessage } from "../../features/routes/routesSlice";
 // import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
 import "./RouteDetail.scss"
-import { Tabs, Button, Modal } from 'antd';
+import { Tabs, Button, Modal, notification } from 'antd';
 import { LeftOutlined, StarOutlined, ClockCircleOutlined, HomeOutlined, FlagOutlined, FullscreenOutlined } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
 
@@ -14,12 +14,14 @@ const { TabPane } = Tabs;
 // const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
-  const { route } = useSelector((state) => state.routes);
+
+  const { route, message, messageType } = useSelector((state) => state.routes);
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(false);
   // const [staticMap, setStaticMap] = useState("/loadingmap.gif");
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+  const navigate = useNavigate();
 
   const getDetail = async () => {
     setLoadingData(true);
@@ -40,6 +42,16 @@ const RouteDetail = () => {
     // getStaticMap();
     // eslint-disable-next-line
   }, [id]);
+
+  useEffect(() => {
+    if (messageType) {
+      if (messageType === "error") {
+        notification.error({ message });
+        navigate("/home");
+      }
+      dispatch(resetRoutesMessage());
+    }
+  }, [messageType])
 
   const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
 
@@ -70,7 +82,7 @@ const RouteDetail = () => {
           </div>
         </div>
         {/* <img src={staticMap} alt="staticMap" /> */}
-        {route.pois && <RouteMap route={route} height="320px" zoomControl={false}/>}
+        {route.pois && <RouteMap route={route} height="320px" zoomControl={false} />}
 
         {/* <img src={route.image} alt={route.name} /> */}
       </div>
