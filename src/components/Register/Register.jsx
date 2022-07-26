@@ -129,7 +129,7 @@ const Register = () => {
           </Checkbox>
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" loading={sending}>
             Registrarme
           </Button>
         </Form.Item>

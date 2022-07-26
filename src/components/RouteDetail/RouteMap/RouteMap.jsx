@@ -1,20 +1,20 @@
 import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-// import L from 'leaflet';
+import L from 'leaflet';
 
 const RouteMap = ({ route, height="100vh", zoomControl=true }) => {
 
   const [content, setContent] = useState('');
 
-  // const myIcon = L.icon({
-  //   iconUrl: '/map-pointer.svg',
-  //   iconSize: [38, 95],
-  //   iconAnchor: [22, 94],
-  //   popupAnchor: [-3, -76],
-  //   shadowUrl: null, //'/my-icon-shadow.svg',
-  //   shadowSize: null, //[68, 95],
-  //   shadowAnchor: null, //[22, 94]
-  // });
+  const centerIcon = L.icon({
+    iconUrl: '/circle.svg',
+    iconSize: [38, 38],
+    iconAnchor: [19, 19],
+    popupAnchor: null, //[-3, -76],
+    shadowUrl: null, //'/my-icon-shadow.svg',
+    shadowSize: null, //[68, 95],
+    shadowAnchor: null, //[22, 94]
+  });
 
   const marker = route.pois.map((poi) => {
     return (

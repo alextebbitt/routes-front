@@ -28,7 +28,7 @@ const RouteDetail = () => {
   const { user } = useSelector((state) => state.auth);
   const { route, message, messageType } = useSelector((state) => state.routes);
   const { id } = useParams();
-  const [loadingData, setLoadingData] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
   // const [staticMap, setStaticMap] = useState("/loadingmap.gif");
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
@@ -113,7 +113,7 @@ const RouteDetail = () => {
         />
           </div>
           {/* <img src={map} alt="map" /> */}
-          {route.pois && (
+          {route.pois && !loadingData && (
             <RouteMap route={route} height="320px" zoomControl={false} />
           )}
 
