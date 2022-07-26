@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { register, reset } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
+import "./Register.scss"
+import Video from "../Video/Video";
 
 const Register = () => {
   const { isError, isSuccess, message } = useSelector((state) => state.auth);
@@ -31,8 +33,15 @@ const Register = () => {
   };
 
   return (
-    <>
-      <img src="" height="80px" alt="logo"></img>
+    <div className="register">
+
+      <div className="container">
+        <div className="picture">
+<Video/>
+        </div>
+
+      </div>
+      <div className="registerForm">
       <Form
         className="form"
         form={form}
@@ -110,7 +119,7 @@ const Register = () => {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           name="agreement"
           valuePropName="checked"
           rules={[
@@ -127,17 +136,18 @@ const Register = () => {
           <Checkbox>
             He leído los <a href="">Términos y condiciones</a>
           </Checkbox>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item>
-          <Button type="primary" htmlType="submit" loading={sending}>
-            Registrarme
+          <Button  className="submitbtn" htmlType="submit" loading={sending}>
+            Crear cuenta
           </Button>
         </Form.Item>
       </Form>
       <span>
-        ¿Ya tienes cuenta?<Link to="/login">Conéctate</Link>
+        ¿Ya tienes cuenta?<Link to="/login"> Conéctate</Link>
       </span>
-    </>
+      </div>
+    </div>
   );
 };
 
