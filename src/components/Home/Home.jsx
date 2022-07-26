@@ -12,7 +12,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
   const { paginationData } = useSelector((state) => state.routes);
-  const [isLoadingRoutes, setIsLoadingRoutes] = useState(false);
+  const [isLoadingRoutes, setIsLoadingRoutes] = useState(true);
   const [isLoadingPois, setIsLoadingPois] = useState(false);
   const [routesPage, setRoutesPage] = useState(1);
 
