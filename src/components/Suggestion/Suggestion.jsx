@@ -22,8 +22,8 @@ const Suggestion = () => {
   }, [])
 
   return (<>
-    <div className="likedRoutes">
-      <h1>Idea</h1>
+    <div className="recommendedRoutes">
+      <h1>Descubrir</h1>
       {loading && <div>Cargando...</div>}
       {needQuestionnaire && !route._id &&
         <div className="route">

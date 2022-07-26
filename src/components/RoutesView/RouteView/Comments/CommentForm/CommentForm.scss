@@ -1,8 +1,7 @@
 @import "../../../../../App.scss";
 
 .modalBox{
-
-
+    padding:24px;
 
 .form {
        display: flex; 
@@ -17,9 +16,18 @@
         background-color: $darkgreen;
         border-radius:16px;
 
-
+        
        }
     
+}
+.valorarbtn{
+    width:100%;
+    background-color: $darkgreen;
+    border:none;
+    height:56px;
+    margin: 16px 0;
+    border-radius:12px;
+
 }
 .button:hover{
     background-color: green;

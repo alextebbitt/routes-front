@@ -52,7 +52,7 @@ const LikedRoutes = () => {
 
   return (
     <div className="likedRoutes">
-      <h1>Lista de deseos</h1>
+      <h1>Tus rutas favoritas</h1>
       {loading ? <div>Cargando...</div> : null}
       {route}
       {route.length === 0 && !loading && <div>No tienes rutas en tu lista de deseos</div>}
