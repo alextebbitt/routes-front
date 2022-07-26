@@ -16,7 +16,7 @@ const Register = () => {
       notification.error({ message: "Error", description: message });
     }
     if (isSuccess) {
-      notification.success({ message: "Con éxito", description: message });
+      notification.success({ message: message });
       setTimeout(() => {
         navigate("/login");
       }, 2000);
