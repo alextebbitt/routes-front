@@ -6,6 +6,7 @@ const initialState = {
   paginationData: {},
   route: {},
   message: "",
+  messageType: null,
   pois: [],
   needQuestionnaire: false,
 };
@@ -111,8 +112,9 @@ export const routesSlice = createSlice({
   name: "routes",
   initialState,
   reducers: {
-    resetMessage: (state) => {
+    resetRoutesMessage: (state) => {
       state.message = "";
+      state.messageType = null;
     }
   },
   extraReducers: (builder) => {
@@ -131,7 +133,7 @@ export const routesSlice = createSlice({
       })
       .addCase(getRoutes.rejected, (state, action) => {
         state.routes = [];
-        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
+        console.info(action.payload.message); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
       .addCase(getRouteById.fulfilled, (state, action) => {
@@ -139,8 +141,12 @@ export const routesSlice = createSlice({
       })
       .addCase(getRouteById.rejected, (state, action) => {
         state.route = {};
-        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
-        state.message = action.payload.message;
+        if (action.payload.message === "Route not found") {
+          state.message = "Ha sido imposible encontrar la ruta";
+        } else {
+          state.message = action.payload.message;
+        }
+        state.messageType = "error";
       })
       .addCase(getRoutesByTag.fulfilled, (state, action) => {
         state.routes = action.payload.routes;
@@ -152,7 +158,7 @@ export const routesSlice = createSlice({
       })
       .addCase(getRoutesByTag.rejected, (state, action) => {
         state.routes = [];
-        console.info(action.payload.error); // TODO: Delete this line when error managment is implemented
+        console.info(action.payload.message); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
       .addCase(searchByName.fulfilled, (state, action) => {
@@ -202,7 +208,7 @@ export const routesSlice = createSlice({
         state.message = action.payload.message;
       })
       .addCase(getRecommendation.fulfilled, (state, action) => {
-        state.needQuestionnaire = action.payload.message === "Need questionnaire";
+        state.needQuestionnaire = action.payload.message === "Es necesario rellenar el cuestionario";
         state.route = action.payload.route;
       })
       .addCase(getRecommendation.rejected, (state, action) => {
@@ -213,4 +219,5 @@ export const routesSlice = createSlice({
   }
 });
 
+export const {resetRoutesMessage} = routesSlice.actions;
 export default routesSlice.reducer;

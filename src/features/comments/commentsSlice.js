@@ -96,7 +96,7 @@ export const commentsSlice = createSlice({
   name: "comments",
   initialState,
   reducers: {
-    resetMessage: (state) => {
+    resetRoutesMessage: (state) => {
       state.message = "";
       state.isSuccess = false;
       state.isError = false;

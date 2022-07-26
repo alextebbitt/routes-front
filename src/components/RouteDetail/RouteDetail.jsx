@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { getRouteById } from "../../features/routes/routesSlice";
-import axios from "axios";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { getRouteById, resetRoutesMessage } from "../../features/routes/routesSlice";
+// import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
 import "./RouteDetail.scss";
-import { Tabs, Button, Modal } from "antd";
+import { Tabs, Button, Modal, notification } from "antd";
 import {
   LeftOutlined,
   StarOutlined,
@@ -21,18 +21,19 @@ import RouteMap from "./RouteMap/RouteMap";
 import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
 
 const { TabPane } = Tabs;
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
-  const { route } = useSelector((state) => state.routes);
   const { user } = useSelector((state) => state.auth);
+  const { route, message, messageType } = useSelector((state) => state.routes);
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(false);
-  const [map, setMap] = useState("/loadingmap.gif");
+  // const [staticMap, setStaticMap] = useState("/loadingmap.gif");
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [wishlisting, setWishlisting] = useState(false);
   const isAlreadyInWishlist = user.user?.wishlist?.includes(route._id);
+  const navigate = useNavigate();
 
   const handleWishlist = async () => {
     setWishlisting(true);
@@ -49,19 +50,29 @@ const RouteDetail = () => {
     setLoadingData(false);
   };
 
-  const getMap = async () => {
-    const response = await axios(`${API_URL}/routes/map/id/${id}`, {
-      responseType: "blob",
-    });
-    const image = URL.createObjectURL(response.data);
-    setMap(image);
-  };
+  // const getStaticMap = async () => {
+  //   const response = await axios(`${API_URL}/routes/map/id/${id}`, {
+  //     responseType: "blob",
+  //   });
+  //   const image = URL.createObjectURL(response.data);
+  //   setStaticMap(image);
+  // };
 
   useEffect(() => {
     getDetail();
-    getMap();
+    // getStaticMap();
     // eslint-disable-next-line
   }, [id]);
+
+  useEffect(() => {
+    if (messageType) {
+      if (messageType === "error") {
+        notification.error({ message });
+        navigate("/home");
+      }
+      dispatch(resetRoutesMessage());
+    }
+  }, [messageType])
 
   const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
 
@@ -107,6 +118,10 @@ const RouteDetail = () => {
 
           {/* <img src={route.image} alt={route.name} /> */}
         </div>
+        {/* <img src={staticMap} alt="staticMap" /> */}
+        {/* {route.pois && <RouteMap route={route} height="320px" zoomControl={false} />} */}
+
+        {/* <img src={route.image} alt={route.name} /> */}
       </div>
       {loadingData || !route._id ? (
         <h1>LoadingData...</h1>
@@ -176,7 +191,7 @@ const RouteDetail = () => {
             footer={[]}
             bodyStyle={{ height: 500 }}
           >
-          
+
               <div className="btn">
                 <FullscreenExitOutlined
                   className="icon"
@@ -184,7 +199,7 @@ const RouteDetail = () => {
                 />
               </div>
               <RouteMap route={route} />
-            
+
           </Modal>
         </div>
       )}
