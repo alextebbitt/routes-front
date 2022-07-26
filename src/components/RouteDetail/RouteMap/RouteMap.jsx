@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 // import L from 'leaflet';
 
-const RouteMap = ({ route, height="580px", zoomControl=true }) => {
+const RouteMap = ({ route, height="100vh", zoomControl=true }) => {
 
   const [content, setContent] = useState('');
 

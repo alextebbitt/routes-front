@@ -44,6 +44,7 @@ const CommentForm = ({ routeId, visible, setVisible }) => {
           <TextArea rows={6} placeholder={"Cuéntanos cómo te ha ido, qué te ha gustado más... si has tenido algún percance mientras visitabas los puntos de interés..."} />
         </Form.Item>
         <Form.Item
+<<<<<<< HEAD
           name="valoration"
           label="Puntuación"
           required={true}>
@@ -51,6 +52,11 @@ const CommentForm = ({ routeId, visible, setVisible }) => {
         </Form.Item>
         <Form.Item wrapperCol={{ offset: 8, span: 16, }}>
           <Button type="primary" htmlType="submit" loading={loading}>
+=======
+
+        >
+          <Button className="valorarbtn" htmlType="submit" loading={loading}>
+>>>>>>> develop
             Enviar Valoración
           </Button>
         </Form.Item>
