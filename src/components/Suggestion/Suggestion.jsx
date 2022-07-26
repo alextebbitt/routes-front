@@ -35,7 +35,7 @@ const Suggestion = () => {
           opcional "Preferencias de rutas" en tu perfil.</p>
         <Link to="/profile">Ir al perfil</Link>
       </div>}
-      {route._id &&
+      {route._id && !loading &&
         <>
           <p>Pensamos que te puede interesar esta ruta.</p>
           <div className="route">
@@ -53,7 +53,7 @@ const Suggestion = () => {
             </div>
             <button><Link to={`/route/${route._id}`}>Ir a la ruta</Link></button>
           </div>
-          
+
         </>
       }
     </div>
