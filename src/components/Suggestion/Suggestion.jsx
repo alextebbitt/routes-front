@@ -16,6 +16,10 @@ const Suggestion = () => {
     setLoading(false);
   }
 
+  const truncateAfterWord = (str, chars, placeholder = '...') => str.length < chars ? str : `${str.substr(0, str.substr(0, chars - placeholder.length).lastIndexOf(" "))}${placeholder}`;
+
+
+
   useEffect(() => {
     launchGetRecommendation();
     // eslint-disable-next-line
@@ -45,9 +49,11 @@ const Suggestion = () => {
               </Link>
             </div>
             <div className="routeTitle">
-              <p>{route.description}</p>
+              <p> {truncateAfterWord(route.description, 420)}</p>
             </div>
+            <button><Link to={`/route/${route._id}`}>Ir a la ruta</Link></button>
           </div>
+          
         </>
       }
     </div>
