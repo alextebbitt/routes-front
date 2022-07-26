@@ -56,7 +56,9 @@
         width: 140px;
         height: 140px;
       }
-      
+      .ant-btn-primary{
+        background-color: $darkblue;
+      }
 
       img {
         border-radius: 100%;
@@ -89,7 +91,7 @@
         }
     }
     .logout{
-      padding-top:6em;
+  
       a{color:$darkblue;}
     }
   }
