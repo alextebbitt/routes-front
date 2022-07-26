@@ -47,6 +47,7 @@ const LikedRoutes = () => {
       <div className="routeTitle">
         <p>{truncateAfterWord(r.description, 100)}</p>
       </div>
+      {/* <button><Link to={`/route/${r._id}`}>Ir a la ruta</Link></button> */}
     </div>
   ));
 
