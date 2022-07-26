@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { getPoisNearBy } from '../../features/routes/routesSlice';
 import "./RoutesNearBy.scss";
 import L from 'leaflet';
+import BigSpin from '../BigSpin/BigSpin';
 
 const RoutesNearBy = () => {
 
@@ -93,7 +94,7 @@ const RoutesNearBy = () => {
         {marker}
       </MapContainer>
       :
-      <div>Cargando...</div>
+      <BigSpin />
     }
   </div>)
 }

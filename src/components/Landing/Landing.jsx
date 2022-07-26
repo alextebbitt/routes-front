@@ -2,7 +2,9 @@ import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Landing.scss";
 import { Button } from 'antd';
+
 const Landing = () => {
+
   return (
     <div className="landing">
       Landing
@@ -32,11 +34,11 @@ const Landing = () => {
         <div className="welcome-text">
           <h2>Bienvenido a "Nombre"</h2>
           <p> Tu nueva app para descubrir rutas por Valencia.</p>
-          </div>
+        </div>
 
         <div className="access">
-<button className="registerbtn"><Link to="/register">Regístrate</Link></button>
-         <div className="loginbtn"> <Link to="/login">¿Ya tienes cuenta? Accede aquí.</Link></div>
+          <button className="registerbtn"><Link to="/register">Regístrate</Link></button>
+          <div className="loginbtn"> <Link to="/login">¿Ya tienes cuenta? Accede aquí.</Link></div>
         </div>
       </div>
     </div>

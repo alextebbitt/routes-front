@@ -4,6 +4,7 @@ import { getRoutes } from "../../features/routes/routesSlice";
 import RouteView from "./RouteView/RouteView";
 import "./RoutesView.scss"
 import Search from "../Search/Search";
+import BigSpin from "../BigSpin/BigSpin";
 const RoutesView = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,7 @@ const RoutesView = () => {
     <div>
       <h1>Vista de rutas</h1>
       {isLoading ? (
-        <h2>Cargando...</h2>
+        <BigSpin />
       ) : (
         <>
           {/*

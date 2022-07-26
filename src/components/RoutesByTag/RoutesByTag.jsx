@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 import { getRoutesByTag } from "../../features/routes/routesSlice";
+import BigSpin from "../BigSpin/BigSpin";
 import RouteView from "../RoutesView/RouteView/RouteView";
 
 const RoutesByTag = () => {
@@ -26,7 +27,7 @@ const RoutesByTag = () => {
     <div>
       <h1>Rutas por etiquetas: {tag}</h1>
       {isLoading ?
-        <h2>Cargando...</h2>
+        <BigSpin />
         :
         <RouteView />
       }

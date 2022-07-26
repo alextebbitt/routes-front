@@ -19,6 +19,7 @@ import {
 } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
 import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
+import BigSpin from "../BigSpin/BigSpin";
 
 const { TabPane } = Tabs;
 
@@ -105,17 +106,17 @@ const RouteDetail = () => {
               />
             </div>
             <Button className="btn3"
-          icon={
-            isAlreadyInWishlist ?
-             <HeartFilled className="icon" />
-             :
-             <HeartOutlined className="icon" />}
-          onClick={handleWishlist}
-          loading={wishlisting}
-        />
+              icon={
+                isAlreadyInWishlist ?
+                  <HeartFilled className="icon" />
+                  :
+                  <HeartOutlined className="icon" />}
+              onClick={handleWishlist}
+              loading={wishlisting}
+            />
           </div>
           {/* <img src={map} alt="map" /> */}
-          {route.pois && !loadingData && (
+          {route.pois && (
             <RouteMap route={route} height="320px" zoomControl={false} />
           )}
 
@@ -126,9 +127,7 @@ const RouteDetail = () => {
 
         {/* <img src={route.image} alt={route.name} /> */}
       </div>
-      {loadingData || !route._id ? (
-        <h1>LoadingData...</h1>
-      ) : (
+      {route._id && (
         <div>
           {/* <div className="routePicture">
             <img src={route.image} alt={route.name} /></div> */}
@@ -195,17 +194,18 @@ const RouteDetail = () => {
             bodyStyle={{ height: 500 }}
           >
 
-              <div className="btn">
-                <FullscreenExitOutlined
-                  className="icon"
-                  onClick={() => setVisible(false)}
-                />
-              </div>
-              <RouteMap route={route} userPos={userPos} />
+            <div className="btn">
+              <FullscreenExitOutlined
+                className="icon"
+                onClick={() => setVisible(false)}
+              />
+            </div>
+            <RouteMap route={route} userPos={userPos} />
 
           </Modal>
         </div>
       )}
+      {loadingData && <BigSpin />}
     </div>
   );
 };

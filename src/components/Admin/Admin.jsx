@@ -7,6 +7,7 @@ import {
   getUnverifiedComments,
   validateComment
 } from '../../features/comments/commentsSlice';
+import BigSpin from '../BigSpin/BigSpin';
 
 const Admin = () => {
 
@@ -70,8 +71,13 @@ const Admin = () => {
     <div style={{ marginBottom: "80px" }}>
       <h1>Administración</h1>
       <div>
-        {loading ? <div>Cargando...</div> :
-          comment.length ? comment : <div>No hay comentarios para moderar</div>
+        {loading ?
+          <BigSpin />
+          :
+          comment.length ?
+            comment
+            :
+            <div>No hay comentarios para moderar</div>
         }
       </div>
     </div>
