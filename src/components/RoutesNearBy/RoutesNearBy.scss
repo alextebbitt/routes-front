@@ -1,0 +1,12 @@
+@import "./../../App.scss";
+
+.nearby{
+
+    .map{
+       height:90vh;
+       .leaflet-bottom{
+        display:none;
+       }
+    }
+
+}

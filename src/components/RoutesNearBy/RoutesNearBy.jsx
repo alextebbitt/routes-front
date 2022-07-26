@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getPoisNearBy } from '../../features/routes/routesSlice';
-
+import "./RoutesNearBy.scss"
 const RoutesNearBy = () => {
 
   const { pois } = useSelector(state => state.routes);
@@ -43,10 +43,11 @@ const RoutesNearBy = () => {
 
   const marker = pois?.map((poi) => {
     return (
+      
       <Marker
         key={poi._id}
         position={[poi.latitude, poi.longitude]}>
-        <Popup className="pop2">
+        <Popup >
           <div className="pop">
             <h3>{poi.name}</h3>
             <p>{truncateAfterWord(poi.description, 300)}</p>
@@ -56,18 +57,19 @@ const RoutesNearBy = () => {
           </div>
         </Popup>
       </Marker>
+      
     );
   });
 
-  return (<>
+  return (<div className="nearby">
     <h1>Lugares de interés cercanos</h1>
     {mapCenter.lat && !loading ?
-      <MapContainer
+      <MapContainer className="map"
         center={[mapCenter.lat, mapCenter.lon]}
         zoom={17}
-        scrollWheelZoom={false}
-        style={{ height: "80vh" }}>
+        scrollWheelZoom={false}>
         <TileLayer
+        className="copyright"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
@@ -76,7 +78,7 @@ const RoutesNearBy = () => {
       :
       <div>Cargando...</div>
     }
-  </>)
+  </div>)
 }
 
 export default RoutesNearBy;
