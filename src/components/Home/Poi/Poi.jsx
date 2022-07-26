@@ -34,7 +34,10 @@ const Poi = () => {
   return (
     <div>
       <div className="container">
-        {poi}
+        {poi.length ?
+          poi :
+          <div>Ningún punto de interés satisface la búsqueda</div>
+        }
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ import {
   FlagOutlined,
   FullscreenOutlined,
   FullscreenExitOutlined,
-  HeartOutlined, HeartFilled 
+  HeartOutlined, HeartFilled
 } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
 import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
@@ -24,6 +24,7 @@ const { TabPane } = Tabs;
 // const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
+
   const { user } = useSelector((state) => state.auth);
   const { route, message, messageType } = useSelector((state) => state.routes);
   const { id } = useParams();
@@ -104,8 +105,8 @@ const RouteDetail = () => {
             <Button className="btn3"
           icon={
             isAlreadyInWishlist ?
-             <HeartFilled className="icon" /> 
-             : 
+             <HeartFilled className="icon" />
+             :
              <HeartOutlined className="icon" />}
           onClick={handleWishlist}
           loading={wishlisting}
@@ -133,8 +134,8 @@ const RouteDetail = () => {
             <div className="name">{route.name}</div>
             <div className="rating">
               <StarOutlined className="icon" />{" "}
-              <span className="value">4.5</span>
-              <div className="reviews"> 12 reviews</div>
+              <span className="value">{route.average}</span>
+              <div className="reviews"> {route.total} reviews</div>
             </div>
           </div>
           <div className="routeInfo">

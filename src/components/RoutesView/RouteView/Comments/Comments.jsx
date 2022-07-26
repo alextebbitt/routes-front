@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { MessageOutlined } from "@ant-design/icons";
 
 const Comments = ({ routeId }) => {
+
   const { isLoading } = useSelector((state) => state.comments);
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -36,7 +37,6 @@ const Comments = ({ routeId }) => {
 
   const getAllComments = async () => {
     await dispatch(getComments({ routeId, page: 1 }));
-
   };
 
   useEffect(() => {
