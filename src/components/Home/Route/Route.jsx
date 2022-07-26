@@ -72,7 +72,7 @@ const Route = ({ isLoadingRoutes }) => {
 
   return <div className="container">
     {route.length ?
-      route
+      <>{route} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>
       :
       <div className="search route ">
         Ninguna ruta satisface los criterios de búsqueda. ¡Prueba con otra!
@@ -83,9 +83,12 @@ const Route = ({ isLoadingRoutes }) => {
         <Skeleton.Image style={{ height: "184px", width: "184px" }} active />
       </div>
     }
-    {route.lenght?<div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    </div>: null}
+    {route.lenght?
+     <> 
+     {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
+     <div className="spacer"></div>
+
+    </>: null}
   </div>;
 };
 export default Route;
