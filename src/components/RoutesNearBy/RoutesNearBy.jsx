@@ -23,7 +23,6 @@ const RoutesNearBy = () => {
       })
     }
   }
-
   useEffect(() => {
     launchGetPoisNearby();
   }, []);
