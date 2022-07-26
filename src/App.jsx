@@ -20,6 +20,7 @@ import RoutesNearBy from "./components/RoutesNearBy/RoutesNearBy";
 import LandingZone from "./guards/LandingZone";
 import Suggestion from "./components/Suggestion/Suggestion";
 
+
 function App() {
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
           <Route path="/home" element={<PrivateZone><Home /></PrivateZone>} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+         
           <Route
             path="/profile"
             element={<PrivateZone><Profile /></PrivateZone>}

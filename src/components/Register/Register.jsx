@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import { register, reset } from "../../features/auth/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import "./Register.scss"
+import Video from "../Video/Video";
 
 const Register = () => {
   const { isError, isSuccess, message } = useSelector((state) => state.auth);
@@ -36,7 +37,7 @@ const Register = () => {
       
       <div className="container">
         <div className="picture">
-
+<Video/>
         </div>
        
       </div>
