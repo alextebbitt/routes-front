@@ -24,8 +24,20 @@
     }
     .filter{
        
-       
         margin:8px 0;
+     
+        .filterBtn{
+            display:flex;
+
+            align-items: center;
+            .anticon svg{
+                height:0.7em;
+                margin-top:2px;
+                margin-left:4px;
+               
+            }
+        }
+       
     }
     .filter-options{
         background-color: $white;

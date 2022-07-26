@@ -5,6 +5,16 @@
     .container{
     display:flex;
     gap:1rem;
+
+    .hola {
+        border:2px solid red;
+        border-radius: 10px;
+        border: 2px solid $darkgreen;
+        padding:12px;
+        background-color: $white;
+        margin: 16px;
+        width:100%;
+    }
 }
 
 .poi{
