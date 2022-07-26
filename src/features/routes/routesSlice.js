@@ -138,6 +138,8 @@ export const routesSlice = createSlice({
       })
       .addCase(getRouteById.fulfilled, (state, action) => {
         state.route = action.payload.route;
+        state.route.average = action.payload.average;
+        state.route.total = action.payload.total;
       })
       .addCase(getRouteById.rejected, (state, action) => {
         state.route = {};
@@ -168,9 +170,7 @@ export const routesSlice = createSlice({
           page: 1,
           maxPages: 1
         };
-        if (action.payload.pois.length) {
-          state.pois = action.payload.pois;
-        }
+        state.pois = action.payload.pois;
       })
       .addCase(searchByName.rejected, (state, action) => {
         // state.routes = [];
@@ -219,5 +219,5 @@ export const routesSlice = createSlice({
   }
 });
 
-export const {resetRoutesMessage} = routesSlice.actions;
+export const { resetRoutesMessage } = routesSlice.actions;
 export default routesSlice.reducer;
