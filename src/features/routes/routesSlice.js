@@ -173,8 +173,6 @@ export const routesSlice = createSlice({
         state.pois = action.payload.pois;
       })
       .addCase(searchByName.rejected, (state, action) => {
-        // state.routes = [];
-        // state.pois = [];
         console.info(action.payload); // TODO: Delete this line when error managment is implemented
         state.message = action.payload.message;
       })
