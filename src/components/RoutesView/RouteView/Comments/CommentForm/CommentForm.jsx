@@ -46,12 +46,9 @@ const CommentForm = ({ routeId, visible, setVisible }) => {
           <Rate />
         </Form.Item>
         <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
+
         >
-          <Button type="primary" htmlType="submit" loading={loading}>
+          <Button className="valorarbtn" htmlType="submit" loading={loading}>
             Enviar Valoración
           </Button>
         </Form.Item>
