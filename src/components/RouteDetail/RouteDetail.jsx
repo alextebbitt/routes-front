@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getRouteById } from "../../features/routes/routesSlice";
-import axios from "axios";
+// import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
 import "./RouteDetail.scss"
@@ -10,16 +10,14 @@ import { Tabs, Button, Modal } from 'antd';
 import { LeftOutlined, StarOutlined, ClockCircleOutlined, HomeOutlined, FlagOutlined, FullscreenOutlined } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
 
-
-
 const { TabPane } = Tabs;
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
   const { route } = useSelector((state) => state.routes);
   const { id } = useParams();
   const [loadingData, setLoadingData] = useState(false);
-  const [map, setMap] = useState("/loadingmap.gif");
+  // const [staticMap, setStaticMap] = useState("/loadingmap.gif");
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
 
@@ -29,17 +27,17 @@ const RouteDetail = () => {
     setLoadingData(false);
   };
 
-  const getMap = async () => {
-    const response = await axios(`${API_URL}/routes/map/id/${id}`, {
-      responseType: "blob",
-    });
-    const image = URL.createObjectURL(response.data);
-    setMap(image);
-  };
+  // const getStaticMap = async () => {
+  //   const response = await axios(`${API_URL}/routes/map/id/${id}`, {
+  //     responseType: "blob",
+  //   });
+  //   const image = URL.createObjectURL(response.data);
+  //   setStaticMap(image);
+  // };
 
   useEffect(() => {
     getDetail();
-    getMap();
+    // getStaticMap();
     // eslint-disable-next-line
   }, [id]);
 
@@ -71,7 +69,7 @@ const RouteDetail = () => {
             <FullscreenOutlined className="icon" onClick={() => setVisible(true)} />
           </div>
         </div>
-        {/* <img src={map} alt="map" /> */}
+        {/* <img src={staticMap} alt="staticMap" /> */}
         {route.pois && <RouteMap route={route} height="320px" zoomControl={false}/>}
 
         {/* <img src={route.image} alt={route.name} /> */}
