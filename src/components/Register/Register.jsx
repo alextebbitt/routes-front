@@ -7,8 +7,10 @@ import "./Register.scss"
 import Video from "../Video/Video";
 
 const Register = () => {
+
   const { isError, isSuccess, message } = useSelector((state) => state.auth);
   const [sending, setSending] = useState(false);
+  const [step, setStep] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [form] = Form.useForm();
@@ -37,89 +39,93 @@ const Register = () => {
 
       <div className="container">
         <div className="picture">
-<Video/>
+          <Video />
         </div>
 
       </div>
       <div className="registerForm">
-      <Form
-        className="form"
-        form={form}
-        name="register"
-        onFinish={onFinish}
-        scrollToFirstError
-      >
-        <Form.Item
-          name="name"
-          label="Nombre"
-          rules={[
-            {
-              required: true,
-              message: "Por favor, introduce tu nombre",
-              whitespace: true,
-            },
-          ]}
+        <Form
+          className="form"
+          form={form}
+          name="register"
+          onFinish={onFinish}
+          scrollToFirstError
         >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          name="email"
-          label="Email"
-          rules={[
-            {
-              type: "email",
-              message: "No es un email válido",
-            },
-            {
-              required: true,
-              message: "Por favor, introduce tu email",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          name="password"
-          label="Contraseña"
-          rules={[
-            {
-              required: true,
-              message: "Por favor, introduce tu contraseña",
-            },
-          ]}
-          hasFeedback
-        >
-          <Input.Password />
-        </Form.Item>
-
-        <Form.Item
-          name="confirm"
-          label="Confirma contraseña"
-          dependencies={["password"]}
-          hasFeedback
-          rules={[
-            {
-              required: true,
-              message: "Por favor, confirma tu contraseña",
-            },
-            ({ getFieldValue }) => ({
-              validator(_, value) {
-                if (!value || getFieldValue("password") === value) {
-                  return Promise.resolve();
-                }
-
-                return Promise.reject(
-                  new Error("Las contraseñas no coinciden")
-                );
+          <Form.Item
+            name="name"
+            label="Nombre"
+            hidden={step !== 0}
+            rules={[
+              {
+                required: true,
+                message: "Por favor, introduce tu nombre",
+                whitespace: true,
               },
-            }),
-          ]}
-        >
-          <Input.Password />
-        </Form.Item>
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="email"
+            label="Email"
+            hidden={step !== 0}
+            rules={[
+              {
+                type: "email",
+                message: "No es un email válido",
+              },
+              {
+                required: true,
+                message: "Por favor, introduce tu email",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-        {/* <Form.Item
+          <Form.Item
+            name="password"
+            label="Contraseña"
+            hidden={step !== 1}
+            rules={[
+              {
+                required: true,
+                message: "Por favor, introduce tu contraseña",
+              },
+            ]}
+            hasFeedback
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item
+            name="confirm"
+            label="Confirma contraseña"
+            hidden={step !== 1}
+            dependencies={["password"]}
+            hasFeedback
+            rules={[
+              {
+                required: true,
+                message: "Por favor, confirma tu contraseña",
+              },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+
+                  return Promise.reject(
+                    new Error("Las contraseñas no coinciden")
+                  );
+                },
+              }),
+            ]}
+          >
+            <Input.Password />
+          </Form.Item>
+
+          {/* <Form.Item
           name="agreement"
           valuePropName="checked"
           rules={[
@@ -137,15 +143,22 @@ const Register = () => {
             He leído los <a href="">Términos y condiciones</a>
           </Checkbox>
         </Form.Item> */}
-        <Form.Item>
-          <Button  className="submitbtn" htmlType="submit" loading={sending}>
-            Crear cuenta
-          </Button>
-        </Form.Item>
-      </Form>
-      <span>
-       <Link to="/login"> ¿Ya tienes cuenta? Conéctate</Link>
-      </span>
+          <Form.Item
+            hidden={step !== 0}>
+            <Button className="submitbtn" onClick={() => setStep(1)}>
+              Siguiente
+            </Button>
+          </Form.Item>
+          <Form.Item
+            hidden={step !== 1}>
+            <Button className="submitbtn" htmlType="submit" loading={sending}>
+              Crear cuenta
+            </Button>
+          </Form.Item>
+        </Form>
+        <span>
+          ¿Ya tienes cuenta?<Link to="/login"> Conéctate</Link>
+        </span>
       </div>
     </div>
   );
