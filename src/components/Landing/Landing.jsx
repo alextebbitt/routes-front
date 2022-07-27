@@ -18,10 +18,7 @@ const Landing = () => {
     <div className="landing">
       <div className="landingContainer">
         <div className="pictureWall">
-
             <img src="https://i.imgur.com/cDHYG9V.png" />
-         
-          
         </div>{" "}
       </div>
       <div className="welcome">
