@@ -17,7 +17,6 @@ const Login = () => {
       notification.error({ message: "Error", description: message });
     }
     if (isSuccess) {
-      notification.success({ message: message });
       navigate("/home");
     }
     dispatch(reset());

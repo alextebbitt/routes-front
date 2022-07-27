@@ -80,15 +80,6 @@ const RouteDetail = () => {
 
   const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
 
-  // const tag = route.tags?.map((tag, i) => (
-  //   <>
-  //     <Link key={tag + i} to={`/tag/${tag}`}>
-  //       {tag}
-  //     </Link>
-  //     &nbsp;&nbsp;
-  //   </>
-  // ));
-
   return (
     <div className="routeDetail">
       <div className="header">
@@ -116,7 +107,7 @@ const RouteDetail = () => {
             />
           </div>
           {/* <img src={map} alt="map" /> */}
-          {route.pois && (
+          {route.pois && !loadingData && (
             <RouteMap route={route} height="320px" zoomControl={false} />
           )}
 
