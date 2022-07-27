@@ -50,7 +50,9 @@ const RouteCard = ({ route }) => {
             </div>
             <div className="routeTime">
               <ClockCircleOutlined className="icon" />
-              <span className="value">{route.duration}'</span>
+              <span className="value">
+                {route.duration ? <>{route.duration}'</> : "No disponible"}
+              </span>
             </div>
           </div>
         </div>

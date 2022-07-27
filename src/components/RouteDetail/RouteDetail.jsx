@@ -144,7 +144,9 @@ const RouteDetail = () => {
               <div className="routeTopic">{route.topic}</div>
               <div className="routeTime">
                 <ClockCircleOutlined className="icon" />
-                <span className="value">{route.duration}'</span>
+                <span className="value">
+                  {route.duration ? <>{route.duration}'</> : "No disponible"}
+                </span>
               </div>
             </div>
             <div className="startAndFinish">
