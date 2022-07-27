@@ -74,9 +74,7 @@ const Register = () => {
               },
             ]}
           >
-            <Input
-              className="input-placeholder"
-              placeholder="Nombre" />
+            <Input placeholder="Nombre" />
           </Form.Item>
           <Form.Item
             name="email"
@@ -92,9 +90,7 @@ const Register = () => {
               },
             ]}
           >
-            <Input
-              className="input-placeholder"
-              placeholder="Email" />
+            <Input placeholder="Email" />
           </Form.Item>
 
           <Form.Item
@@ -108,9 +104,7 @@ const Register = () => {
             ]}
             hasFeedback
           >
-            <Input.Password
-              className="input-placeholder"
-              placeholder="Contraseña" />
+            <Input.Password placeholder="Contraseña" />
           </Form.Item>
 
           <Form.Item
@@ -135,9 +129,7 @@ const Register = () => {
                 },
               }),
             ]}>
-            <Input.Password
-              className="input-placeholder"
-              placeholder="Confirma contraseña" />
+            <Input.Password placeholder="Confirma contraseña" />
           </Form.Item>
           <Form.Item
             hidden={step !== 0}>

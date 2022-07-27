@@ -53,9 +53,7 @@ const Login = () => {
               },
             ]}
           >
-            <Input
-              className="input-placeholder"
-              placeholder="Email" />
+            <Input placeholder="Email" />
           </Form.Item>
 
           <Form.Item
@@ -67,9 +65,7 @@ const Login = () => {
               },
             ]}
           >
-            <Input.Password
-              className="input-placeholder"
-              placeholder="Contraseña" />
+            <Input.Password placeholder="Contraseña" />
           </Form.Item>
           <Form.Item>
             <Button className="submitbtn" htmlType="submit" loading={loading}>
