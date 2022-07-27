@@ -4,8 +4,8 @@ import { Avatar, Comment, Rate, Tooltip } from "antd";
 import moment from "moment";
 import 'moment/locale/es';
 
-
 const UserComment = () => {
+
   const { comments } = useSelector((state) => state.comments);
 
   const comment = comments?.map((comment) => {
@@ -19,7 +19,6 @@ const UserComment = () => {
           }
           content={<p className="userComment">{comment?.body}</p>}
         />
-
       </div>
     );
   });
