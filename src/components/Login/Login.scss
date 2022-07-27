@@ -6,11 +6,11 @@
 .container{
     position:relative;
     width:100%;
-    height: calc(100vh - 288px);
+    height: calc(100vh - 235px);
 
     .picture{
        width:100%;
-       height: calc(100vh - 288px);
+       height: calc(100vh - 235px);
         background-image: url("https://i.imgur.com/YvdduFw.png");
         background-repeat: no-repeat;
         background-size: cover;
@@ -53,9 +53,12 @@
             font-weight: 700;
 
         }
+        .ant-form-item {
+            margin-bottom: 12px;
+        }
 
         .ant-input {
-            padding: 12px 0 12px 16px;
+            padding: 8px 0 8px 16px;
             border-radius:12px;
         }
         .ant-input-affix-wrapper{
@@ -78,6 +81,6 @@
     }
 }
 
-.input-placeholder::placeholder {
+.ant-input::placeholder {
     color:$bordercolor;
 }
