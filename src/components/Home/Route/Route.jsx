@@ -75,7 +75,7 @@ const Route = ({ isLoadingRoutes }) => {
       <>{route} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</>
       :
       !isLoadingRoutes ?
-        <div className="search route ">
+        <div className="search  ">
           Ninguna ruta satisface los criterios de búsqueda. ¡Prueba con otra!
         </div>
         : null
