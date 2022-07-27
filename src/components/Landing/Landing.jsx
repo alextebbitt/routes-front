@@ -23,7 +23,7 @@ const Landing = () => {
       </div>
       <div className="welcome">
         <div className="welcome-text">
-          <h2>Bienvenido a <span className="logo">Valencia Spots</span></h2>
+          <h2>Bienvenido a<br/> <span className="logo">Valencia Spots</span></h2>
           <p> Tu nueva app para descubrir rutas por Valencia.</p>
         </div>
 

@@ -57,7 +57,8 @@ const LikedRoutes = () => {
       <h3>Tus rutas favoritas</h3>
       {loading ? <BigSpin /> : null}
       {route}
-      {route.length === 0 && !loading && <div>No tienes rutas en tu lista de deseos</div>}
+      {route.length === 0 && !loading && <div className="route">No tienes rutas en tu lista de deseos
+      <button><Link to="/home">Explora las rutas</Link></button></div>}
     </div>
   )
 }
