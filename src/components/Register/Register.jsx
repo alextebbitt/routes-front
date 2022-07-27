@@ -28,6 +28,15 @@ const Register = () => {
     dispatch(reset());
   }, [isError, isSuccess, message]);
 
+  const nextRegisterStep = async () => {
+    try {
+      await form.validateFields(['name', 'email']);
+      setStep(1);
+    } catch (error) {
+      notification.error({message: "Por favor, comprueba los datos introducidos"});
+    }
+  }
+
   const onFinish = async (values) => {
     setSending(true);
     await dispatch(register(values));
@@ -72,7 +81,7 @@ const Register = () => {
             rules={[
               {
                 type: "email",
-                message: "No es un email válido",
+                message: "Introduce un email válido",
               },
               {
                 required: true,
@@ -145,7 +154,7 @@ const Register = () => {
         </Form.Item> */}
           <Form.Item
             hidden={step !== 0}>
-            <Button className="submitbtn" onClick={() => setStep(1)}>
+            <Button className="submitbtn" onClick={nextRegisterStep}>
               Siguiente
             </Button>
           </Form.Item>
