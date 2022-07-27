@@ -1,38 +1,29 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import BigSpin from "../BigSpin/BigSpin";
 import { useNavigate, Link } from "react-router-dom";
 import "./Landing.scss";
 import { Button } from 'antd';
 
 const Landing = () => {
 
-  return (
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
+  return (<>
     <div className="landing">
-      Landing
       <div className="landingContainer">
         <div className="pictureWall">
-          <div>
-            <img src="https://i.imgur.com/JJTVrsc.jpg" />
-          </div>
-          <div>
-            <img src="https://i.imgur.com/a3gBCnc.jpg" />
-          </div>
-          <div>
-            <img src="https://i.imgur.com/Xv1blrT.jpg" />
-          </div>
-          <div>
-            <img src="https://i.imgur.com/IwDKMRm.jpg" />
-          </div>
-          <div>
-            <img src="https://i.imgur.com/Crduxe0.jpg" />
-          </div>
-          <div>
-            <img src="https://i.imgur.com/XTE1qlC.jpg" />
-          </div>
+            <img src="https://i.imgur.com/WnGSDBZ.png" />
         </div>{" "}
       </div>
       <div className="welcome">
         <div className="welcome-text">
-          <h2>Bienvenido a "Nombre"</h2>
+          <h2>Bienvenido a <span className="logo">Valencia Spots</span></h2>
           <p> Tu nueva app para descubrir rutas por Valencia.</p>
         </div>
 
@@ -42,8 +33,9 @@ const Landing = () => {
         </div>
       </div>
     </div>
+    {loading && <BigSpin />}
 
-    // <div className="main-container">
+    {/* // <div className="main-container">
     //   <h1 className="h1title">Routes</h1>
     //   <div className="gif">
     //     <img
@@ -67,8 +59,8 @@ const Landing = () => {
     //       alt="logo"
     //     ></img>
     //   </div>
-    // </div>
-  );
+    // </div> */}
+    </>);
 };
 
 export default Landing;

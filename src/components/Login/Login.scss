@@ -1,7 +1,7 @@
 @import "./../../App.scss";
 
 .login{
-    background-color: $blue;
+    background-color: $maincolor;
     height:100vh;
 .container{
     position:relative;
@@ -19,33 +19,38 @@
     }
     .text{
         position:absolute;
-        border:2px solid white;
         width:100%;
-        top:47%;
+        font-size: 40px;
+        bottom:25%;
         text-align: center;
-        color:$white;
+        color:$maincolor;
         z-index:99999;
+        font-family: $logofont
     
     }
-}
-   
-
-
-    
+    .subtext{
+        font-family: $mainfont;
+        font-size: 20px;
+        line-height: 1.4;;
+    }
+}  
     .loginForm{
         text-align: center;
+        border:1px solid $bordercolor;
         border-radius:32px 32px 0 0 ;
         padding:32px;
-        background-color: $green;
+        background-color: $maincolor;
         position:absolute;
         bottom:0;
         width:100%;
-        color:$white;
-        a{color:$white;}
+        color:$bordercolor;
+        a{
+            color:$bordercolor;
+            font-weight: 400;}
 
         label{
             font-weight: 700;
-
+            
         }
 
         .ant-input {
@@ -61,13 +66,14 @@
         }
         .submitbtn{
             width:100%;
-            background-color: $darkgreen;
+            background-color: $secondcolor;
             border:none;
             height:48px;
-            margin: 12px 0;
-            border-radius:12px;
-            color:$white;
-           
+            margin: 16px 0;
+            border-radius:16px;
+            color:$bordercolor;
+            font-weight: 600;
         }
     }
 }
+
