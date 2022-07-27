@@ -50,9 +50,12 @@ const Register = () => {
     <div className="register">
 
       <div className="container">
-        <div className="picture">
-          <Video />
+      <div className="picture">
         </div>
+        <div className="text">Valencia Spots
+          <div className="subtext"> Descubre las mejores rutas<br /> en Valencia</div> 
+          </div>
+      
 
       </div>
       <div className="registerForm">

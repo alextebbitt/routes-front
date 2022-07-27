@@ -6,11 +6,11 @@
 .container{
     position:relative;
     width:100%;
-    height: calc(100vh - 288px);
+    height: calc(100vh - 235px);
 
     .picture{
        width:100%;
-       height: calc(100vh - 288px);
+       height: calc(100vh - 235px);
         background-image: url("https://i.imgur.com/YvdduFw.png");
         background-repeat: no-repeat;
         background-size: cover;
@@ -37,6 +37,7 @@
     .loginForm{
         text-align: center;
         border:1px solid $bordercolor;
+        border-bottom: none;
         border-radius:32px 32px 0 0 ;
         padding:32px;
         background-color: $maincolor;
