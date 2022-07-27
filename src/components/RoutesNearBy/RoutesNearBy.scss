@@ -1,10 +1,20 @@
 @import "./../../App.scss";
 
 .nearby{
+    h3{
+        text-align: center;
+        margin:16px;
+    }
     .map{
        height:90vh;
        .leaflet-bottom{
         display:none;
        }
+    }
+
+
+    .Tag{
+        color:$secondcolor;
+
     }
 }

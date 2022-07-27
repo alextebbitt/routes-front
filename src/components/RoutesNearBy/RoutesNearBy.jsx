@@ -66,7 +66,7 @@ const RoutesNearBy = () => {
             <h3>{poi.name}</h3>
             <p>{truncateAfterWord(poi.description, 300)}</p>
             <Link to={`/route/${poi.routeId._id}`}>
-              <Tag color="geekblue">{poi.routeId.name}</Tag>
+              <Tag >{poi.routeId.name}</Tag>
             </Link>
           </div>
         </Popup>
@@ -81,7 +81,7 @@ const RoutesNearBy = () => {
   />);
 
   return (<div className="nearby">
-    <h1>Lugares de interés cercanos</h1>
+    <h3>Lugares de interés cercanos</h3>
     {mapCenter.lat && !loading ?
       <MapContainer className="map"
         center={[mapCenter.lat, mapCenter.lon]}
