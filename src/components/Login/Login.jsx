@@ -34,20 +34,17 @@ const Login = () => {
         <div className="picture">
         </div>
         <div className="text">Valencia Spots
-        <div className="subtext"> Descubre las mejores rutas<br/> en Valencia</div> </div>
+          <div className="subtext"> Descubre las mejores rutas<br /> en Valencia</div> </div>
       </div>
 
       <div className="loginForm">
         <Form
           className="form"
           name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
           <Form.Item
-            label="Email"
             name="email"
             rules={[
               {
@@ -56,11 +53,12 @@ const Login = () => {
               },
             ]}
           >
-            <Input />
+            <Input
+              className="input-placeholder"
+              placeholder="Email" />
           </Form.Item>
 
           <Form.Item
-            label="Contraseña"
             name="password"
             rules={[
               {
@@ -69,7 +67,9 @@ const Login = () => {
               },
             ]}
           >
-            <Input.Password />
+            <Input.Password
+              className="input-placeholder"
+              placeholder="Contraseña" />
           </Form.Item>
           <Form.Item>
             <Button className="submitbtn" htmlType="submit" loading={loading}>
