@@ -41,11 +41,11 @@ const LikedRoutes = () => {
             src={r.image}
             alt={r.name} />
           <br />
-          {r.name}
+          <div className="routeTitle">{r.name}</div>
         </Link>
 
       </div>
-      <div className="routeTitle">
+      <div className="routeDescription">
         <p>{truncateAfterWord(r.description, 100)}</p>
       </div>
       {/* <button><Link to={`/route/${r._id}`}>Ir a la ruta</Link></button> */}
@@ -54,7 +54,7 @@ const LikedRoutes = () => {
 
   return (
     <div className="likedRoutes">
-      <h1>Tus rutas favoritas</h1>
+      <h3>Tus rutas favoritas</h3>
       {loading ? <BigSpin /> : null}
       {route}
       {route.length === 0 && !loading && <div>No tienes rutas en tu lista de deseos</div>}

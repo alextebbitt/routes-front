@@ -113,7 +113,7 @@ const Profile = () => {
       <div className="userProfile">
         {user.user.role === "admin" ? (
           <div className="admin">
-            <Link to="/admin">Admin</Link>
+            <Link to="/admin"> Abrir vista de admin</Link>
           </div>
         ) : (
           ""
@@ -179,7 +179,7 @@ const Profile = () => {
             <Paragraph className="editBio">{bio}</Paragraph>
           )}
         </div>
-        <button className="btn" onClick={showDrawer}>
+        <button className="drawerbtn" onClick={showDrawer}>
           Preferencias de rutas
         </button>
         {isEditable ? (
