@@ -49,7 +49,7 @@ const Login = () => {
             rules={[
               {
                 required: true,
-                message: "Por favor, introduce su correo electrónico",
+                message: "Por favor, introduce tu correo electrónico",
               },
             ]}
           >
