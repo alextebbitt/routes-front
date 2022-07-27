@@ -7,10 +7,11 @@ import "./Comments.scss"
 import { Button, Modal } from 'antd';
 import React, { useState } from 'react';
 import { MessageOutlined } from "@ant-design/icons";
+import BigSpin from "../../../BigSpin/BigSpin";
 
 const Comments = ({ routeId }) => {
 
-  const { isLoading } = useSelector((state) => state.comments);
+  const [isLoading, setIsLoading] = useState(true);
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   // const [modalText, setModalText] = useState('Content of the modal');
@@ -36,7 +37,9 @@ const Comments = ({ routeId }) => {
   const dispatch = useDispatch();
 
   const getAllComments = async () => {
+    setIsLoading(true);
     await dispatch(getComments({ routeId, page: 1 }));
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -45,7 +48,7 @@ const Comments = ({ routeId }) => {
 
   return (
     <div className="comments">
-      {isLoading ? <h2>Cargando...</h2> : <>
+      {isLoading ? <BigSpin /> : <>
         <div className="button"><button type="primary" className="reviewBtn" onClick={showModal}>
           Escribir una valoración
         </button></div>
