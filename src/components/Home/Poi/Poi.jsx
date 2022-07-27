@@ -24,7 +24,7 @@ const Poi = () => {
             {truncateAfterWord(poi.description, 135)}
           </div>
           <Link to={`/route/${poi.routeId._id}`}>
-            <Tag color="#39718e">{poi.routeId.name}</Tag>
+            <Tag>{poi.routeId.name}</Tag>
           </Link>
         </div>
       </div>

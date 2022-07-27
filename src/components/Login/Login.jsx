@@ -35,7 +35,7 @@ const Login = () => {
         <div className="picture">
         </div>
         <div className="text">Valencia Spots
-        <div class="subtext"> Descubre las mejores rutas<br/> en Valencia</div> </div>
+        <div className="subtext"> Descubre las mejores rutas<br/> en Valencia</div> </div>
       </div>
 
       <div className="loginForm">

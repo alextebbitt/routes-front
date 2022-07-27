@@ -1,17 +1,16 @@
 @import "./../../App.scss";
 
 .register{
-    background-color: $blue;
+    background-color: $maincolor;
     height:100vh;
     .container{
         position:relative;
         width:100%;
         height: calc(100vh - 400px);
-
         .picture{
-
-        width:100%;
-        border:2px solid purple;
+        
+        width:100%;  
+        // border:2px solid purple;
 
 
       .bgVideo{
@@ -30,21 +29,21 @@
         }
 
     }
-
-
-
-
+    
         .registerForm{
             text-align: center;
             border-radius:32px 32px 0 0 ;
-            padding: 8px 32px;
-            background-color: $green;
+            padding:32px;
+            background-color: $maincolor;
             position:absolute;
             bottom:0;
             width:100%;
-            color:$white;
+            color:$bordercolor;
+            border:1px solid $bordercolor;
+            border-bottom:none;
             a{
-                color:$white;
+                color:$bordercolor;
+                font-weight: 400;
             }
             label{
                 font-weight: 700;
@@ -62,12 +61,14 @@
             }
             .submitbtn{
                 width:100%;
-                background-color: $darkgreen;
+                background-color: $secondcolor;
                 border:none;
-                height:38px;
-                margin: 12px 0 0 0;
-                border-radius:12px;
-                color:$white;
+                height:48px;
+                margin: 16px 0;
+                border-radius:16px;
+                color:$bordercolor;
+                font-weight: 600;
+    
             }
         }
     }
