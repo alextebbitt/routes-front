@@ -2,9 +2,9 @@
 .poi{
 margin-bottom:16px;
 border-radius: 10px;
-border: 2px solid $darkgreen;
+border: 1px solid $secondcolor;
 padding:12px;
-background-color: $white;
+background-color: $maincolor;
 
     .poiPicture{
         img{
@@ -16,10 +16,11 @@ background-color: $white;
         }
     }
     .poiInfo{
-        background-color: $white;
+        background-color: $maincolor;
     .poiTitle{
         margin:8px 0;
         font-weight:700;
+        font-family: $accentfont;
     }
     .poiDescription{
         border: 2px solid white;

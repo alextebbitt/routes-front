@@ -1,7 +1,7 @@
 @import "../../../../App.scss";
 .comments {
   padding-bottom: 12rem;
-  background-color: $lightgreen;
+  background-color: $maincolor;
 
   .ant-modal,
   .ant-modal-content {
@@ -9,7 +9,7 @@
     width: 100vw;
     margin: 0;
     top: 0;
-    background-color: $red;
+    // background-color: $red;
   }
 
   .button {
@@ -17,7 +17,17 @@
     justify-content: center;
     .reviewBtn {
       margin: 16px;
-      color: $darkgreen;
+      color: $bordercolor;
+      width:100%;
+  background-color: $secondcolor;
+  border:none;
+  height:48px;
+  
+  border-radius:12px;
+  a{
+    color:$bordercolor;
+  font-weight: 600;}
+
     }
   }
 
@@ -26,11 +36,11 @@
    
 
     .userName {
-      color: $darkgray;
+      color: $bordercolor;
       font-weight: 600;
     }
     .userComment {
-      color: $darkgreen;
+      color: $bordercolor;
     }
   }
 }

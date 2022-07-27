@@ -85,18 +85,18 @@ const RouteDetail = () => {
       <div className="header">
         <div className="picture">
           <div className="gradient overMap">
-            <div className="btn">
+            <div className="btn backBtn">
               <Link to="/home">
                 <LeftOutlined className="icon" />
               </Link>
             </div>
-            <div className="btn2">
+            <div className="btn2 fullscreenBtn">
               <FullscreenOutlined
                 className="icon"
                 onClick={() => setVisible(true)}
               />
             </div>
-            <Button className="btn3"
+            <Button className="btn3 likeBtn"
               icon={
                 isAlreadyInWishlist ?
                   <HeartFilled className="icon" />
