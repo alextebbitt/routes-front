@@ -37,6 +37,7 @@
     .loginForm{
         text-align: center;
         border:1px solid $bordercolor;
+        border-bottom: none;
         border-radius:32px 32px 0 0 ;
         padding:32px;
         background-color: $maincolor;

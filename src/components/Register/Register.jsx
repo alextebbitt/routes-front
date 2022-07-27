@@ -51,7 +51,9 @@ const Register = () => {
 
       <div className="container">
         <div className="picture">
+          <div className="gradient">
           <Video />
+          </div>
         </div>
 
       </div>

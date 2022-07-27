@@ -9,24 +9,35 @@
         height: calc(100vh - 400px);
         .picture{
 
+
         width:100%;
         // border:2px solid purple;
 
+      .gradient {
+        position: absolute;
+        width: 100%;
+        height: 102%;
 
-      .bgVideo{
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        object-position:center;
+        z-index: 100000;
 
-
-        video{
-           width:100%;
-        //    height:100%;
-             transform: scaley(1.5);
-        }
+        background: rgb(255, 255, 255);
+        // background: linear-gradient(180deg, $transparent 60%, $red 95%);
+        .bgVideo{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            object-position:center;
+            z-index: 99;
+    
+            video{
+               width:100%;
+            }
+          }
+            }
       }
-        }
+
+
+     
 
     }
 
