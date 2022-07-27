@@ -4,13 +4,26 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getPoisNearBy } from '../../features/routes/routesSlice';
-import "./RoutesNearBy.scss"
+import "./RoutesNearBy.scss";
+import L from 'leaflet';
+import BigSpin from '../BigSpin/BigSpin';
+
 const RoutesNearBy = () => {
 
   const { pois } = useSelector(state => state.routes);
   const dispatch = useDispatch();
   const [mapCenter, setMapCenter] = useState({});
   const [loading, setLoading] = useState(false);
+
+  const centerIcon = L.icon({
+    iconUrl: '/circle.svg',
+    iconSize: [38, 38],
+    iconAnchor: [19, 19],
+    popupAnchor: null, //[-3, -76],
+    shadowUrl: null, //'/my-icon-shadow.svg',
+    shadowSize: null, //[68, 95],
+    shadowAnchor: null, //[22, 94]
+  });
 
   const launchGetPoisNearby = async () => {
     setLoading(true);
@@ -21,8 +34,11 @@ const RoutesNearBy = () => {
           lon: pos.coords.longitude,
         });
       })
+    } else {
+      setLoading(false);
     }
   }
+
   useEffect(() => {
     launchGetPoisNearby();
   }, []);
@@ -42,7 +58,6 @@ const RoutesNearBy = () => {
 
   const marker = pois?.map((poi) => {
     return (
-      
       <Marker
         key={poi._id}
         position={[poi.latitude, poi.longitude]}>
@@ -56,9 +71,14 @@ const RoutesNearBy = () => {
           </div>
         </Popup>
       </Marker>
-      
     );
   });
+
+  marker.push(<Marker
+    key="center"
+    icon={centerIcon}
+    position={[mapCenter.lat, mapCenter.lon]}
+  />);
 
   return (<div className="nearby">
     <h1>Lugares de interés cercanos</h1>
@@ -74,7 +94,7 @@ const RoutesNearBy = () => {
         {marker}
       </MapContainer>
       :
-      <div>Cargando...</div>
+      <BigSpin />
     }
   </div>)
 }

@@ -34,12 +34,12 @@ const Register = () => {
 
   return (
     <div className="register">
-      
+
       <div className="container">
         <div className="picture">
 <Video/>
         </div>
-       
+
       </div>
       <div className="registerForm">
       <Form
@@ -138,7 +138,7 @@ const Register = () => {
           </Checkbox>
         </Form.Item> */}
         <Form.Item>
-          <Button  className="submitbtn" htmlType="submit">
+          <Button  className="submitbtn" htmlType="submit" loading={sending}>
             Crear cuenta
           </Button>
         </Form.Item>

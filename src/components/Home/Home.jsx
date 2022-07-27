@@ -7,6 +7,7 @@ import "./Home.scss";
 import Poi from "./Poi/Poi";
 import Route from "./Route/Route";
 import Search from "../Search/Search";
+import BigSpin from "../BigSpin/BigSpin";
 
 const Home = () => {
 
@@ -72,6 +73,7 @@ const Home = () => {
           <div className="pois"><Poi /></div>
         }
       </div>
+      {isLoadingRoutes || isLoadingPois ? <BigSpin /> : null}
     </div>
   );
 

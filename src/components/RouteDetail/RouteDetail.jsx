@@ -19,21 +19,21 @@ import {
 } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
 import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
+import BigSpin from "../BigSpin/BigSpin";
 
 const { TabPane } = Tabs;
-// const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
 
   const { user } = useSelector((state) => state.auth);
   const { route, message, messageType } = useSelector((state) => state.routes);
   const { id } = useParams();
-  const [loadingData, setLoadingData] = useState(false);
-  // const [staticMap, setStaticMap] = useState("/loadingmap.gif");
-  const dispatch = useDispatch();
-  const [visible, setVisible] = useState(false);
+  const [loadingData, setLoadingData] = useState(true);
+  const [userPos, setUserPos] = useState({});
   const [wishlisting, setWishlisting] = useState(false);
+  const [visible, setVisible] = useState(false);
   const isAlreadyInWishlist = user.user?.wishlist?.includes(route._id);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleWishlist = async () => {
@@ -51,17 +51,20 @@ const RouteDetail = () => {
     setLoadingData(false);
   };
 
-  // const getStaticMap = async () => {
-  //   const response = await axios(`${API_URL}/routes/map/id/${id}`, {
-  //     responseType: "blob",
-  //   });
-  //   const image = URL.createObjectURL(response.data);
-  //   setStaticMap(image);
-  // };
+  const launchGetPoisNearby = async () => {
+    if (navigator.geolocation) {
+      await navigator.geolocation.getCurrentPosition((pos) => {
+        setUserPos({
+          lat: pos.coords.latitude,
+          lon: pos.coords.longitude,
+        });
+      })
+    }
+  };
 
   useEffect(() => {
     getDetail();
-    // getStaticMap();
+    launchGetPoisNearby();
     // eslint-disable-next-line
   }, [id]);
 
@@ -103,14 +106,14 @@ const RouteDetail = () => {
               />
             </div>
             <Button className="btn3"
-          icon={
-            isAlreadyInWishlist ?
-             <HeartFilled className="icon" />
-             :
-             <HeartOutlined className="icon" />}
-          onClick={handleWishlist}
-          loading={wishlisting}
-        />
+              icon={
+                isAlreadyInWishlist ?
+                  <HeartFilled className="icon" />
+                  :
+                  <HeartOutlined className="icon" />}
+              onClick={handleWishlist}
+              loading={wishlisting}
+            />
           </div>
           {/* <img src={map} alt="map" /> */}
           {route.pois && (
@@ -124,9 +127,7 @@ const RouteDetail = () => {
 
         {/* <img src={route.image} alt={route.name} /> */}
       </div>
-      {loadingData || !route._id ? (
-        <h1>LoadingData...</h1>
-      ) : (
+      {route._id && (
         <div>
           {/* <div className="routePicture">
             <img src={route.image} alt={route.name} /></div> */}
@@ -143,7 +144,9 @@ const RouteDetail = () => {
               <div className="routeTopic">{route.topic}</div>
               <div className="routeTime">
                 <ClockCircleOutlined className="icon" />
-                <span className="value">{route.duration}'</span>
+                <span className="value">
+                  {route.duration ? <>{route.duration}'</> : "No disponible"}
+                </span>
               </div>
             </div>
             <div className="startAndFinish">
@@ -193,17 +196,18 @@ const RouteDetail = () => {
             bodyStyle={{ height: 500 }}
           >
 
-              <div className="btn">
-                <FullscreenExitOutlined
-                  className="icon"
-                  onClick={() => setVisible(false)}
-                />
-              </div>
-              <RouteMap route={route} />
+            <div className="btn">
+              <FullscreenExitOutlined
+                className="icon"
+                onClick={() => setVisible(false)}
+              />
+            </div>
+            <RouteMap route={route} userPos={userPos} />
 
           </Modal>
         </div>
       )}
+      {loadingData && <BigSpin />}
     </div>
   );
 };

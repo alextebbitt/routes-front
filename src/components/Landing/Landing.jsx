@@ -1,9 +1,20 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import BigSpin from "../BigSpin/BigSpin";
 import { useNavigate, Link } from "react-router-dom";
 import "./Landing.scss";
 import { Button } from 'antd';
+
 const Landing = () => {
-  return (
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
+  return (<>
     <div className="landing">
       <div className="landingContainer">
         <div className="pictureWall">
@@ -17,16 +28,17 @@ const Landing = () => {
         <div className="welcome-text">
           <h2>Bienvenido a Valencia Spots</h2>
           <p> Tu nueva app para descubrir rutas por Valencia.</p>
-          </div>
+        </div>
 
         <div className="access">
-<button className="registerbtn"><Link to="/register">Regístrate</Link></button>
-         <div className="loginbtn"> <Link to="/login">¿Ya tienes cuenta? Accede aquí.</Link></div>
+          <button className="registerbtn"><Link to="/register">Regístrate</Link></button>
+          <div className="loginbtn"> <Link to="/login">¿Ya tienes cuenta? Accede aquí.</Link></div>
         </div>
       </div>
     </div>
+    {loading && <BigSpin />}
 
-    // <div className="main-container">
+    {/* // <div className="main-container">
     //   <h1 className="h1title">Routes</h1>
     //   <div className="gif">
     //     <img
@@ -50,8 +62,8 @@ const Landing = () => {
     //       alt="logo"
     //     ></img>
     //   </div>
-    // </div>
-  );
+    // </div> */}
+    </>);
 };
 
 export default Landing;
