@@ -18,7 +18,7 @@ const Landing = () => {
     <div className="landing">
       <div className="landingContainer">
         <div className="pictureWall">
-            <img src="https://i.imgur.com/WnGSDBZ.png" />
+            <img src="https://i.imgur.com/EdPPMSM.png" />
         </div>{" "}
       </div>
       <div className="welcome">
