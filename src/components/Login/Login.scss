@@ -24,7 +24,7 @@
         bottom:25%;
         text-align: center;
         color:$maincolor;
-        z-index:99999;
+        z-index:1;
         font-family: $logofont
 
     }
@@ -45,6 +45,7 @@
         bottom:0;
         width:100%;
         color:$bordercolor;
+        z-index:10;
         a{
             color:$bordercolor;
             font-weight: 400;}
