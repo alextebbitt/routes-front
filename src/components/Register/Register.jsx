@@ -53,7 +53,7 @@ const Register = () => {
       <div className="picture">
         </div>
         <div className="text">Valencia Spots
-          <div className="subtext"> Descubre las mejores rutas<br /> en Valencia</div> 
+          <div className="subtext"> Encuentra los mejores rincones<br/> que visitar</div> 
           </div>
       
 
