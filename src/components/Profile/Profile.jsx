@@ -34,12 +34,17 @@ const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    notification.success({ message: "Te has desconectado correctamente" });
+    notification.success({
+      message: "Te has desconectado correctamente",
+      placement: "bottom",
+    });
     navigate("/login");
   };
+
   const [isEditable, setIsEditable] = useState(false);
   const [name, setName] = useState(user.user.name);
   const [password, setPassword] = useState();

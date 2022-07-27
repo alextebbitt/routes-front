@@ -18,12 +18,15 @@ const Register = () => {
   useEffect(() => {
     if (isError) {
       notification.error({ message: "Error", description: message });
+      setStep(0);
     }
     if (isSuccess) {
-      notification.success({ message: message });
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      notification.success({
+        message: message,
+        description: "Puedes hacer el login",
+        placement: "bottom"
+      });
+      navigate("/login");
     }
     dispatch(reset());
   }, [isError, isSuccess, message]);
@@ -33,7 +36,7 @@ const Register = () => {
       await form.validateFields(['name', 'email']);
       setStep(1);
     } catch (error) {
-      notification.error({message: "Por favor, comprueba los datos introducidos"});
+      notification.error({ message: "Por favor, comprueba los datos introducidos" });
     }
   }
 
@@ -129,29 +132,9 @@ const Register = () => {
                   );
                 },
               }),
-            ]}
-          >
+            ]}>
             <Input.Password />
           </Form.Item>
-
-          {/* <Form.Item
-          name="agreement"
-          valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) =>
-                value
-                  ? Promise.resolve()
-                  : Promise.reject(
-                      new Error("Es necesario aceptar los términos")
-                    ),
-            },
-          ]}
-        >
-          <Checkbox>
-            He leído los <a href="">Términos y condiciones</a>
-          </Checkbox>
-        </Form.Item> */}
           <Form.Item
             hidden={step !== 0}>
             <Button className="submitbtn" onClick={nextRegisterStep}>
