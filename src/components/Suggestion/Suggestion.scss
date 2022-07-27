@@ -1,14 +1,14 @@
 @import "../../App.scss";
 
 .recommendedRoutes{
-    
     display: flex;
     padding:16px;
     flex-direction: column;
     gap:1rem;
     background-color: $maincolor;
-   padding-bottom:6em;
-   height:100vh;
+ 
+   height:100%;
+
    h3{
     color:$bordercolor;
 
@@ -20,6 +20,7 @@
         background-color: $maincolor;
         border-radius: 8px;
         font-family: $accentfont;
+ 
 
         button{
             width:100%;
@@ -65,6 +66,7 @@
                 height:48px;
                 margin: 16px 0 0;
                 border-radius:12px;
+                margin-bottom:70px;
                 a{color:$bordercolor;
                 font-weight: 600;}
             }
