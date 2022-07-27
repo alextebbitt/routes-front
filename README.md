@@ -1,4 +1,4 @@
-#  <center> Routes App React Redux</center> 
+#  <center> Valencia Spot (Routes App with React Redux)</center> 
 
  ## :Bookmark: Index 
 
@@ -21,8 +21,6 @@
 - [Acknowledgment](#)
 
 - [Authors](#)
-
-
 
 ## About the project
 
@@ -86,19 +84,19 @@ const project = {
 ```
  ## Source
 
-![TheBridge](./toReadme/thebridgelogo.svg)
+![TheBridge](./assets/thebridgelogo.svg)
 
 The project originates from the FullStack bootcamp at [TheBridge](https://www.thebridge.tech/), It is the final project of the Bootcamp simulating a real life project where you are part of a team working on one project. We need to create both frontend & backend, thus achieving a Full-Stack project. The main objective is to create a functional routes app, using React Redux in the frontend and MongoDB and Mongoose in the backend.
 
 
 ### Log in page
-![Log in page](./link/goes/here)
+![Log in page](./assets/login.png)
 
 ### Register page
 ![Screnshot of login](./link/goes/here)
 
 ### User favourites 
-![User favourites](./link/goes/here)
+![User favourites](./assets/favourites.png)
 
 ### Routes view
 ![Routes view](./link/goes/here)
@@ -108,12 +106,12 @@ The project originates from the FullStack bootcamp at [TheBridge](https://www.th
 To organize the tasks we have used the application [Trello](https://trello.com/) with which you can comfortably manage tasks and "Tickets"
 
 ### Screenshot of Trello
-![Screenshot of Trello](./src/assets/trello.png)
+![Screenshot of Trello](./assets/Screenshot%202022-07-27%20134100.png)
 
 
 ## Challenges presented
 
-This was an incredibly difficult project, given that we did not know about React a few weeks ago. It has been a steep learning curve. In little more than a week we have created a backend and frontend mobile first app. There has been many challenges along the way, but I am still motivated to continue learning and gettting better.  
+This was an incredibly difficult project, given that we did not know about React a few weeks ago. It has been a steep learning curve. In little more than a week we have created a backend and frontend mobile first app. There has been many challenges along the way, but we are still motivated to continue learning and gettting better.  
 
 
 ## Things we would have liked to have added
