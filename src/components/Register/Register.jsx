@@ -65,7 +65,6 @@ const Register = () => {
         >
           <Form.Item
             name="name"
-            label="Nombre"
             hidden={step !== 0}
             rules={[
               {
@@ -75,11 +74,12 @@ const Register = () => {
               },
             ]}
           >
-            <Input />
+            <Input
+              className="input-placeholder"
+              placeholder="Nombre" />
           </Form.Item>
           <Form.Item
             name="email"
-            label="Email"
             hidden={step !== 0}
             rules={[
               {
@@ -92,12 +92,13 @@ const Register = () => {
               },
             ]}
           >
-            <Input />
+            <Input
+              className="input-placeholder"
+              placeholder="Email" />
           </Form.Item>
 
           <Form.Item
             name="password"
-            label="Contraseña"
             hidden={step !== 1}
             rules={[
               {
@@ -107,12 +108,13 @@ const Register = () => {
             ]}
             hasFeedback
           >
-            <Input.Password />
+            <Input.Password
+              className="input-placeholder"
+              placeholder="Contraseña" />
           </Form.Item>
 
           <Form.Item
             name="confirm"
-            label="Confirma contraseña"
             hidden={step !== 1}
             dependencies={["password"]}
             hasFeedback
@@ -133,7 +135,9 @@ const Register = () => {
                 },
               }),
             ]}>
-            <Input.Password />
+            <Input.Password
+              className="input-placeholder"
+              placeholder="Confirma contraseña" />
           </Form.Item>
           <Form.Item
             hidden={step !== 0}>
