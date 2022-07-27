@@ -1,5 +1,11 @@
+@import "./../../App.scss";
+
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+}
+.button{
+    background-color: $blue;
 }
