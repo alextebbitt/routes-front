@@ -18,12 +18,12 @@ const Landing = () => {
     <div className="landing">
       <div className="landingContainer">
         <div className="pictureWall">
-            <img src="https://i.imgur.com/cDHYG9V.png" />
+            <img src="https://i.imgur.com/WnGSDBZ.png" />
         </div>{" "}
       </div>
       <div className="welcome">
         <div className="welcome-text">
-          <h2>Bienvenido a Valencia Spots</h2>
+          <h2>Bienvenido a <span className="logo">Valencia Spots</span></h2>
           <p> Tu nueva app para descubrir rutas por Valencia.</p>
         </div>
 
