@@ -28,13 +28,13 @@ const Suggestion = () => {
 
   return (<>
     <div className="recommendedRoutes">
-      <h1>Descubrir</h1>
+      <h3>Descubrir</h3>
       {loading && <BigSpin />}
       {needQuestionnaire && !route._id &&
         <div className="route">
         <p>Para poder recomendarte una ruta, debes rellenar el cuestionario
           opcional "Preferencias de rutas" en tu perfil.</p>
-        <Link to="/profile">Ir al perfil</Link>
+          <button><Link to="/profile">Ir al perfil</Link> </button>
       </div>}
       {route._id && !loading &&
         <>
@@ -46,10 +46,10 @@ const Suggestion = () => {
                   src={route.image}
                   alt={route.name} />
                 <br />
-                {route.name}
+                <div className="routeTitle">{route.name}</div>
               </Link>
             </div>
-            <div className="routeTitle">
+            <div className="routeDescription">
               <p> {truncateAfterWord(route.description, 420)}</p>
             </div>
             <button><Link to={`/route/${route._id}`}>Ir a la ruta</Link></button>
