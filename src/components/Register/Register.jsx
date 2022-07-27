@@ -144,7 +144,7 @@ const Register = () => {
         </Form.Item>
       </Form>
       <span>
-        ¿Ya tienes cuenta?<Link to="/login"> Conéctate</Link>
+       <Link to="/login"> ¿Ya tienes cuenta? Conéctate</Link>
       </span>
       </div>
     </div>

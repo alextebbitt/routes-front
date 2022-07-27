@@ -53,7 +53,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      Home(logo)
+      <div className="logo">Valencia Spots</div>
       <div className="text">Explora Valencia</div>
       <div>
         <Search />

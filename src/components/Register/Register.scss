@@ -38,11 +38,12 @@
             position:absolute;
             bottom:0;
             width:100%;
-            color:$maincolor;
+            color:$bordercolor;
             border:1px solid $bordercolor;
             border-bottom:none;
             a{
-                color:$maincolor;
+                color:$bordercolor;
+                font-weight: 400;
             }
             label{
                 font-weight: 700;
