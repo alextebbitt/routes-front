@@ -1,15 +1,15 @@
 @import "./../../App.scss";
 
 .profile {
-  background-color: $green;
+  background-color: $maincolor;
   text-align: center;
   height:100vh;
   padding: 16px;
-  color:$darkgray;
+  color:$bordercolor;
   position: relative;
 
   .anticon{
-    color:$darkgreen;
+    color:$bordercolor;
   }
   .btn{
     width:fit-content;
@@ -23,8 +23,8 @@
     right:0;
     border-radius: 100%;
     border:none;
-    color:$darkgreen;
-    background-color: white;
+    color:$bordercolor;
+    background-color: $maincolor;
     box-shadow: 0px 0px 1px 1px rgba(136, 135, 135, 0.75);
     .icon{
       color:$green;
@@ -33,18 +33,16 @@
   .userProfile {
     padding: 16px;
     border-radius: 16px;
-    border: 2px solid $darkgreen;
+    border: 1px solid $secondcolor;
     background-color: $white;
-    
     display: flex;
     flex-direction: column;
     gap: 8px;
     .admin a{
-      color:$darkgreen;
+      color:$accentcolor;
     }
 
     .profilePicture {
-        
         .ant-space{
             display: flex;
         flex-direction: column;
@@ -56,7 +54,11 @@
         width: 140px;
         height: 140px;
       }
-      
+      .ant-btn-primary{
+        background-color: $secondcolor;
+        border-color:$bordercolor;
+        color:$bordercolor;
+      }
 
       img {
         border-radius: 100%;
@@ -66,34 +68,43 @@
       }
     }
     .profileName {
-    
       .editName {
         font-size: 16px;
         font-weight: 700;
-        color:$blue;
+        color:$bordercolor;
       }
     }
     .profileEmail {
   
-      color: $darkgray;
+      color: $bordercolor;
     }
     .profileBio{
-        border:2px solid $blue;
+        border:1px solid $bordercolor;
         padding: 16px;
         width:75%;
         margin:0 auto;
-        background-color: $lightblue;
+        background-color: $maincolor;
         border-radius:16px;
         .editBio{
-          color:$darkblue;
+          color:$bordercolor;
         }
     }
     .logout{
-      padding-top:6em;
+  
       a{color:$darkblue;}
     }
   }
- 
+ .drawerbtn{
+  width:75%;
+  margin:0 auto;
+  
+  background-color: $secondcolor;
+  border:none;
+  height:48px;
+  font-weight: 600;
+  border-radius:12px;
+  
+ }
  
 }
 

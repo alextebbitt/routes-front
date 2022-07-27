@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { getRouteById } from "../../features/routes/routesSlice";
-import axios from "axios";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { getRouteById, resetRoutesMessage } from "../../features/routes/routesSlice";
+// import axios from "axios";
 import PoiDetail from "./PoiDetail/PoiDetail";
 import Comments from "../RoutesView/RouteView/Comments/Comments";
 import "./RouteDetail.scss";
-import { Tabs, Button, Modal } from "antd";
+import { Tabs, Button, Modal, notification } from "antd";
 import {
   LeftOutlined,
   StarOutlined,
@@ -14,80 +14,111 @@ import {
   HomeOutlined,
   FlagOutlined,
   FullscreenOutlined,
-  FullscreenExitOutlined
+  FullscreenExitOutlined,
+  HeartOutlined, HeartFilled
 } from "@ant-design/icons";
 import RouteMap from "./RouteMap/RouteMap";
+import { addToWishlist, removeFromWishlist } from "../../features/auth/authSlice";
+import BigSpin from "../BigSpin/BigSpin";
 
 const { TabPane } = Tabs;
-const API_URL = process.env.REACT_APP_API_URL;
 
 const RouteDetail = () => {
-  const { route } = useSelector((state) => state.routes);
-  const { id } = useParams();
-  const [loadingData, setLoadingData] = useState(false);
-  const [map, setMap] = useState("/loadingmap.gif");
-  const dispatch = useDispatch();
-  const [visible, setVisible] = useState(false);
 
+  const { user } = useSelector((state) => state.auth);
+  const { route, message, messageType } = useSelector((state) => state.routes);
+  const { id } = useParams();
+  const [loadingData, setLoadingData] = useState(true);
+  const [userPos, setUserPos] = useState({});
+  const [wishlisting, setWishlisting] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const isAlreadyInWishlist = user.user?.wishlist?.includes(route._id);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleWishlist = async () => {
+    setWishlisting(true);
+    if (isAlreadyInWishlist) {
+      await dispatch(removeFromWishlist(route._id));
+    } else {
+      await dispatch(addToWishlist(route._id));
+    }
+    setWishlisting(false);
+  }
   const getDetail = async () => {
     setLoadingData(true);
     await dispatch(getRouteById(id));
     setLoadingData(false);
   };
 
-  const getMap = async () => {
-    const response = await axios(`${API_URL}/routes/map/id/${id}`, {
-      responseType: "blob",
-    });
-    const image = URL.createObjectURL(response.data);
-    setMap(image);
+  const launchGetPoisNearby = async () => {
+    if (navigator.geolocation) {
+      await navigator.geolocation.getCurrentPosition((pos) => {
+        setUserPos({
+          lat: pos.coords.latitude,
+          lon: pos.coords.longitude,
+        });
+      })
+    }
   };
 
   useEffect(() => {
     getDetail();
-    getMap();
+    launchGetPoisNearby();
     // eslint-disable-next-line
   }, [id]);
 
-  const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
+  useEffect(() => {
+    if (messageType) {
+      if (messageType === "error") {
+        notification.error({ message });
+        navigate("/home");
+      }
+      dispatch(resetRoutesMessage());
+    }
+  }, [messageType])
 
-  const tag = route.tags?.map((tag, i) => (
-    <>
-      <Link key={tag + i} to={`/tag/${tag}`}>
-        {tag}
-      </Link>
-      &nbsp;&nbsp;
-    </>
-  ));
+  const poi = route.pois?.map((poi) => <PoiDetail key={poi._id} poi={poi} />);
 
   return (
     <div className="routeDetail">
       <div className="header">
         <div className="picture">
           <div className="gradient overMap">
-            <div className="btn">
+            <div className="btn backBtn">
               <Link to="/home">
                 <LeftOutlined className="icon" />
               </Link>
             </div>
-            <div className="btn2">
+            <div className="btn2 fullscreenBtn">
               <FullscreenOutlined
                 className="icon"
                 onClick={() => setVisible(true)}
               />
             </div>
+            <Button className="btn3 likeBtn"
+              icon={
+                isAlreadyInWishlist ?
+                  <HeartFilled className="icon" />
+                  :
+                  <HeartOutlined className="icon" />}
+              onClick={handleWishlist}
+              loading={wishlisting}
+            />
           </div>
           {/* <img src={map} alt="map" /> */}
-          {route.pois && (
+          {route.pois && !loadingData && (
             <RouteMap route={route} height="320px" zoomControl={false} />
           )}
 
           {/* <img src={route.image} alt={route.name} /> */}
         </div>
+        {/* <img src={staticMap} alt="staticMap" /> */}
+        {/* {route.pois && <RouteMap route={route} height="320px" zoomControl={false} />} */}
+
+        {/* <img src={route.image} alt={route.name} /> */}
       </div>
-      {loadingData || !route._id ? (
-        <h1>LoadingData...</h1>
-      ) : (
+      {route._id && (
         <div>
           {/* <div className="routePicture">
             <img src={route.image} alt={route.name} /></div> */}
@@ -95,8 +126,8 @@ const RouteDetail = () => {
             <div className="name">{route.name}</div>
             <div className="rating">
               <StarOutlined className="icon" />{" "}
-              <span className="value">4.5</span>
-              <div className="reviews"> 12 reviews</div>
+              <span className="value">{route.average}</span>
+              <div className="reviews"> {route.total} reviews</div>
             </div>
           </div>
           <div className="routeInfo">
@@ -104,7 +135,9 @@ const RouteDetail = () => {
               <div className="routeTopic">{route.topic}</div>
               <div className="routeTime">
                 <ClockCircleOutlined className="icon" />
-                <span className="value">{route.duration}'</span>
+                <span className="value">
+                  {route.duration ? <>{route.duration}'</> : "No disponible"}
+                </span>
               </div>
             </div>
             <div className="startAndFinish">
@@ -153,18 +186,19 @@ const RouteDetail = () => {
             footer={[]}
             bodyStyle={{ height: 500 }}
           >
-          
-              <div className="btn">
-                <FullscreenExitOutlined
-                  className="icon"
-                  onClick={() => setVisible(false)}
-                />
-              </div>
-              <RouteMap route={route} />
-            
+
+            <div className="btn">
+              <FullscreenExitOutlined
+                className="icon"
+                onClick={() => setVisible(false)}
+              />
+            </div>
+            <RouteMap route={route} userPos={userPos} />
+
           </Modal>
         </div>
       )}
+      {loadingData && <BigSpin />}
     </div>
   );
 };

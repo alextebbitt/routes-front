@@ -1,0 +1,18 @@
+Home
+- Buscador (texto + filtros)
+- Rutas (horizontal) -> Ruta detalle
+- Pois (horizontal) -> Ruta detalle
+Ruta detalle
+- Mapa
+- Info general y Botón Like
+- Descripción
+- Pois
+- Comentarios
+Cerca
+- Marcadores (pois) -> Ruta detalle
+Idea
+-> Perfil (si no has hecho el cuestionario)
+-> Ruta sugerida
+Perfil
+- Datos (editables) Nombre, foto, Bio
+- Cuestionario: 8 preguntas

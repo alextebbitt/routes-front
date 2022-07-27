@@ -7,6 +7,7 @@ import {
   getUnverifiedComments,
   validateComment
 } from '../../features/comments/commentsSlice';
+import BigSpin from '../BigSpin/BigSpin';
 
 const Admin = () => {
 
@@ -32,7 +33,6 @@ const Admin = () => {
     await dispatch(adminDelete(id));
   }
 
-
   const comment = comments.map(comment => {
     return (
       <div key={comment._id}>
@@ -46,7 +46,7 @@ const Admin = () => {
             title={<><Avatar src={comment.userId.avatar} /> {comment.userId.name}</>}
             description={new Date(comment.createdAt).toLocaleString()}
           />
-          <p style={{ marginTop: "10px" }}>{comment.body}</p>
+          <p style={{ marginTop: "10px", overflowWrap: "break-word" }}>{comment.body}</p>
           <div>
             <Rate disabled defaultValue={comment.valoration} />
           </div>
@@ -71,8 +71,14 @@ const Admin = () => {
     <div style={{ marginBottom: "80px" }}>
       <h1>Administración</h1>
       <div>
-        {loading ? <div>Cargando...</div> : null}
-        {comment.length ? comment : <div>No hay comentarios para moderar</div>}
+        {loading ?
+          <BigSpin />
+          :
+          comment.length ?
+            comment
+            :
+            <div>No hay comentarios para moderar</div>
+        }
       </div>
     </div>
   );

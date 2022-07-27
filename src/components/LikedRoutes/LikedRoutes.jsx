@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getWishlist } from '../../features/routes/routesSlice';
+import BigSpin from '../BigSpin/BigSpin';
 import "./LikedRoutes.scss"
 
 const LikedRoutes = () => {
@@ -39,23 +40,25 @@ const LikedRoutes = () => {
           <img
             src={r.image}
             alt={r.name} />
-            <br/>
-          {r.name}
+          <br />
+          <div className="routeTitle">{r.name}</div>
         </Link>
 
       </div>
-      <div className="routeTitle">
+      <div className="routeDescription">
         <p>{truncateAfterWord(r.description, 100)}</p>
       </div>
+      {/* <button><Link to={`/route/${r._id}`}>Ir a la ruta</Link></button> */}
     </div>
   ));
 
   return (
     <div className="likedRoutes">
-      <h1>Tus rutas favoritas</h1>
-      {loading ? <div>Cargando...</div> : null}
+      <h3>Tus rutas favoritas</h3>
+      {loading ? <BigSpin /> : null}
       {route}
-      {route.length === 0 && !loading && <div>No tienes rutas en tu lista de deseos</div>}
+      {route.length === 0 && !loading && <div className="route">No tienes rutas en tu lista de deseos
+      <button><Link to="/home">Explora las rutas</Link></button></div>}
     </div>
   )
 }

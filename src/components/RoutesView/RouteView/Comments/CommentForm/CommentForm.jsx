@@ -20,7 +20,6 @@ const CommentForm = ({ routeId, visible, setVisible }) => {
 
     await dispatch(createComment(newComment))
     setTimeout(() => {
-      // console.log("timeout")
       form.resetFields();
       setVisible(false);
       setLoading(false);
@@ -30,24 +29,27 @@ const CommentForm = ({ routeId, visible, setVisible }) => {
   return (
     < div className="modalBox">
       <Form form={form}
-        initialValues={{ body: "", valoration: 1 }}
+        initialValues={{ body: "", valoration: 3 }}
         name="basic"
         labelCol={{ span: 8, }}
         wrapperCol={{ span: 16, }}
         onFinish={onFinish}>
         <Form.Item
-          label="Valoración"
-          name="body"
-        >
-          <TextArea rows={6} placeholder={"Cuéntanos cómo te ha ido, qué te ha gustado más... si has tenido algún percance mientras visitabas los puntos de interés... ¡Estaremos encantados de responderte!"} />
-
-        </Form.Item>
-        <Form.Item name="valoration" label="Puntuación">
-          <Rate />
+          label="Comentario"
+          rules={[{
+            required: true,
+            message: "Es necesario escribir un comentario",
+          },]}
+          name="body">
+          <TextArea rows={6} placeholder={"Cuéntanos cómo te ha ido, qué te ha gustado más... si has tenido algún percance mientras visitabas los puntos de interés..."} />
         </Form.Item>
         <Form.Item
-
-        >
+          name="valoration"
+          label="Puntuación"
+          required={true}>
+          <Rate />
+        </Form.Item>
+        <Form.Item>
           <Button className="valorarbtn" htmlType="submit" loading={loading}>
             Enviar Valoración
           </Button>

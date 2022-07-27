@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 import { getRecommendation } from "../../features/routes/routesSlice";
+import BigSpin from "../BigSpin/BigSpin";
 import "./Suggestion.scss"
 
 const Suggestion = () => {
@@ -16,6 +17,10 @@ const Suggestion = () => {
     setLoading(false);
   }
 
+  const truncateAfterWord = (str, chars, placeholder = '...') => str.length < chars ? str : `${str.substr(0, str.substr(0, chars - placeholder.length).lastIndexOf(" "))}${placeholder}`;
+
+
+
   useEffect(() => {
     launchGetRecommendation();
     // eslint-disable-next-line
@@ -23,15 +28,15 @@ const Suggestion = () => {
 
   return (<>
     <div className="recommendedRoutes">
-      <h1>Descubrir</h1>
-      {loading && <div>Cargando...</div>}
+      <h3>Descubrir</h3>
+      {loading && <BigSpin />}
       {needQuestionnaire && !route._id &&
         <div className="route">
         <p>Para poder recomendarte una ruta, debes rellenar el cuestionario
           opcional "Preferencias de rutas" en tu perfil.</p>
-        <Link to="/profile">Ir al perfil</Link>
+          <button><Link to="/profile">Ir al perfil</Link> </button>
       </div>}
-      {route._id &&
+      {route._id && !loading &&
         <>
           <p>Pensamos que te puede interesar esta ruta.</p>
           <div className="route">
@@ -41,13 +46,15 @@ const Suggestion = () => {
                   src={route.image}
                   alt={route.name} />
                 <br />
-                {route.name}
+                <div className="routeTitle">{route.name}</div>
               </Link>
             </div>
-            <div className="routeTitle">
-              <p>{route.description}</p>
+            <div className="routeDescription">
+              <p> {truncateAfterWord(route.description, 420)}</p>
             </div>
+            <button><Link to={`/route/${route._id}`}>Ir a la ruta</Link></button>
           </div>
+
         </>
       }
     </div>

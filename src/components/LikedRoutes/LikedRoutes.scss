@@ -5,13 +5,21 @@
     padding:16px;
     flex-direction: column;
     gap:1rem;
-    background-color: $green;
+    background-color: $maincolor;
     padding-bottom:6em;
+
+    h3{
+        color:$bordercolor;
+
+    }
     .route{
-        border: 2px solid $darkgreen;
+        border: 1px solid $secondcolor;
         padding: 12px;
-        background-color: $white;
+        background-color: $maincolor;
         border-radius: 8px;
+        font-family: $accentfont;
+
+       
 
         .routePicture{
             img {
@@ -22,17 +30,32 @@
                 object-fit:cover; 
                 object-position: center; 
               }
+
               a{
                 color:$black;
             font-weight: 600;
-       
+    }
+    .routTitle{
+        font-family: $accentfont;
     }
         }
-        .routeTitle{
+        .routeDescription{
         
             margin-top:8px;
             color:$darkgray;
             
+            
+        }
+
+        button{
+            width:100%;
+            background-color: $secondcolor;
+            border:none;
+            height:48px;
+            margin: 16px 0 0;
+            border-radius:12px;
+            a{color:$bordercolor;
+            font-weight: 600;}
         }
     }
 }

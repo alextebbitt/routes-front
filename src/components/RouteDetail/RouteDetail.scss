@@ -11,12 +11,12 @@
     width: 32px;
     height: 32px;
     margin: 16px;
-    background-color: white;
+    background-color: $maincolor;
     box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
     border-radius: 100%;
     text-align: center;
     .icon {
-      color: $green;
+      color: $bordercolor;
       margin-right: 0px;
       font-size: 20px;
       border-radius: 100%;
@@ -31,30 +31,30 @@
 
 .routeDetail {
   .icon {
-    color: $white;
+    color: $bordercolor;
     margin-right: 8px;
   }
 
   .value {
-    color: $white;
+    color: $bordercolor;
     font-weight: 300;
   }
 
   .routeInfo {
     .icon {
-      color: $blue;
+      color: $accentcolor;
     }
 
     .value {
-      color: $blue;
+      color: $bordercolor;
     }
   }
 
   .header {
-    background-color: azure;
+    background-color: $maincolor;
     position: relative;
 
-    .btn {
+    .backBtn {
       position: absolute;
       top: 0;
       left: 0;
@@ -62,13 +62,13 @@
       width: 32px;
       height: 32px;
       margin: 16px;
-      background-color: white;
+      background-color: $maincolor;
       box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
       border-radius: 100%;
       text-align: center;
 
       .icon {
-        color: $green;
+        color: $bordercolor;
         margin-right: 2px;
         font-size: 18px;
         border-radius: 100%;
@@ -80,20 +80,21 @@
       }
     }
 
-    .btn2 {
+    .fullscreenBtn,.likeBtn {
       position: absolute;
       right: 0;
       z-index: 99;
       width: 32px;
       height: 32px;
       margin: 16px;
-      background-color: white;
+      color:$bordercolor;
+      background-color: $maincolor;
       box-shadow: 0px 0px 4px 2px rgba(136, 135, 135, 0.75);
       border-radius: 100%;
       text-align: center;
 
       .icon {
-        color: $green;
+        color: $bordercolor;
         margin: 0 auto;
         font-size: 20px;
         border-radius: 100%;
@@ -104,6 +105,27 @@
         transform: translateY(-50%);
       }
     }
+    .likeBtn{
+        bottom:0;
+        margin: 32px 16px;
+        .icon {
+            color: $likecolor;
+            margin: -4px auto 0;
+            font-size: 18px;
+            border-radius: 100%;
+            position: relative;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+          }
+    }
+    .ant-btn:hover, .ant-btn:focus {
+        color: $bordercolor;
+        border-color: $secondcolor;
+        background: #fff;
+    }
+
     .picture {
       .gradient {
         position: absolute;
@@ -111,7 +133,7 @@
         height: 102%;
 
         background: rgb(255, 255, 255);
-        background: linear-gradient(180deg, $transparent 70%, $darkgreen 97%);
+        background: linear-gradient(180deg, $transparent 70%, $maincolor 97%);
       }
 
       img {
@@ -125,8 +147,8 @@
 
   .routeDetails {
     margin-top: -4px;
-    border: 2px solid $darkgreen;
-    background-color: $darkgreen;
+    border: 2px solid $maincolor;
+    background-color: $maincolor;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,21 +157,22 @@
     .name {
       font-size: 24px;
       font-weight: 700;
-      color: $white;
+      color: $bordercolor;
       margin: 16px;
       width: 65%;
+      font-family: $accentfont;
     }
 
     .rating {
       margin: 16px 12px;
-      color: $white;
+      color: $bordercolor;
 
       .stars {
-        background-color: aliceblue;
+        color: $bordercolor;
       }
 
       .reviews {
-        color: $white;
+        color: $bordercolor;
       }
     }
   }
@@ -157,18 +180,20 @@
   .routeInfo {
     border-radius: 24px 24px 0px 0px;
     padding: 8px 0;
-    background-color: #c3d4d4;
+    border-top:1px solid $bordercolor;
+    
+    background-color: $maincolor;
     margin-top: -24px;
 
     .typeAndTime {
-     
+
       display: flex;
 
       margin: 8px 16px;
       justify-content: space-between;
 
       .routeTopic {
-        font-style: italic;
+       
         font-weight: 700;
       }
     }
@@ -190,13 +215,13 @@
         display: block;
         margin: 12px 0;
         font-weight: 500;
-        color: $darkgreen;
+        color: $bordercolor;
       }
 
       .location {
         font-weight: 300;
         margin-top: 4px;
-        color: $darkgray;
+        color: $bordercolor;
       }
     }
   }
@@ -205,36 +230,36 @@
     padding: 16px;
     padding-bottom: 5rem;
     color: $darkgray;
-    background-color: $lightgreen;
+    background-color: $maincolor;
   }
 
   .routePois {
     padding: 16px;
     padding-bottom: 5rem;
-    background-color: $lightgreen;
+    background-color: $maincolor;
   }
 
   // Ant-Design Re-Styling
 
   //background of tab
   .ant-tabs-nav-wrap {
-    background-color: $lightgreen;
+    background-color: $maincolor;
   }
 
   // Tabs
   .ant-tabs-tab-btn {
-    color: $darkgray;
+    color: $bordercolor;
   }
 
   //  Tabs active
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-    color: $darkgreen;
+    color: $accentcolor;
   }
 
   // tabs bottom
   .ant-tabs-ink-bar {
     height: 5px;
-    background: $darkgreen;
+    background: $accentcolor;
   }
 
   .ant-tabs-top > .ant-tabs-nav {
@@ -250,21 +275,21 @@
   width: 100vw;
   margin: 0;
   top: 0;
-  background-color: $lightgreen;
+  background-color: $maincolor;
 }
 
 .ant-modal-header {
-  background-color: $lightgreen;
+  background-color: $maincolor;
 
   .ant-modal-title {
-    color: $darkgreen;
+    color: $bordercolor;
   }
 }
 
 .ant-modal-body {
   height: calc(100vh - 110px);
   padding: 0;
-  background-color: $lightgreen;
+  background-color: $maincolor;
 }
 
 .overMap {

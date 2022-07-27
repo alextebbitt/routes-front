@@ -8,24 +8,37 @@
    }
 
     .ant-tag-checkable,.ant-tag-checkable:not(.ant-tag-checkable-checked):hover{
-        color:$darkgray;
+        color:$bordercolor;
         font-weight: 600;
-        border:1px solid $darkgray;
+        border:1px solid $bordercolor;
         margin:4px;
     }
     .ant-tag-checkable-checked,.ant-tag-checkable:active {
-        color:$lightgreen;
-        background-color:$darkblue!important;
+        color:$bordercolor;
+        background-color:$secondcolor!important;
     }
    
    
     .ant-tag-checkable:not(.ant-tag-checkable-checked):hover{
-        color: $darkgreen;
+        color: $secondcolor;
     }
     .filter{
        
-       
         margin:8px 0;
+     
+        .filterBtn{
+            display:flex;
+            margin-bottom:1em;
+
+            align-items: center;
+            .anticon svg{
+                height:0.7em;
+                margin-top:2px;
+                margin-left:4px;
+               
+            }
+        }
+       
     }
     .filter-options{
         background-color: $white;

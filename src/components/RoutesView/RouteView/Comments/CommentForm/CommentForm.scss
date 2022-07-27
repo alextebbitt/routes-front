@@ -10,11 +10,11 @@
         margin:16px 0 0;
        }
        .review-form-button{
-        color:$white;
+        color:$maincolor;
         height:48px;
         font-weight: 700;
-        background-color: $darkgreen;
-        border-radius:16px;
+        background-color: $secondcolor;
+        border-radius:12px;
 
         
        }
@@ -22,15 +22,19 @@
 }
 .valorarbtn{
     width:100%;
-    background-color: $darkgreen;
-    border:none;
-    height:56px;
-    margin: 16px 0;
-    border-radius:12px;
+    background-color: $secondcolor;
+  border:none;
+  height:48px;
+  
+  border-radius:12px;
+  a{color:$bordercolor;
+  font-weight: 600;
+ }
 
 }
 .button:hover{
-    background-color: green;
+    background-color: $accentcolor;
+    color:$bordercolor;
 
 }
 

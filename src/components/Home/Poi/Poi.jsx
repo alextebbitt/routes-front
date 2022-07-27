@@ -15,7 +15,7 @@ const Poi = () => {
 
     return (
       <div className="poi" key={poi.id}>
-        <div className="poiPicture"> <img src={picture ? picture : "https://i.imgur.com/KHbcjKa.jpg"} alt={poi.name} /></div>
+        <div className="poiPicture"> <Link to={`/route/${poi.routeId._id}`}> <img src={picture ? picture : "https://i.imgur.com/KHbcjKa.jpg"} alt={poi.name} /> </Link></div>
         <div className="poiInfo">
           <div className="poiTitle">
             {truncateAfterWord(poi.name, 40)}
@@ -24,7 +24,7 @@ const Poi = () => {
             {truncateAfterWord(poi.description, 135)}
           </div>
           <Link to={`/route/${poi.routeId._id}`}>
-            <Tag color="#39718e">{poi.routeId.name}</Tag>
+            <Tag>{poi.routeId.name}</Tag>
           </Link>
         </div>
       </div>
@@ -34,7 +34,10 @@ const Poi = () => {
   return (
     <div>
       <div className="container">
-        {poi}
+        {poi.length ?
+          poi :
+          <div className="hola">Ningún punto de interés satisface la búsqueda. Mejor suerte la próxima vez. </div>
+        }
       </div>
     </div>
   );

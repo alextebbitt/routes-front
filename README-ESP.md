@@ -1,4 +1,4 @@
-#  <center>App de Rutas React Redux</center> 
+#  <center>Valencia Spot (Routes App with React Redux)</center> 
 
  ## :Marcador: índice
 
@@ -86,19 +86,19 @@ const project = {
 ```
  ## Origen
 
-![TheBridge](./toReadme/thebridgelogo.svg)
+![TheBridge](./assets/thebridgelogo.svg)
 
 El proyecto se origina en el bootcamp FullStack en [TheBridge](https://www.thebridge.tech/). Es el proyecto final del Bootcamp que simula un proyecto de la vida real en el que eres parte de un equipo que trabaja en un proyecto. Necesitamos crear tanto el frontend como el backend, logrando así un proyecto Full-Stack. El objetivo principal es crear una aplicación de rutas funcional, utilizando React Redux en el frontend y MongoDB y Mongoose en el backend.
 
 
 ### pagina de login 
-![pagina de login ](./link/goes/here)
+![pagina de login ](./assets/login.png)
 
 ### pagina de Register 
 ![pagina de Register ](./link/goes/here)
 
 ### User favoritos
-![User favoritos](./link/goes/here)
+![User favoritos](./assets/favourites.png)
 
 ### Vista Routes 
 ![Vista Routes](./link/goes/here)
@@ -108,7 +108,7 @@ El proyecto se origina en el bootcamp FullStack en [TheBridge](https://www.thebr
 To organize the tasks we have used the application [Trello](https://trello.com/) with which you can comfortably manage tasks and "Tickets"
 
 ### Captura del Trello
-![Screenshot of Trello](./src/assets/trello.png)
+![Screenshot of Trello](./assets/Screenshot%202022-07-27%20134100.png)
 
 
 ## Retos presentados

@@ -34,12 +34,17 @@ const Profile = () => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const onLogout = (e) => {
     e.preventDefault();
     dispatch(logout());
-    notification.success({ message: "Se desconectó con éxito" });
+    notification.success({
+      message: "Te has desconectado correctamente",
+      placement: "bottom",
+    });
     navigate("/login");
   };
+
   const [isEditable, setIsEditable] = useState(false);
   const [name, setName] = useState(user.user.name);
   const [password, setPassword] = useState();
@@ -108,12 +113,12 @@ const Profile = () => {
     setIsSending(false);
   };
 
-  return (
+  return (<>
     <div className="profile">
       <div className="userProfile">
         {user.user.role === "admin" ? (
           <div className="admin">
-            <Link to="/admin">Admin</Link>
+            <Link to="/admin"> Abrir vista de admin</Link>
           </div>
         ) : (
           ""
@@ -179,7 +184,7 @@ const Profile = () => {
             <Paragraph className="editBio">{bio}</Paragraph>
           )}
         </div>
-        <button className="btn" onClick={showDrawer}>
+        <button className="drawerbtn" onClick={showDrawer}>
           Preferencias de rutas
         </button>
         {isEditable ? (
@@ -190,25 +195,30 @@ const Profile = () => {
         <button className="btn editbtn" onClick={() => setIsEditable(!isEditable)}>
           <EditOutlined />
         </button>
+        <div>
+          <p>Valencia Spots © 2022 by Alex, Fran y Xavi.</p>
+          <p>Mapas interactivos procedentes de:<br /><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps" target="_blank" rel="noreferrer"> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors.</p>
+        </div>
         <div className="logout">
           <Link to="/" onClick={onLogout}>
             Cerrar Sesión
           </Link>
         </div>
 
-        <Drawer
-          title="Cuestionario"
-          placement={placement}
-          closable={true}
-          onClose={onClose}
-          visible={visible}
-          key={placement}
-        >
-          <Questionnaire quest={user.user?.questionnaire} onClose={onClose} />
-        </Drawer>
       </div>
+      <br /><br /><br /><br />
     </div>
-  );
+    <Drawer
+      title="Cuestionario"
+      placement={placement}
+      closable={true}
+      onClose={onClose}
+      visible={visible}
+      key={placement}
+    >
+      <Questionnaire quest={user.user?.questionnaire} onClose={onClose} />
+    </Drawer>
+  </>);
 };
 
 export default Profile;

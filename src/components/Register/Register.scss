@@ -1,4 +1,87 @@
-.form{
-    border: 2px solid blue;
-    padding: 2rem;
-}
+@import "./../../App.scss";
+
+.register{
+    background-color: $maincolor;
+    height:100vh;
+    .container{
+        position:relative;
+        width:100%;
+        height: calc(100vh - 235px);
+        .picture{
+
+        width:100%;
+        height: calc(100vh - 235px);
+        background-image: url("https://i.imgur.com/swbTmRu.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position:center center;
+         filter: grayscale(100%) brightness(40%);
+    }
+    .text{
+        position:absolute;
+        width:100%;
+        font-size: 40px;
+        bottom:25%;
+        text-align: center;
+        color:$maincolor;
+        z-index:99999;
+        font-family: $logofont
+    }
+    .subtext{
+        font-family: $mainfont;
+        font-size: 20px;
+        line-height: 1.4;;
+    }
+    
+
+
+
+     
+
+    }
+
+        .registerForm{
+            text-align: center;
+            border-radius:32px 32px 0 0 ;
+            padding:32px;
+            background-color: $maincolor;
+            position:absolute;
+            bottom:0;
+            width:100%;
+            color:$bordercolor;
+            border:1px solid $bordercolor;
+            border-bottom:none;
+            a{
+                color:$bordercolor;
+                font-weight: 400;
+            }
+            label{
+                font-weight: 700;
+            }
+            .ant-form-item {
+                margin-bottom: 12px;
+            }
+            .ant-input {
+                padding: 8px 0 8px 16px;
+                border-radius:12px;
+            }
+            .ant-input-affix-wrapper{
+                padding:0;
+                border-radius:12px;
+            }
+            .ant-input-suffix{
+                margin:8px;
+            }
+            .submitbtn{
+                width:100%;
+                background-color: $secondcolor;
+                border:none;
+                height:48px;
+                margin: 8px 0;
+                border-radius:16px;
+                color:$bordercolor;
+                font-weight: 600;
+
+            }
+        }
+    }
