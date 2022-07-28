@@ -90,16 +90,37 @@ The project originates from the FullStack bootcamp at [TheBridge](https://www.th
 
 
 ### Log in page
-![Log in page](./assets/login.png)
+![Log in page](./screenshots/cap006.jpg)
 
 ### Register page
-![Screnshot of login](./link/goes/here)
+![Screnshot of login](./screenshots/cap002.jpg)
 
 ### User favourites 
 ![User favourites](./assets/favourites.png)
 
-### Routes view
-![Routes view](./link/goes/here)
+### Home page (Home)
+![Home page](./screenshots/cap007.jpg)
+
+### Search bar (Home)
+![Search bar](./screenshots/cap008.jpg)
+
+### Liked routes 
+![Liked routes](./screenshots/cap010.jpg)
+
+### Route view 
+![Route view](./screenshots/cap011.jpg)
+
+### Comments and valoration 
+![Comments and valoration](./screenshots/cap014.jpg)
+
+### Points of interest nearby 
+![Points of interest nearby](./screenshots/cap016.jpg)
+
+### Profile 
+![Profile](./screenshots/cap017.jpg)
+
+### Admin view 
+![Admin view](./screenshots/cap022.jpg)
 
 ## Organization
 

@@ -1,4 +1,4 @@
-#  <center>Valencia Spot (Routes App with React Redux)</center> 
+<center>Valencia Spot (Routes App con React Redux)</center> 
 
  ## :Marcador: índice
 
@@ -26,7 +26,7 @@
 
 ## Sobre el proyecto
 
-This project unifies everything learned so far. We will develop a routes app (mobile first) where users will register, login, view routes and can save routes to their favourites. All this Using the API we will recieve from the good people on the data science course. 
+Este proyecto unifica todo lo aprendido hasta ahora. Desarrollaremos una aplicación de rutas (móvil primero) donde los usuarios se registrarán, iniciarán sesión, verán rutas y podrán guardar rutas en sus favoritos. Todo esto Usando la API lo recibiremos de las buenas personas en el curso de ciencia de datos.
 
 ## Requisitos
 Una vez analizadas las necesidades del proyecto, se espera
@@ -91,17 +91,36 @@ const project = {
 El proyecto se origina en el bootcamp FullStack en [TheBridge](https://www.thebridge.tech/). Es el proyecto final del Bootcamp que simula un proyecto de la vida real en el que eres parte de un equipo que trabaja en un proyecto. Necesitamos crear tanto el frontend como el backend, logrando así un proyecto Full-Stack. El objetivo principal es crear una aplicación de rutas funcional, utilizando React Redux en el frontend y MongoDB y Mongoose en el backend.
 
 
-### pagina de login 
-![pagina de login ](./assets/login.png)
+### Página de inicio de sesión
+![Página de inicio de sesión](./screenshots/cap006.jpg)
 
-### pagina de Register 
-![pagina de Register ](./link/goes/here)
+### Página de registro
+![Página de registro](./screenshots/cap002.jpg)
 
-### User favoritos
-![User favoritos](./assets/favourites.png)
 
-### Vista Routes 
-![Vista Routes](./link/goes/here)
+### Página de Home
+![Página de Home](./screenshots/cap007.jpg)
+
+### Barra de búsqueda (Home)
+![Barra de búsqueda](./screenshots/cap008.jpg)
+
+### Favoritos del usuario 
+![Favoritos del usuario](./screenshots/cap010.jpg)
+
+### Vista Route 
+![Vista Route](./screenshots/cap011.jpg)
+
+### Comentarios y valoración 
+![Comentarios y valoración](./screenshots/cap014.jpg)
+
+### Puntos de interés cercanos 
+![Puntos de interés cercanos](./screenshots/cap016.jpg)
+
+### Perfil 
+![Perfil](./screenshots/cap017.jpg)
+
+### Vista Admin 
+![Admin view](./screenshots/cap022.jpg)
 
 ## Organización
 
