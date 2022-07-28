@@ -195,8 +195,8 @@ const Profile = () => {
         <button className="btn editbtn" onClick={() => setIsEditable(!isEditable)}>
           <EditOutlined />
         </button>
-        <div>
-          <p>Valencia Spots © 2022 by Alex, Fran y Xavi.</p>
+        <div className="attribution">
+          <p>Valencia Spots © 2022 <br/>by <a href="https://github.com/alextebbitt" target="_blank" rel="noreferrer">Alex</a>, <a href="https://github.com/franpd8" target="_blank" rel="noreferrer">Fran</a> y <a href="https://github.com/xavi-mat" target="_blank" rel="noreferrer">Xavi.</a></p>
           <p>Mapas interactivos procedentes de:<br /><a href="https://leafletjs.com/" title="A JavaScript library for interactive maps" target="_blank" rel="noreferrer"> Leaflet</a> <span aria-hidden="true">|</span> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors.</p>
         </div>
         <div className="logout">
