@@ -24,7 +24,7 @@
         bottom:25%;
         text-align: center;
         color:$maincolor;
-        z-index:99999;
+        z-index:1;
         font-family: $logofont
     }
     .subtext{
@@ -51,6 +51,7 @@
             color:$bordercolor;
             border:1px solid $bordercolor;
             border-bottom:none;
+            z-index:10;
             a{
                 color:$bordercolor;
                 font-weight: 400;
